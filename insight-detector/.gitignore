@@ -1,0 +1,47 @@
+# Environnement virtuel
+venv/
+.venv/
+
+# Python cache et fichiers compilés
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Fichiers Jupyter Notebook checkpoint
+.ipynb_checkpoints/
+
+# Fichiers de configuration d’IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Variables d’environnement
+.env
+.env.*
+
+# Données temporaires ou locales
+*.log
+*.sqlite3
+*.db
+*.csv
+*.json
+*.parquet
+*.gz
+
+# Modèles
+models/
+checkpoints/
+
+# Docker / CI
+*.pid
+*.lock
+*.bak
+*.swp
+
+# Résultats de test ou de cache
+htmlcov/
+coverage/
+.cache/
+pytest_cache/
