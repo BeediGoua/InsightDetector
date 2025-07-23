@@ -36,13 +36,23 @@ class RSSCollector:
                     title = entry.title.strip()
                     url = entry.link.strip()
                     summary = self._clean_html(entry.summary)
-                    published = self._parse_date(entry.get("published"))
+                    
+                    # Prioriser published_parsed si disponible, sinon published
+                    published_date = None
+                    if hasattr(entry, 'published_parsed') and entry.published_parsed:
+                        try:
+                            published_date = datetime(*entry.published_parsed[:6]).isoformat()
+                        except (TypeError, ValueError):
+                            pass
+                    
+                    if not published_date:
+                        published_date = self._parse_date(entry.get("published"))
 
                     articles.append({
                         "title": title,
                         "url": url,
                         "summary": summary,
-                        "published": published,
+                        "published": published_date,
                         "source": source_url
                     })
 
@@ -59,11 +69,28 @@ class RSSCollector:
 
     def _parse_date(self, raw_date: Optional[str]) -> Optional[str]:
         """Convertit une date brute RSS en format standard ISO (YYYY-MM-DD)."""
+        if not raw_date:
+            return None
+            
         try:
-            if raw_date:
-                parsed = feedparser._parse_date(raw_date)
-                if parsed:
-                    return datetime(*parsed[:6]).isoformat()
-        except Exception:
-            pass
+            # Utiliser time.struct_time si disponible dans l'entry
+            import time
+            from email.utils import parsedate_tz
+            
+            # Essayer d'abord parsedate_tz pour les dates RFC 2822
+            parsed_tuple = parsedate_tz(raw_date)
+            if parsed_tuple:
+                # Convertir en timestamp puis datetime
+                timestamp = time.mktime(parsed_tuple[:9])
+                dt = datetime.fromtimestamp(timestamp)
+                return dt.isoformat()
+            
+            # Fallback: parser direct feedparser
+            parsed = feedparser._parse_date(raw_date) if hasattr(feedparser, '_parse_date') else None
+            if parsed:
+                return datetime(*parsed[:6]).isoformat()
+                
+        except Exception as e:
+            logger.debug(f"Erreur parsing date '{raw_date}': {e}")
+            
         return None
