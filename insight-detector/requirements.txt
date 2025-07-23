@@ -4,3 +4,12 @@ pydantic
 python-dotenv
 psycopg2-binary
 sqlalchemy
+newspaper3k
+lxml_html_clean
+feedparser
+beautifulsoup4
+pandas
+matplotlib
+seaborn
+plotly
+jupyter
