@@ -119,7 +119,7 @@ python
 Model_1: BARThez (français natif) - Résumés abstractifs
 Model_2: mT5-large - Résumés cross-linguals  
 Model_3: CamemBERT + extractive - Résumés extractifs
-Model_4: GPT-4 via API - Résumés de référence
+Model_4:  - Résumés de référence
 
 # Combinaison intelligente par voting pondéré
 
