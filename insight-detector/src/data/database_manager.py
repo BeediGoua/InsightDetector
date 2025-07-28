@@ -3,7 +3,7 @@
 from sqlalchemy.orm import Session
 from datetime import datetime
 from dateutil.parser import parse  
-from data.models import Article
+from .models import Article
 
 class DatabaseManager:
     def __init__(self, session: Session):
