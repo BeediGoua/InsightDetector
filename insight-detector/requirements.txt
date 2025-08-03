@@ -1,25 +1,48 @@
+# Backend
 fastapi
 uvicorn
 pydantic
 python-dotenv
 psycopg2-binary
 sqlalchemy
+sentence-transformers
+sentencepiece
+# Data Collection
 newspaper3k
 lxml_html_clean
 feedparser
 beautifulsoup4
+requests
 
-matplotlib
-seaborn
-plotly
-jupyter
-python-dateutil>=2.8.0
-rouge-score
-bert-score
+# ML & NLP
+torch
+transformers
 sentence-transformers
 scikit-learn
 nltk
+spacy>=3.4.0
+
+# Evaluation
+rouge-score
+bert-score
+
+# Data Science
 pandas
 numpy
-torch
-transformers
+python-dateutil>=2.8.0
+
+# Visualization  
+matplotlib
+seaborn
+plotly
+
+# Interface
+jupyter
+streamlit
+ipywidgets
+
+# Utils
+tqdm
+pathlib
+pickle
+json

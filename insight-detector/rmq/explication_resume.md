@@ -3,7 +3,7 @@
 1.1 Modèles Abstractifs
 
 BARThez : Spécialisé français, génération naturelle
-mT5-large : Cross-lingual, robuste multilingue
+# mT5-large : Supprimé (qualité insuffisante)
 T5-base-french : Alternatives selon ressources
 
 1.2 Modèles Extractifs
@@ -25,8 +25,8 @@ weighted_avg = Σ(quality_score_i × summary_i)
 
 # Voting par expertise modèle
 domain_weights = {
-    'news': {'barthez': 0.4, 'extractive': 0.3, 'mt5': 0.3},
-    'scientific': {'extractive': 0.5, 'mt5': 0.3, 'barthez': 0.2}
+    'news': {'barthez': 0.6, 'extractive': 0.4},
+    'scientific': {'extractive': 0.6, 'barthez': 0.4}
 }
 
 # Voting adaptatif selon longueur source
@@ -151,7 +151,7 @@ Métriques business actionnables
 
 | 📌 Objectif                                      | Statut     | Modules/Fichiers associés                                               |
 | ------------------------------------------------ | ---------- | ----------------------------------------------------------------------- |
-| 1.1 Abstractifs (BARThez, mT5, T5-fr)            | ✅ Fait     | `abstractive_models.py`                                                 |
+| 1.1 Abstractifs (BARThez, T5-fr)                 | ✅ Fait     | `abstractive_models.py`                                                 |
 | 1.2 Extractifs (CamemBERT, TextRank, TF-IDF+MMR) | ✅ Fait     | `extractive_models.py`                                                  |
 | 1.3 Référence (Lead-K, Entities, Heuristics)     | 🟡 À faire | **À ajouter dans `reference_models.py`** (proposé mais pas encore codé) |
 
@@ -214,7 +214,7 @@ Métriques business actionnables
 * Ajouter dans `fine_tuning.py` :
 
   * Chargement d’un corpus par domaine (`news`, `scientific`, etc.)
-  * Fine-tuning sur `T5` ou `mT5` via Hugging Face Trainer
+  * Fine-tuning sur `T5` via Hugging Face Trainer
 * Ajouter dans `weight_optimization.py` :
 
   * Grid search ou Bayesian opt pour pondérations
