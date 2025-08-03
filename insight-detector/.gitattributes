@@ -1,0 +1,54 @@
+# Gestion des fins de ligne
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+# Fichiers binaires
+*.pkl binary
+*.db binary
+*.sqlite3 binary
+*.parquet binary
+*.gz binary
+*.zip binary
+*.tar binary
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg binary
+*.png filter=lfs diff=lfs merge=lfs -text
+*.gif binary
+*.ico binary
+*.pdf binary
+# Notebooks Jupyter
+*.ipynb text eol=lf
+# Configuration Git LFS pour gros fichiers
+*.pkl filter=lfs diff=lfs merge=lfs -text
+data/processed/*.pkl filter=lfs diff=lfs merge=lfs -text
+*.parquet filter=lfs diff=lfs merge=lfs -text
+*.gz filter=lfs diff=lfs merge=lfs -text
+# Language detection GitHub
+*.py linguist-language=Python
+*.ipynb linguist-language=Jupyter-Notebook
+*.md linguist-documentation
+rmq/* linguist-documentation
+*.json linguist-generated=false
+data/results/*.json linguist-generated=false
+outputs/*.json linguist-generated=false
+# Diff personalise pour certains fichiers
+*.json diff=json
+*.csv diff=csv
+*.md diff=markdown
+# Traitement des fins de ligne
+* text=auto
+# Fichiers gérés par Git LFS
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+# Fichiers texte
+*.json text
+*.csv text
+# Ignorer certains types de fichiers dans les diff
+*.zip binary
+*.tar.gz binary
