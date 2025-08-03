@@ -30,8 +30,10 @@ __pycache__/
 *.parquet
 *.gz
 
+# dossiers remarques
+rmq/
 # Modèles
-models/
+
 checkpoints/
 
 # Docker / CI
