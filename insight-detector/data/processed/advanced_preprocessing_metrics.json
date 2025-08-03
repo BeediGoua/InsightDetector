@@ -1,0 +1,16 @@
+{
+  "source_file": "enriched_articles.json",
+  "enriched_mode": true,
+  "total_articles_input": 200,
+  "articles_after_deduplication": 128,
+  "calibration_corpus_size": 186,
+  "deduplication_rate": 0.36,
+  "avg_quality_score": 0.6814990476087434,
+  "language_distribution": {
+    "fr": 128
+  },
+  "entities_avg_per_article": 23.109375,
+  "temporal_bias_detected": 0.8119836089842879,
+  "geographic_bias_detected": -0.5657947650525943,
+  "processing_timestamp": "2025-07-27T10:08:32.511773"
+}
