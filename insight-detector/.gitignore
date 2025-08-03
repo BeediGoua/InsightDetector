@@ -11,36 +11,26 @@ __pycache__/
 # Fichiers Jupyter Notebook checkpoint
 .ipynb_checkpoints/
 
-# Fichiers de configuration d’IDE
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
 
-# Variables d’environnement
+
+# Variables d'environnement
 .env
 .env.*
 
-# Données temporaires ou locales
+# Logs et fichiers temporaires
 *.log
-*.sqlite3
-*.db
-*.csv
-*.json
-*.parquet
-*.gz
-
-# dossiers remarques
-rmq/
-# Modèles
-
-checkpoints/
-
-# Docker / CI
 *.pid
 *.lock
 *.bak
 *.swp
+
+
+# Modèles et checkpoints (trop lourds)
+checkpoints/
+models/*.bin
+models/*.safetensors
+*.pt
+*.pth
 
 # Résultats de test ou de cache
 htmlcov/

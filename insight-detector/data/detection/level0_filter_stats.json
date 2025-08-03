@@ -1,0 +1,44 @@
+{
+  "normal_mode": {
+    "total_summaries": 372,
+    "valid_summaries": 319,
+    "rejection_rate_percent": 14.24731182795699,
+    "avg_processing_time_ms": 1.888253996449132,
+    "rejection_reasons": {
+      "Trop long": 33,
+      "Phrase répétée 5x": 22,
+      "Métadonnées parasites": 10,
+      "Phrase répétée 9x": 4
+    },
+    "word_count_stats": {
+      "min": 11,
+      "max": 850,
+      "avg": 243.7258064516129,
+      "median": 183
+    }
+  },
+  "strict_mode": {
+    "total_summaries": 372,
+    "valid_summaries": 298,
+    "rejection_rate_percent": 19.892473118279568,
+    "avg_processing_time_ms": 1.9500973404094737,
+    "rejection_reasons": {
+      "Trop long": 33,
+      "Ratio ponctuation élevé": 23,
+      "Phrase répétée 5x": 22,
+      "Métadonnées parasites": 10,
+      "Phrase répétée 9x": 4
+    },
+    "word_count_stats": {
+      "min": 11,
+      "max": 850,
+      "avg": 243.7258064516129,
+      "median": 183
+    }
+  },
+  "performance": {
+    "avg_time_ms": 1.888253996449132,
+    "max_time_ms": 18.937110900878906,
+    "target_50ms_met_percent": 100.0
+  }
+}
