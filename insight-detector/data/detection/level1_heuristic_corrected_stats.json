@@ -1,0 +1,57 @@
+{
+  "analysis_summary": {
+    "total_analyzed": 372,
+    "level0_validated": 319,
+    "level0_rejected": 53,
+    "total_suspects": 183,
+    "global_detection_rate_percent": 49.193548387096776,
+    "improvement_vs_before": 13.706451612903223
+  },
+  "performance": {
+    "avg_time_ms": 87.12789063812583,
+    "max_time_ms": 322.08752632141113,
+    "target_100ms_met_percent": 60.483870967741936,
+    "improvement_vs_before": 10.983870967741936
+  },
+  "enrichment_metrics": {
+    "avg_priority_score": 0.5375268817204301,
+    "total_fact_check_candidates": 325,
+    "total_wikidata_queries": 325,
+    "improvement_fact_check": 320,
+    "improvement_wikidata": 320
+  },
+  "grade_correlation": {
+    "A+": {
+      "total": 60,
+      "suspects": 0
+    },
+    "A": {
+      "total": 62,
+      "suspects": 0
+    },
+    "B+": {
+      "total": 158,
+      "suspects": 118
+    },
+    "B": {
+      "total": 11,
+      "suspects": 6
+    },
+    "C": {
+      "total": 17,
+      "suspects": 17
+    },
+    "D": {
+      "total": 64,
+      "suspects": 42
+    }
+  },
+  "corrections_applied": [
+    "Seuils plus permissifs (0.3 → 0.05)",
+    "Pénalités réduites (70% → 15-30%)",
+    "Détection répétitions moins agressive (5% → 15%)",
+    "Enrichissement proactif activé",
+    "Validation externe désactivée par défaut",
+    "Bonus pour grades élevés (A+, A, B+)"
+  ]
+}

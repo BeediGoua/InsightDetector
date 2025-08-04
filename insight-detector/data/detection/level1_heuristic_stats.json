@@ -1,0 +1,61 @@
+{
+  "total_analyzed": 319,
+  "valid_summaries": 138,
+  "suspect_summaries": 181,
+  "suspicion_rate_percent": 56.739811912225704,
+  "performance": {
+    "avg_time_ms": 94.99569895872875,
+    "max_time_ms": 295.0146198272705,
+    "target_100ms_met_percent": 58.620689655172406
+  },
+  "detailed_stats": {
+    "total_summaries": 319,
+    "valid_summaries": 138,
+    "rejection_rate_percent": 56.739811912225704,
+    "avg_processing_time_ms": 94.99569895872875,
+    "avg_confidence_score": 0.29253918495297854,
+    "risk_distribution": {
+      "low": 89,
+      "medium": 55,
+      "high": 175
+    },
+    "detected_issues": {
+      "Répétition problématique": 1040,
+      "Anomalie statistique": 449,
+      "Métrique suspecte": 425,
+      "Complexité suspecte": 211,
+      "Densité entités suspecte": 101
+    },
+    "confidence_distribution": {
+      "min": 0.0,
+      "max": 0.95,
+      "median": 0.0
+    }
+  },
+  "grade_correlation": {
+    "A+": {
+      "total": 60,
+      "suspects": 0
+    },
+    "A": {
+      "total": 62,
+      "suspects": 8
+    },
+    "B+": {
+      "total": 115,
+      "suspects": 91
+    },
+    "B": {
+      "total": 7,
+      "suspects": 7
+    },
+    "C": {
+      "total": 15,
+      "suspects": 15
+    },
+    "D": {
+      "total": 60,
+      "suspects": 60
+    }
+  }
+}

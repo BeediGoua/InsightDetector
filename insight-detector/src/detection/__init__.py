@@ -11,6 +11,7 @@ Auteur: InsightDetector Team
 """
 
 from .level0_prefilter import QualityFilter
+from .level1_heuristic import Level1HeuristicDetector
 
-__all__ = ['QualityFilter']
+__all__ = ['QualityFilter', 'Level1HeuristicDetector']
 __version__ = '1.0.0'

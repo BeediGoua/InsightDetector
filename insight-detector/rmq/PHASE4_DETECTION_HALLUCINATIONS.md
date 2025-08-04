@@ -59,8 +59,10 @@ filter_manual = QualityFilter(min_words=10, max_words=600)
 
 **Décision :**
 
-* Cas invalides → rejet automatique
+* Cas invalides → rejet automatique (défauts techniques évidents)
 * Cas valides → passage au Niveau 1
+
+**Justification du rejet :** Le Niveau 0 rejette uniquement les résumés avec des défauts techniques objectifs (métadonnées parasites, répétitions excessives, caractères corrompus). Ces cas ne nécessitent pas d'analyse factuelle approfondie car ils présentent des erreurs de génération manifestes.
 
 **Performance :** <50ms par résumé, taux rejet optimal 5-8%
 
@@ -68,33 +70,40 @@ filter_manual = QualityFilter(min_words=10, max_words=600)
 
 ### Niveau 1 – Détection heuristique rapide (<100ms)
 
-#### 1.1 Incohérences temporelles
+**But :** Identifier et enrichir l'information sur les hallucinations potentielles pour alimenter les niveaux suivants.
 
-* Détection d’anachronismes : *“Napoléon utilise un smartphone”*
-* Chronologies impossibles : *“Après sa mort en 2020, il a déclaré en 2021”*
-* Contradictions internes : “hier” vs “l’année dernière”
+**Philosophie de détection :** Contrairement au Niveau 0 qui rejette définitivement les cas problématiques, le Niveau 1 enrichit tous les résumés analysés avec des métadonnées utiles pour la validation factuelle approfondie.
 
-#### 1.2 Validation des entités
+#### 1.1 Analyses de détection
 
-Triple vérification :
+**8 types d'analyses intégrées :**
 
-1. **NER local** (spaCy + CamemBERT-NER)
-2. **Cross-check externe** (Wikidata, DBpedia)
-3. **Proximité sémantique** via embeddings
+* **Anomalies statistiques** : longueur, ponctuation, diversité lexicale
+* **Complexité syntaxique** : structure des phrases, connecteurs logiques
+* **Répétitions agressives** : détection de patterns répétitifs suspects
+* **Densité d'entités** : distribution et concentration des éléments nommés
+* **Incohérences temporelles** : anachronismes, contradictions chronologiques
+* **Validation des entités** : vérification par NER + bases externes (Wikidata)
+* **Relations causales suspectes** : plausibilité des liens cause-effet
+* **Intégration des métriques existantes** : coherence/factuality scores, grades qualité
 
-Exemple :
-“Le président Emmanuel Dupont” →
+#### 1.2 Sortie enrichie pour les niveaux suivants
 
-* Détection PERSON (NER)
-* Vérification Wikidata ❌ (inexistant)
-* Similarité avec Emmanuel Macron : 0.85
-* Verdict : Hallucination probable
+**Innovation clé :** Chaque résumé analysé génère 6 types d'informations utiles :
 
-#### 1.3 Relations causales suspectes
+1. **Profil statistique** : métriques détaillées du texte
+2. **Extraction d'entités** : entités identifiées avec scores de confiance
+3. **Métriques de complexité** : indicateurs de lisibilité et structure
+4. **Indicateurs de qualité** : scores de priorité pour fact-checking
+5. **Candidats fact-check** : éléments prioritaires identifiés pour validation
+6. **Indices de validation** : suggestions spécifiques pour vérification externe
 
-* Vérification par graphe de connaissances (relations connues).
-* Contrôle de plausibilité (*pluie → licenciements* = improbable).
-* Détection de contradictions via NLI (CamemBERT fine-tuné).
+#### 1.3 Méthodes utilitaires
+
+* `get_priority_score()` : calcule un score de priorité pour le traitement Niveau 2
+* `get_fact_check_targets()` : identifie les éléments les plus critiques à vérifier
+
+**Décision :** Tous les résumés passent au niveau suivant avec enrichissement d'information (pas de rejet).
 
 ---
 
