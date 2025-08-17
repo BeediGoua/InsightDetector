@@ -1,0 +1,1 @@
+# Level 2 Simplifié - Système de validation basé sur Level 1

@@ -11,6 +11,11 @@ from pathlib import Path
 import pandas as pd
 from datetime import datetime
 
+# Configuration des chemins pour exécution depuis src/scripts/
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
+
 def print_status(message, status="INFO"):
     """Affichage formaté des statuts"""
     symbols = {"INFO": "ℹ️", "SUCCESS": "✅", "WARNING": "⚠️", "ERROR": "❌"}

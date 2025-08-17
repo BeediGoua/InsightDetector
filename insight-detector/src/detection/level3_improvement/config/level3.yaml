@@ -1,0 +1,38 @@
+priority_threshold: 0.80
+min_text_chars_for_resummarize: 500
+
+edit_rule_adaptive:
+  issues_max: 8
+  factuality_min: 0.75
+  coherence_rewrite_threshold: 0.15
+
+acceptance:
+  accepted_tiers: ["GOOD","EXCELLENT","MODERATE","IMPROVED_CRITICAL"]
+  allow_moderate_guarded: true
+  allow_critical_with_improvement: true
+  moderate_guard:
+    issues_max: 4
+    factuality_min: 0.80
+    coherence_min: 0.70
+  critical_guard:
+    issues_max: 8
+    factuality_min: 0.70
+    coherence_min: 0.60
+    improvement_required: 0.05
+  require_monotonic_improvement: false
+  allow_stagnation_if_issues_reduced: true
+  
+acceptance_topic:
+  after_text_min: 0.01
+  after_before_min: 0.01
+
+gen_params:
+  temperature: 0.0
+  top_p: 0.1
+  max_tokens: 220
+  stop: ["\\n\\n", "###"]
+  seed: 42
+
+mode:
+  prefer_resum_for_cw_critical: true
+  tiers_order: ["CRITICAL","MODERATE","GOOD","EXCELLENT"]

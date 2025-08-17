@@ -1,627 +1,551 @@
+# src/detection/level1_heuristic.py
 """
-Niveau 1 : Détection heuristique rapide (<100ms)
+Analyseur heuristique niveau 1 amélioré avec corrections des problèmes identifiés.
 
-Module de détection heuristique pour identifier les hallucinations basées sur :
-- Incohérences temporelles (anachronismes, contradictions)
-- Validation des entités (NER + cross-check externe)
-- Relations causales suspectes
-
-Basé sur l'analyse de 319 résumés validés par le Niveau 0.
+Corrections apportées:
+- Seuils longueur corrigés (150-200 max au lieu de 400-500)
+- Détection répétitions phrases complètes 
+- Validation Wikidata optionnelle et non-pénalisante
+- Patterns corruption confidence_weighted
+- Métriques calibrées sur données réelles
 """
 
 import re
-import datetime
-from typing import Dict, List, Tuple, Optional, Union, Set
-from dataclasses import dataclass
-import logging
 import time
-import spacy
 import requests
-from collections import defaultdict, Counter
-import unicodedata
+from typing import Dict, List, Optional, Tuple, Any
+from dataclasses import dataclass
+from collections import Counter
+import logging
+import numpy as np
+import spacy
+from datetime import datetime, date
+import calendar
 
-# Configuration du logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-# Patterns temporels français
-TEMPORAL_PATTERNS = {
-    'dates_absolues': [
-        r'\b(\d{1,2})[-/](\d{1,2})[-/](\d{4})\b',  # DD/MM/YYYY
-        r'\b(\d{4})[-/](\d{1,2})[-/](\d{1,2})\b',  # YYYY/MM/DD
-        r'\b(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})\b',
-    ],
-    'dates_relatives': [
-        r'\b(hier|aujourd\'?hui|demain)\b',
-        r'\b(cette\s+semaine|la\s+semaine\s+dernière|la\s+semaine\s+prochaine)\b',
-        r'\b(ce\s+mois|le\s+mois\s+dernier|le\s+mois\s+prochain)\b',
-        r'\b(cette\s+année|l\'?année\s+dernière|l\'?année\s+prochaine)\b',
-        r'\bil\s+y\s+a\s+(\d+)\s+(jours?|semaines?|mois|années?)\b',
-        r'\bdans\s+(\d+)\s+(jours?|semaines?|mois|années?)\b',
-    ],
-    'evenements_historiques': [
-        r'\b(révolution\s+française|première\s+guerre\s+mondiale|seconde\s+guerre\s+mondiale)\b',
-        r'\b(renaissance|moyen\s+âge|antiquité|époque\s+moderne)\b',
-        r'\b(covid-19|coronavirus|pandémie)\b',
-    ]
-}
-
-# Entités et personnalités connues pour validation
-KNOWN_ENTITIES = {
-    'presidents_france': {
-        'emmanuel macron': (2017, None),
-        'françois hollande': (2012, 2017),
-        'nicolas sarkozy': (2007, 2012),
-        'jacques chirac': (1995, 2007),
-        'françois mitterrand': (1981, 1995),
-        'valéry giscard d\'estaing': (1974, 1981, 2020),  # décédé en 2020
-    },
-    'technologies': {
-        'smartphone': (2007, None),  # iPhone lancé en 2007
-        'internet': (1990, None),    # Grand public ~1990
-        'télévision': (1950, None),
-        'radio': (1920, None),
-        'automobile': (1885, None),
-    }
-}
-
-# Relations causales improbables
-IMPLAUSIBLE_CAUSALITIES = [
-    (r'\bpluie\b', r'\b(licenciements?|faillite|économie)\b'),
-    (r'\bsoleil\b', r'\b(politique|élections?)\b'),
-    (r'\b(couleur|musique)\b', r'\b(maladie|décès)\b'),
-    (r'\b(météo|temps)\b', r'\b(bourse|actions)\b'),
-    (r'\b(sport|football)\b', r'\b(sciences?|mathématiques?)\b'),
-]
 
 
 @dataclass
 class HeuristicResult:
-    """Résultat enrichi de l'analyse heuristique pour alimenter les niveaux suivants."""
-    # Évaluation globale (pour compatibilité)
-    is_valid: bool
-    confidence_score: float  # 0-1
-    risk_level: str  # 'low', 'medium', 'high'
+    """Résultat enrichi de l'analyse heuristique niveau 1 (compatible + enhanced)."""
+    is_suspect: bool
+    confidence_score: float
+    risk_level: str
+    issues: List[Dict[str, Any]]
     processing_time_ms: float
-    
-    # Analyses détaillées pour Niveau 2+
-    detected_issues: List[str]
-    temporal_anomalies: List[Dict]
-    entity_issues: List[Dict]
-    causal_anomalies: List[Dict]
-    
-    # NOUVEAUX : Éléments utiles pour la suite
-    statistical_profile: Dict  # Profil statistique du texte
-    entity_extraction: Dict    # Entités extraites avec confiance
-    complexity_metrics: Dict   # Métriques de complexité textuelle
-    quality_indicators: Dict   # Indicateurs de qualité pour prioritisation
-    fact_check_candidates: List[Dict]  # Éléments prioritaires pour fact-checking
-    validation_hints: Dict     # Indices pour validation externe
-    
-    def get_priority_score(self) -> float:
-        """Calcule un score de priorité pour le traitement Niveau 2."""
-        base_priority = 1.0 - self.confidence_score
-        
-        # Bonus selon le type de problèmes détectés
-        if self.entity_issues:
-            base_priority += 0.2
-        if self.temporal_anomalies:
-            base_priority += 0.3
-        if self.causal_anomalies:
-            base_priority += 0.1
-            
-        # Bonus selon la qualité des métriques existantes
-        quality_bonus = self.quality_indicators.get('needs_fact_check', 0) * 0.2
-        
-        return min(1.0, base_priority + quality_bonus)
-    
-    def get_fact_check_targets(self) -> List[str]:
-        """Retourne les éléments prioritaires pour le fact-checking."""
-        targets = []
-        
-        # Entités suspectes
-        for entity in self.entity_issues:
-            if entity.get('type') in ['PERSON', 'ORG', 'GPE']:
-                targets.append(f"Entity: {entity.get('text', '')}")
-        
-        # Éléments temporels
-        for anomaly in self.temporal_anomalies:
-            targets.append(f"Temporal: {anomaly.get('description', '')}")
-            
-        # Relations causales
-        for causal in self.causal_anomalies:
-            targets.append(f"Causal: {causal.get('description', '')}")
-            
-        return targets[:5]  # Top 5 priorités
+    word_count: int
+    entities_detected: int
+    suspicious_entities: int
+    fact_check_candidates: List[Dict]
+    priority_score: float
+    enrichment_metadata: Dict[str, Any]
+    severity_breakdown: Dict[str, int]
+    corrections_suggested: List[str]
 
 
-class Level1HeuristicDetector:
+class HeuristicAnalyzer:
     """
-    Détecteur heuristique de niveau 1 pour les hallucinations.
+    Analyseur heuristique niveau 1 amélioré avec patterns corrigés.
     
-    Analyse rapide (<100ms) basée sur des règles heuristiques pour détecter :
-    - Les incohérences temporelles
-    - Les entités invalides ou suspectes
-    - Les relations causales improbables
+    Corrections principales:
+    - Seuils longueur réalistes pour résumés (15-200 mots)
+    - Détection répétitions phrases complètes
+    - Validation Wikidata non-bloquante 
+    - Patterns spécifiques confidence_weighted
+    - Score de priorité calibré
     """
     
     def __init__(self, 
-                 spacy_model: str = "fr_core_news_sm",
-                 use_external_validation: bool = False,  # CORRIGÉ - Désactivé par défaut pour performance
-                 wikidata_timeout: int = 2,
-                 current_year: Optional[int] = None,
-                 sensitivity_mode: str = "balanced"):
+                 enable_wikidata: bool = False,
+                 wikidata_timeout: float = 2.0,
+                 enable_entity_validation: bool = True,
+                 strict_length_limits: bool = False):
         """
-        Initialise le détecteur heuristique.
+        Initialise l'analyseur enhanced.
         
         Args:
-            spacy_model: Modèle spaCy pour l'analyse NER
-            use_external_validation: Activer la validation externe (Wikidata)
-            wikidata_timeout: Timeout pour les requêtes Wikidata (secondes)
-            current_year: Année courante (None = année actuelle)
+            enable_wikidata: Active validation Wikidata (optionnelle)
+            wikidata_timeout: Timeout requêtes Wikidata
+            enable_entity_validation: Active validation entités
+            strict_length_limits: Seuils longueur stricts vs standards
         """
-        # Chargement du modèle spaCy
-        try:
-            self.nlp = spacy.load(spacy_model)
-            logger.info(f"Modèle spaCy {spacy_model} chargé avec succès")
-        except OSError:
-            logger.warning(f"Modèle {spacy_model} non trouvé, utilisation du modèle de base")
-            self.nlp = spacy.load("fr_core_news_sm")
         
-        self.use_external_validation = use_external_validation
+        self.enable_wikidata = enable_wikidata
         self.wikidata_timeout = wikidata_timeout
-        self.current_year = current_year or datetime.datetime.now().year
-        self.sensitivity_mode = sensitivity_mode  # "strict", "balanced", "permissive"
+        self.enable_entity_validation = enable_entity_validation
+        self.strict_length_limits = strict_length_limits
         
-        # Configuration des seuils selon le mode (CORRIGÉ - plus permissif pour enrichissement)
-        if sensitivity_mode == "strict":
-            self.confidence_threshold = 0.1
-            self.entity_validation_rate = 0.3  # 30% des entités validées
-        elif sensitivity_mode == "balanced":
-            self.confidence_threshold = 0.05  # Plus permissif pour enrichissement
-            self.entity_validation_rate = 0.05  # Validation minimale pour performance
-        else:  # permissive
-            self.confidence_threshold = 0.02
-            self.entity_validation_rate = 0.02  # Validation très réduite
+        # Seuils corrigés basés sur analyse des 372 résumés
+        if strict_length_limits:
+            self.WORD_COUNT_THRESHOLDS = {
+                'very_short': 15,      # <15 mots = très court
+                'short': 30,           # 15-30 mots = court
+                'normal_min': 30,      # 30-120 mots = normal
+                'normal_max': 120,     
+                'long': 150,           # 120-150 mots = long
+                'very_long': 200,      # 150-200 mots = très long
+                'excessive': 250       # >200 mots = excessif
+            }
+        else:
+            self.WORD_COUNT_THRESHOLDS = {
+                'very_short': 10,
+                'short': 20,
+                'normal_min': 20,
+                'normal_max': 150,
+                'long': 200,
+                'very_long': 250,
+                'excessive': 300
+            }
         
-        # Compilation des patterns pour performance
-        self.temporal_regex = {}
-        for category, patterns in TEMPORAL_PATTERNS.items():
-            compiled_patterns = []
-            for pattern in patterns:
-                compiled_patterns.append(re.compile(pattern, re.IGNORECASE))
-            self.temporal_regex[category] = compiled_patterns
+        # Patterns corruption confidence_weighted spécifiques
+        self.confidence_weighted_patterns = [
+            re.compile(r'Par\s+[\w\s]+\s+avec\s+[^\w\s]\s+le\s+[^\w\s]\s+\d+h\d+', re.IGNORECASE),
+            re.compile(r'mis\s+[^\w\s]\s+jour\s+le\s+\d+\s+\w+', re.IGNORECASE),
+            re.compile(r'[^\w\s]+abonner[^\w\s]+newsletter', re.IGNORECASE),
+            re.compile(r'Le\s+Nouvel\s+Obs\s+avec\s+[^\w\s]', re.IGNORECASE),
+        ]
         
-        # Patterns de causalité
-        self.causality_patterns = []
-        for cause_pattern, effect_pattern in IMPLAUSIBLE_CAUSALITIES:
-            self.causality_patterns.append((
-                re.compile(cause_pattern, re.IGNORECASE),
-                re.compile(effect_pattern, re.IGNORECASE)
-            ))
+        # Patterns répétitions améliorés (phrases complètes)
+        self.sentence_repetition_pattern = re.compile(r'([.!?])\s*(.{30,}?)\1\s*\2', re.IGNORECASE)
+        self.paragraph_repetition_pattern = re.compile(r'(.{100,?})\.\s*\1', re.IGNORECASE)
         
-        # Cache pour les validations externes
+        # Patterns encodage corruption
+        self.encoding_corruption_patterns = [
+            re.compile(r'Ã[©àèêôç]'),  # Caractères français mal encodés
+            re.compile(r'â+'),          # Caractères étranges
+            re.compile(r'\\x[0-9a-fA-F]{2}'),  # Séquences hex
+        ]
+        
+        # Cache entités pour performance
         self.entity_cache = {}
         
-    def detect_hallucinations(self, text: str, summary_id: Optional[str] = None, 
-                             coherence_score: Optional[float] = None,
-                             factuality_score: Optional[float] = None,
-                             quality_grade: Optional[str] = None) -> HeuristicResult:
+        # Initialisation spaCy (optionnelle)
+        self.nlp = None
+        if enable_entity_validation:
+            try:
+                # Essayer français d'abord, puis anglais
+                try:
+                    self.nlp = spacy.load("fr_core_news_sm")
+                except OSError:
+                    try:
+                        self.nlp = spacy.load("en_core_web_sm")
+                    except OSError:
+                        logger.warning("Aucun modèle spaCy disponible, validation entités désactivée")
+                        self.enable_entity_validation = False
+            except Exception as e:
+                logger.warning(f"Erreur initialisation spaCy: {e}")
+                self.enable_entity_validation = False
+
+    def analyze_summary(self, summary: str, metadata: Optional[Dict] = None) -> HeuristicResult:
         """
         Analyse heuristique complète d'un résumé.
         
         Args:
-            text: Texte du résumé à analyser
-            summary_id: Identifiant optionnel pour logging
+            summary: Texte du résumé
+            metadata: Métadonnées (strategy, coherence, factuality, etc.)
             
         Returns:
-            HeuristicResult: Résultat détaillé de l'analyse
+            HeuristicResult avec diagnostic détaillé
         """
+        
         start_time = time.time()
-        detected_issues = []
         
-        # Stocker le grade et texte pour le calcul de confiance et enrichissement
-        self._current_quality_grade = quality_grade
-        self._current_text = text
+        if metadata is None:
+            metadata = {}
         
-        # 1. Analyse statistique agressive (nouveau)
-        statistical_issues = self._analyze_statistical_anomalies(text)
-        if statistical_issues:
-            detected_issues.extend([f"Anomalie statistique: {s['description']}" for s in statistical_issues])
+        # Initialisation
+        issues = []
+        fact_check_candidates = []
+        enrichment_metadata = {}
+        corrections_suggested = []
         
-        # 2. Analyse de complexité syntaxique (nouveau)
-        syntactic_issues = self._analyze_syntactic_complexity(text)
-        if syntactic_issues:
-            detected_issues.extend([f"Complexité suspecte: {s['description']}" for s in syntactic_issues])
+        # Métriques de base
+        word_count = len(summary.split())
+        strategy = metadata.get('strategy', 'unknown')
         
-        # 3. Détection répétitions agressives (nouveau)
-        repetition_issues = self._detect_aggressive_repetitions(text)
+        # 1. Analyse longueur avec seuils corrigés
+        length_issues = self._analyze_length_enhanced(summary, word_count, strategy)
+        issues.extend(length_issues)
+        
+        # 2. Détection répétitions améliorée (phrases complètes)
+        repetition_issues = self._analyze_repetitions_enhanced(summary)
+        issues.extend(repetition_issues)
         if repetition_issues:
-            detected_issues.extend([f"Répétition problématique: {r['description']}" for r in repetition_issues])
+            corrections_suggested.append("remove_sentence_repetitions")
         
-        # 4. Analyse densité entités (nouveau)
-        entity_density_issues = self._analyze_entity_density(text)
-        if entity_density_issues:
-            detected_issues.extend([f"Densité entités suspecte: {e['description']}" for e in entity_density_issues])
+        # 3. Détection corruption confidence_weighted
+        corruption_issues = self._analyze_confidence_weighted_corruption(summary)
+        issues.extend(corruption_issues)
+        if corruption_issues:
+            corrections_suggested.append("fix_confidence_weighted_corruption")
         
-        # 5. Détection des incohérences temporelles (existant)
-        temporal_anomalies = self._detect_temporal_anomalies(text)
-        if temporal_anomalies:
-            detected_issues.extend([f"Incohérence temporelle: {a['description']}" for a in temporal_anomalies])
+        # 4. Analyse encodage corruption
+        encoding_issues = self._analyze_encoding_corruption(summary)
+        issues.extend(encoding_issues)
+        if encoding_issues:
+            corrections_suggested.append("fix_encoding_issues")
         
-        # 6. Validation des entités (existant)
-        entity_issues = self._validate_entities(text)
-        if entity_issues:
-            detected_issues.extend([f"Entité suspecte: {e['description']}" for e in entity_issues])
+        # 5. Analyse statistique générale
+        statistical_issues = self._analyze_statistical_anomalies_enhanced(summary)
+        issues.extend(statistical_issues)
         
-        # 7. Détection des relations causales suspectes (existant)
-        causal_anomalies = self._detect_causal_anomalies(text)
-        if causal_anomalies:
-            detected_issues.extend([f"Relation causale suspecte: {c['description']}" for c in causal_anomalies])
+        # 6. Analyse syntaxique
+        syntactic_issues = self._analyze_syntactic_complexity_enhanced(summary)
+        issues.extend(syntactic_issues)
         
-        # 8. Intégration des métriques existantes (nouveau)
-        metrics_issues = self._analyze_existing_metrics(coherence_score, factuality_score, quality_grade)
-        if metrics_issues:
-            detected_issues.extend([f"Métrique suspecte: {m['description']}" for m in metrics_issues])
+        # 7. Analyse entités (si activée)
+        entities_detected = 0
+        suspicious_entities = 0
+        if self.enable_entity_validation and self.nlp:
+            entity_issues, entities_count, suspicious_count = self._analyze_entities_enhanced(summary)
+            issues.extend(entity_issues)
+            entities_detected = entities_count
+            suspicious_entities = suspicious_count
         
-        # Calcul du score de confiance et niveau de risque (avec nouvelles anomalies)
-        confidence_score, risk_level = self._calculate_confidence(
-            temporal_anomalies, entity_issues, causal_anomalies,
-            statistical_issues, syntactic_issues, repetition_issues, entity_density_issues, metrics_issues
+        # 8. Validation métriques existantes (coherence, factuality)
+        metric_issues = self._analyze_existing_metrics_enhanced(metadata)
+        issues.extend(metric_issues)
+        
+        # 9. Génération candidats fact-checking
+        fact_check_candidates = self._generate_fact_check_candidates_enhanced(summary, entities_detected)
+        
+        # 10. Calcul scores et classification
+        confidence_score, risk_level, priority_score = self._calculate_enhanced_scores(
+            issues, word_count, entities_detected, suspicious_entities, metadata
         )
         
-        # Décision finale (seuil adaptatif selon le mode)
-        is_valid = confidence_score > self.confidence_threshold and risk_level != 'high'
+        # 11. Classification sévérité
+        severity_breakdown = self._classify_issue_severity(issues)
         
-        processing_time_ms = (time.time() - start_time) * 1000
+        # 12. Métadonnées enrichissement
+        enrichment_metadata = {
+            'word_count': word_count,
+            'sentence_count': len([s for s in re.split(r'[.!?]+', summary) if s.strip()]),
+            'strategy': strategy,
+            'has_corruption': len(corruption_issues) > 0,
+            'repetition_ratio': self._calculate_repetition_ratio(summary),
+            'encoding_quality': 1.0 - len(encoding_issues) / max(1, word_count * 0.1),
+            'entity_density': entities_detected / max(1, word_count) * 100,
+            'fact_check_density': len(fact_check_candidates) / max(1, word_count) * 100
+        }
         
-        # Logging pour cas problématiques
-        if not is_valid and summary_id:
-            logger.warning(f"Résumé {summary_id} suspect - Score: {confidence_score:.3f}, "
-                         f"Risque: {risk_level}, Issues: {len(detected_issues)}")
+        processing_time = (time.time() - start_time) * 1000
         
-        # Génération des nouvelles informations utiles pour les niveaux suivants
-        statistical_profile = self._generate_statistical_profile(text, statistical_issues)
-        entity_extraction = self._extract_entities_with_confidence(text, entity_issues)
-        complexity_metrics = self._calculate_complexity_metrics(text, syntactic_issues)
-        quality_indicators = self._generate_quality_indicators(coherence_score, factuality_score, quality_grade)
-        fact_check_candidates = self._identify_fact_check_candidates(temporal_anomalies, entity_issues, causal_anomalies)
-        validation_hints = self._generate_validation_hints(text, entity_issues, temporal_anomalies)
+        # Détermination suspicion finale
+        is_suspect = (
+            confidence_score < 0.7 or
+            risk_level in ['high', 'critical'] or
+            len([i for i in issues if i.get('severity') == 'critical']) > 0
+        )
         
         return HeuristicResult(
-            is_valid=is_valid,
+            is_suspect=is_suspect,
             confidence_score=confidence_score,
-            detected_issues=detected_issues,
-            temporal_anomalies=temporal_anomalies,
-            entity_issues=entity_issues,
-            causal_anomalies=causal_anomalies,
-            processing_time_ms=processing_time_ms,
             risk_level=risk_level,
-            # Nouveaux champs enrichis
-            statistical_profile=statistical_profile,
-            entity_extraction=entity_extraction,
-            complexity_metrics=complexity_metrics,
-            quality_indicators=quality_indicators,
+            issues=issues,
+            processing_time_ms=processing_time,
+            word_count=word_count,
+            entities_detected=entities_detected,
+            suspicious_entities=suspicious_entities,
             fact_check_candidates=fact_check_candidates,
-            validation_hints=validation_hints
+            priority_score=priority_score,
+            enrichment_metadata=enrichment_metadata,
+            severity_breakdown=severity_breakdown,
+            corrections_suggested=corrections_suggested
         )
-    
-    def process_batch(self, summaries: List[Dict]) -> Tuple[List[Dict], List[HeuristicResult]]:
-        """
-        Traite un lot de résumés.
+
+    def _analyze_length_enhanced(self, summary: str, word_count: int, strategy: str) -> List[Dict]:
+        """Analyse longueur avec seuils corrigés selon stratégie."""
         
-        Args:
-            summaries: Liste de dictionnaires avec 'text' et optionnellement 'id'
-            
-        Returns:
-            Tuple[valid_summaries, all_results]: Résumés valides et tous les résultats
-        """
-        valid_summaries = []
-        all_results = []
+        issues = []
+        thresholds = self.WORD_COUNT_THRESHOLDS
         
-        for i, summary in enumerate(summaries):
-            text = summary.get('text', '')
-            summary_id = summary.get('id', f'summary_{i}')
-            
-            # Extraire les métriques si disponibles
-            coherence_score = summary.get('coherence')
-            factuality_score = summary.get('factuality')
-            quality_grade = summary.get('quality_grade')
-            
-            result = self.detect_hallucinations(text, summary_id, coherence_score, factuality_score, quality_grade)
-            all_results.append(result)
-            
-            if result.is_valid:
-                valid_summaries.append(summary)
+        # Ajustement seuils selon stratégie
+        if strategy == "confidence_weighted":
+            # Plus strict pour confidence_weighted (génère souvent trop long)
+            excessive_threshold = min(thresholds['excessive'], 200)
+            very_long_threshold = min(thresholds['very_long'], 150)
+        else:
+            excessive_threshold = thresholds['excessive']
+            very_long_threshold = thresholds['very_long']
         
-        # Statistiques globales
-        total_count = len(summaries)
-        valid_count = len(valid_summaries)
-        rejection_rate = (total_count - valid_count) / total_count * 100
-        avg_time = sum(r.processing_time_ms for r in all_results) / total_count
-        
-        logger.info(f"Niveau 1 - Batch traité: {valid_count}/{total_count} valides "
-                   f"({rejection_rate:.1f}% rejetés), temps moyen: {avg_time:.1f}ms")
-        
-        return valid_summaries, all_results
-    
-    def _detect_temporal_anomalies(self, text: str) -> List[Dict]:
-        """Détecte les incohérences temporelles."""
-        anomalies = []
-        
-        # 1. Extraction des mentions temporelles
-        temporal_mentions = self._extract_temporal_mentions(text)
-        
-        # 2. Vérification des anachronismes
-        anachronisms = self._detect_anachronisms(text, temporal_mentions)
-        anomalies.extend(anachronisms)
-        
-        # Nouveaux patterns de détection plus sensibles
-        additional_patterns = self._detect_additional_temporal_patterns(text)
-        anomalies.extend(additional_patterns)
-        
-        # 3. Vérification des contradictions temporelles internes
-        contradictions = self._detect_temporal_contradictions(temporal_mentions)
-        anomalies.extend(contradictions)
-        
-        # 4. Vérification des dates impossibles
-        impossible_dates = self._detect_impossible_dates(temporal_mentions)
-        anomalies.extend(impossible_dates)
-        
-        return anomalies
-    
-    def _extract_temporal_mentions(self, text: str) -> List[Dict]:
-        """Extrait toutes les mentions temporelles du texte."""
-        mentions = []
-        
-        for category, patterns in self.temporal_regex.items():
-            for pattern in patterns:
-                for match in pattern.finditer(text):
-                    mentions.append({
-                        'type': category,
-                        'text': match.group(),
-                        'start': match.start(),
-                        'end': match.end(),
-                        'pattern': pattern.pattern
-                    })
-        
-        return mentions
-    
-    def _detect_anachronisms(self, text: str, temporal_mentions: List[Dict]) -> List[Dict]:
-        """Détecte les anachronismes évidents."""
-        anachronisms = []
-        
-        # Technologies et périodes historiques
-        for tech, (start_year, end_year) in KNOWN_ENTITIES['technologies'].items():
-            if tech in text.lower():
-                for mention in temporal_mentions:
-                    if mention['type'] == 'dates_absolues':
-                        # Extraction de l'année de la mention
-                        year_match = re.search(r'\b(\d{4})\b', mention['text'])
-                        if year_match:
-                            year = int(year_match.group(1))
-                            # Vérification anachronisme
-                            if year < start_year:
-                                anachronisms.append({
-                                    'type': 'anachronisme_technologique',
-                                    'description': f"{tech} mentionné en {year} (invention: {start_year})",
-                                    'confidence': 0.9,
-                                    'text_span': mention['text']
-                                })
-                            elif end_year and year > end_year:
-                                anachronisms.append({
-                                    'type': 'anachronisme_technologique',
-                                    'description': f"{tech} mentionné en {year} (fin: {end_year})",
-                                    'confidence': 0.8,
-                                    'text_span': mention['text']
-                                })
-        
-        return anachronisms
-    
-    def _detect_additional_temporal_patterns(self, text: str) -> List[Dict]:
-        """Détecte des patterns temporels suspects supplémentaires."""
-        patterns = []
-        
-        # 1. Dates futures suspectes dans des contextes passés
-        future_past_pattern = re.compile(r'(en|depuis|après)\s+(\d{4})\s+.*\s+(sera|aura|devrait)', re.IGNORECASE)
-        for match in future_past_pattern.finditer(text):
-            year = int(match.group(2))
-            if year > self.current_year:
-                patterns.append({
-                    'type': 'confusion_temporelle',
-                    'description': f"Mélange temps futur/passé avec année {year}",
-                    'confidence': 0.4,
-                    'text_span': match.group()
-                })
-        
-        # 2. Expressions temporelles contradictoires
-        contradiction_patterns = [
-            (r'hier.*demain', 'hier et demain dans même phrase'),
-            (r'passé.*futur.*maintenant', 'confusion temporelle multiple'),
-            (r'avant.*après.*simultanément', 'contradiction temporelle'),
-        ]
-        
-        for pattern, description in contradiction_patterns:
-            if re.search(pattern, text, re.IGNORECASE):
-                patterns.append({
-                    'type': 'expression_temporelle_contradictoire',
-                    'description': description,
-                    'confidence': 0.3,
-                    'pattern': pattern
-                })
-        
-        # 3. Dates impossibles avec événements connus
-        covid_before_2019 = re.search(r'covid.*201[0-8]', text, re.IGNORECASE)
-        if covid_before_2019:
-            patterns.append({
-                'type': 'anachronisme_covid',
-                'description': "COVID-19 mentionné avant 2019",
-                'confidence': 0.8,
-                'text_span': covid_before_2019.group()
+        if word_count < thresholds['very_short']:
+            issues.append({
+                'type': 'longueur_trop_courte',
+                'severity': 'moderate',
+                'description': f"Résumé très court: {word_count} mots (min recommandé: {thresholds['very_short']})",
+                'confidence': 0.7,
+                'value': word_count,
+                'threshold': thresholds['very_short']
             })
         
-        return patterns
-    
-    def _detect_temporal_contradictions(self, temporal_mentions: List[Dict]) -> List[Dict]:
-        """Détecte les contradictions temporelles internes."""
-        contradictions = []
+        elif word_count > excessive_threshold:
+            issues.append({
+                'type': 'longueur_excessive',
+                'severity': 'critical',
+                'description': f"Résumé excessivement long: {word_count} mots (max: {excessive_threshold})",
+                'confidence': 0.9,
+                'value': word_count,
+                'threshold': excessive_threshold
+            })
         
-        # Recherche de contradictions entre dates relatives
-        relative_mentions = [m for m in temporal_mentions if m['type'] == 'dates_relatives']
-        
-        if len(relative_mentions) >= 2:
-            # Exemple simple: "hier" et "l'année prochaine" dans le même texte
-            has_past = any('hier' in m['text'] or 'dernière' in m['text'] for m in relative_mentions)
-            has_future = any('demain' in m['text'] or 'prochaine' in m['text'] for m in relative_mentions)
-            
-            if has_past and has_future:
-                # Vérification plus fine nécessaire
-                past_mentions = [m for m in relative_mentions if 'hier' in m['text'] or 'dernière' in m['text']]
-                future_mentions = [m for m in relative_mentions if 'demain' in m['text'] or 'prochaine' in m['text']]
-                
-                if len(past_mentions) > 1 or len(future_mentions) > 1:
-                    contradictions.append({
-                        'type': 'contradiction_temporelle',
-                        'description': f"Références temporelles contradictoires détectées",
-                        'confidence': 0.6,
-                        'mentions': past_mentions + future_mentions
-                    })
-        
-        return contradictions
-    
-    def _detect_impossible_dates(self, temporal_mentions: List[Dict]) -> List[Dict]:
-        """Détecte les dates impossibles."""
-        impossible = []
-        
-        for mention in temporal_mentions:
-            if mention['type'] == 'dates_absolues':
-                # Vérification des formats de date
-                date_match = re.search(r'\b(\d{1,2})[-/](\d{1,2})[-/](\d{4})\b', mention['text'])
-                if date_match:
-                    day, month, year = map(int, date_match.groups())
-                    
-                    # Vérifications de base
-                    if month > 12 or month < 1:
-                        impossible.append({
-                            'type': 'date_impossible',
-                            'description': f"Mois invalide: {month}",
-                            'confidence': 1.0,
-                            'text_span': mention['text']
-                        })
-                    elif day > 31 or day < 1:
-                        impossible.append({
-                            'type': 'date_impossible',
-                            'description': f"Jour invalide: {day}",
-                            'confidence': 1.0,
-                            'text_span': mention['text']
-                        })
-                    elif year > self.current_year + 5:  # Dates futures suspectes (plus strict)
-                        impossible.append({
-                            'type': 'date_suspecte',
-                            'description': f"Date future suspecte: {year}",
-                            'confidence': 0.6,
-                            'text_span': mention['text']
-                        })
-                    elif year < 1900:  # Dates anciennes suspectes (plus strict)
-                        impossible.append({
-                            'type': 'date_suspecte',
-                            'description': f"Date ancienne suspecte: {year}",
-                            'confidence': 0.4,
-                            'text_span': mention['text']
-                        })
-                    # Nouveaux patterns de détection
-                    elif year == self.current_year + 1 and month > datetime.datetime.now().month:
-                        impossible.append({
-                            'type': 'date_future_proche',
-                            'description': f"Date future proche suspecte: {day}/{month}/{year}",
-                            'confidence': 0.3,
-                            'text_span': mention['text']
-                        })
-        
-        return impossible
-    
-    def _validate_entities(self, text: str) -> List[Dict]:
-        """Valide les entités nommées."""
-        issues = []
-        
-        # Analyse NER avec spaCy
-        doc = self.nlp(text)
-        
-        entity_count = 0
-        for ent in doc.ents:
-            if ent.label_ in ['PERSON', 'ORG', 'GPE', 'MISC']:  # Ajout de MISC
-                entity_text = ent.text.lower().strip()
-                entity_count += 1
-                
-                # 1. Vérification dans les bases connues
-                entity_issue = self._check_known_entities(entity_text, ent.label_)
-                if entity_issue:
-                    issues.append(entity_issue)
-                
-                # 2. Validation externe (sélective selon le mode)
-                should_validate = (
-                    self.use_external_validation and 
-                    len(entity_text) > 3 and
-                    (entity_count / max(1, len(doc.ents))) <= self.entity_validation_rate
-                )
-                
-                if should_validate:
-                    external_issue = self._validate_entity_external(entity_text, ent.label_)
-                    if external_issue:
-                        issues.append(external_issue)
-                
-                # 3. Détection de patterns suspects (plus agressive)
-                pattern_issue = self._detect_suspicious_entity_patterns(entity_text, ent.label_)
-                if pattern_issue:
-                    issues.append(pattern_issue)
-                
-                # 4. Nouveaux patterns de détection
-                length_issue = self._check_entity_length_anomalies(entity_text, ent.label_)
-                if length_issue:
-                    issues.append(length_issue)
-                
-                # 5. Détection de caractères non-alphabétiques suspects
-                char_issue = self._check_entity_character_anomalies(entity_text, ent.label_)
-                if char_issue:
-                    issues.append(char_issue)
+        elif word_count > very_long_threshold:
+            issues.append({
+                'type': 'longueur_suspecte',
+                'severity': 'moderate',
+                'description': f"Résumé très long: {word_count} mots (recommandé: <{very_long_threshold})",
+                'confidence': 0.6,
+                'value': word_count,
+                'threshold': very_long_threshold
+            })
         
         return issues
-    
-    def _check_known_entities(self, entity_text: str, entity_type: str) -> Optional[Dict]:
-        """Vérifie une entité contre les bases de données connues."""
-        # Vérification des présidents français
-        if entity_type == 'PERSON':
-            # Normalisation du nom
-            normalized_name = self._normalize_name(entity_text)
-            
-            # Recherche dans les présidents connus
-            for president, period in KNOWN_ENTITIES['presidents_france'].items():
-                if normalized_name in president or president in normalized_name:
-                    return None  # Entité connue et valide
-            
-            # Détection de variations suspectes
-            for president in KNOWN_ENTITIES['presidents_france'].keys():
-                similarity = self._name_similarity(normalized_name, president)
-                if 0.6 < similarity < 0.9:  # Similitude suspecte mais pas exacte
-                    return {
-                        'type': 'entite_similaire_suspecte',
-                        'description': f"'{entity_text}' similaire à '{president}' ({similarity:.2f})",
-                        'confidence': 0.7,
-                        'entity': entity_text,
-                        'reference': president
-                    }
+
+    def _analyze_repetitions_enhanced(self, summary: str) -> List[Dict]:
+        """Détection répétitions phrases complètes (problème principal confidence_weighted)."""
         
-        return None
-    
-    def _validate_entity_external(self, entity_text: str, entity_type: str) -> Optional[Dict]:
-        """Validation externe via Wikidata (avec cache)."""
+        issues = []
+        
+        # 1. Détection répétitions phrases exactes
+        sentences = [s.strip() for s in re.split(r'[.!?]+', summary) if s.strip()]
+        sentence_counts = Counter(sentences)
+        
+        repeated_sentences = {s: count for s, count in sentence_counts.items() 
+                            if count > 1 and len(s) > 20}  # Seulement phrases significatives
+        
+        if repeated_sentences:
+            max_repetitions = max(repeated_sentences.values())
+            total_repetitions = sum(count - 1 for count in repeated_sentences.values())
+            
+            severity = 'critical' if max_repetitions >= 5 else 'moderate' if max_repetitions >= 3 else 'minor'
+            
+            issues.append({
+                'type': 'repetition_phrases_completes',
+                'severity': severity,
+                'description': f"Répétition de phrases complètes détectée: {len(repeated_sentences)} phrases répétées",
+                'confidence': 0.9,
+                'details': {
+                    'repeated_sentences': dict(list(repeated_sentences.items())[:3]),  # Top 3
+                    'max_repetitions': max_repetitions,
+                    'total_excess_repetitions': total_repetitions
+                },
+                'value': total_repetitions
+            })
+        
+        # 2. Détection répétitions segments longs (pattern confidence_weighted)
+        segment_matches = self.paragraph_repetition_pattern.findall(summary)
+        if segment_matches:
+            issues.append({
+                'type': 'repetition_segments_longs',
+                'severity': 'critical',
+                'description': f"Répétition de segments longs détectée: {len(segment_matches)} occurrences",
+                'confidence': 0.85,
+                'details': {'repeated_segments': segment_matches[:2]},  # Exemples
+                'value': len(segment_matches)
+            })
+        
+        # 3. Calcul ratio répétition global
+        repetition_ratio = self._calculate_repetition_ratio(summary)
+        if repetition_ratio > 0.3:  # >30% répétition
+            issues.append({
+                'type': 'taux_repetition_eleve',
+                'severity': 'moderate' if repetition_ratio < 0.5 else 'critical',
+                'description': f"Taux de répétition élevé: {repetition_ratio:.1%}",
+                'confidence': 0.8,
+                'value': repetition_ratio
+            })
+        
+        return issues
+
+    def _analyze_confidence_weighted_corruption(self, summary: str) -> List[Dict]:
+        """Détection patterns corruption spécifiques confidence_weighted."""
+        
+        issues = []
+        
+        for i, pattern in enumerate(self.confidence_weighted_patterns):
+            matches = pattern.findall(summary)
+            if matches:
+                issues.append({
+                    'type': 'corruption_confidence_weighted',
+                    'severity': 'critical',
+                    'description': f"Pattern corruption confidence_weighted détecté: {pattern.pattern[:50]}...",
+                    'confidence': 0.95,
+                    'details': {
+                        'pattern_id': i,
+                        'matches': matches[:3],  # Premiers 3 matches
+                        'match_count': len(matches)
+                    },
+                    'value': len(matches)
+                })
+        
+        # Détection signature spécifique "Par Le Nouvel Obs avec é"
+        if "Par Le Nouvel Obs avec" in summary:
+            issues.append({
+                'type': 'signature_corruption_nouvel_obs',
+                'severity': 'critical',
+                'description': "Signature corruption 'Par Le Nouvel Obs avec é' détectée",
+                'confidence': 0.98,
+                'value': summary.count("Par Le Nouvel Obs avec")
+            })
+        
+        return issues
+
+    def _analyze_encoding_corruption(self, summary: str) -> List[Dict]:
+        """Analyse corruption encodage avec patterns étendus."""
+        
+        issues = []
+        total_corruption = 0
+        
+        for pattern in self.encoding_corruption_patterns:
+            matches = pattern.findall(summary)
+            if matches:
+                total_corruption += len(matches)
+        
+        if total_corruption > 0:
+            corruption_ratio = total_corruption / len(summary)
+            severity = 'critical' if corruption_ratio > 0.02 else 'moderate'
+            
+            issues.append({
+                'type': 'corruption_encodage',
+                'severity': severity,
+                'description': f"Corruption encodage détectée: {total_corruption} problèmes",
+                'confidence': 0.8,
+                'details': {
+                    'corruption_count': total_corruption,
+                    'corruption_ratio': corruption_ratio,
+                    'text_length': len(summary)
+                },
+                'value': corruption_ratio
+            })
+        
+        return issues
+
+    def _analyze_statistical_anomalies_enhanced(self, summary: str) -> List[Dict]:
+        """Analyse statistique avec seuils calibrés."""
+        
+        issues = []
+        
+        # Analyse ponctuation (seuil ajusté)
+        punct_ratio = len(re.findall(r'[.,:;!?()]', summary)) / max(1, len(summary))
+        if punct_ratio > 0.12:  # Abaissé de 0.15 à 0.12
+            issues.append({
+                'type': 'ratio_ponctuation_eleve',
+                'severity': 'minor',
+                'description': f"Ratio ponctuation élevé: {punct_ratio:.2%}",
+                'confidence': 0.5,
+                'value': punct_ratio
+            })
+        
+        # Diversité lexicale
+        words = re.findall(r'\b\w+\b', summary.lower())
+        if len(words) > 10:
+            unique_ratio = len(set(words)) / len(words)
+            if unique_ratio < 0.6:  # <60% mots uniques
+                issues.append({
+                    'type': 'diversite_lexicale_faible',
+                    'severity': 'moderate',
+                    'description': f"Diversité lexicale faible: {unique_ratio:.1%}",
+                    'confidence': 0.7,
+                    'value': unique_ratio
+                })
+        
+        return issues
+
+    def _analyze_syntactic_complexity_enhanced(self, summary: str) -> List[Dict]:
+        """Analyse complexité syntaxique calibrée."""
+        
+        issues = []
+        
+        sentences = [s.strip() for s in re.split(r'[.!?]+', summary) if s.strip()]
+        if not sentences:
+            return issues
+        
+        # Longueur moyenne phrases
+        avg_sentence_length = sum(len(s.split()) for s in sentences) / len(sentences)
+        if avg_sentence_length > 25:  # Abaissé de 30 à 25
+            issues.append({
+                'type': 'phrases_tres_longues',
+                'severity': 'moderate',
+                'description': f"Phrases très longues: {avg_sentence_length:.1f} mots/phrase",
+                'confidence': 0.6,
+                'value': avg_sentence_length
+            })
+        
+        # Absence connecteurs logiques (pour textes longs)
+        if len(summary.split()) > 50:
+            connecteurs = ['mais', 'cependant', 'donc', 'ainsi', 'par ailleurs', 'néanmoins',
+                          'however', 'therefore', 'moreover', 'nevertheless', 'furthermore']
+            has_connecteurs = any(conn in summary.lower() for conn in connecteurs)
+            
+            if not has_connecteurs:
+                issues.append({
+                    'type': 'absence_connecteurs_logiques',
+                    'severity': 'minor',
+                    'description': "Absence de connecteurs logiques dans un texte long",
+                    'confidence': 0.4,
+                    'value': 0
+                })
+        
+        return issues
+
+    def _analyze_entities_enhanced(self, summary: str) -> Tuple[List[Dict], int, int]:
+        """Analyse entités avec validation Wikidata optionnelle."""
+        
+        issues = []
+        entities_detected = 0
+        suspicious_entities = 0
+        
+        if not self.nlp:
+            return issues, 0, 0
+        
+        try:
+            doc = self.nlp(summary)
+            entities = [(ent.text, ent.label_) for ent in doc.ents]
+            entities_detected = len(entities)
+            
+            # Validation Wikidata optionnelle (non-bloquante)
+            if self.enable_wikidata and entities:
+                for entity_text, entity_type in entities[:5]:  # Limite 5 pour performance
+                    validation_result = self._validate_entity_wikidata_optional(entity_text, entity_type)
+                    if validation_result and validation_result.get('suspicious', False):
+                        suspicious_entities += 1
+                        issues.append(validation_result)
+            
+            # Densité entités (analyse locale)
+            word_count = len(summary.split())
+            if word_count > 20:
+                entity_density = entities_detected / word_count
+                if entity_density < 0.02:  # <2% entités
+                    issues.append({
+                        'type': 'densite_entites_faible',
+                        'severity': 'minor',
+                        'description': f"Densité d'entités faible: {entity_density:.1%}",
+                        'confidence': 0.4,
+                        'value': entity_density
+                    })
+                elif entity_density > 0.15:  # >15% entités
+                    issues.append({
+                        'type': 'densite_entites_elevee',
+                        'severity': 'minor',
+                        'description': f"Densité d'entités élevée: {entity_density:.1%}",
+                        'confidence': 0.3,
+                        'value': entity_density
+                    })
+        
+        except Exception as e:
+            logger.warning(f"Erreur analyse entités: {e}")
+        
+        return issues, entities_detected, suspicious_entities
+
+    def _validate_entity_wikidata_optional(self, entity_text: str, entity_type: str) -> Optional[Dict]:
+        """Validation Wikidata optionnelle et non-pénalisante."""
+        
         cache_key = f"{entity_text}_{entity_type}"
         
         if cache_key in self.entity_cache:
             return self.entity_cache[cache_key]
         
         try:
-            # Requête Wikidata simplifiée
             url = "https://www.wikidata.org/w/api.php"
             params = {
                 'action': 'opensearch',
@@ -633,802 +557,358 @@ class Level1HeuristicDetector:
             response = requests.get(url, params=params, timeout=self.wikidata_timeout)
             if response.status_code == 200:
                 results = response.json()
-                if len(results) > 1 and len(results[1]) > 0:
-                    # Entité trouvée dans Wikidata
-                    self.entity_cache[cache_key] = None
-                    return None
-                else:
-                    # Entité non trouvée
-                    issue = {
-                        'type': 'entite_non_verifiee',
-                        'description': f"'{entity_text}' non trouvé dans Wikidata",
-                        'confidence': 0.4,
-                        'entity': entity_text
+                found = len(results) > 1 and len(results[1]) > 0
+                
+                if not found and len(entity_text) > 10:  # Seulement entités significatives
+                    result = {
+                        'type': 'entite_non_verifiee_wikidata',
+                        'severity': 'minor',  # Abaissé de moderate à minor
+                        'description': f"Entité '{entity_text}' non trouvée dans Wikidata",
+                        'confidence': 0.3,  # Abaissé de 0.6 à 0.3
+                        'entity': entity_text,
+                        'suspicious': True
                     }
-                    self.entity_cache[cache_key] = issue
-                    return issue
+                    self.entity_cache[cache_key] = result
+                    return result
+                
+                self.entity_cache[cache_key] = None
+                return None
         
         except requests.RequestException:
-            # Erreur réseau - pas de pénalité
+            # Erreur réseau = pas de pénalité
             self.entity_cache[cache_key] = None
             return None
         
         return None
-    
-    def _detect_suspicious_entity_patterns(self, entity_text: str, entity_type: str) -> Optional[Dict]:
-        """Détecte des patterns suspects dans les entités."""
-        # Noms de personnes avec des caractères suspects
-        if entity_type == 'PERSON':
-            # Noms avec des chiffres
-            if re.search(r'\d', entity_text):
-                return {
-                    'type': 'nom_avec_chiffres',
-                    'description': f"Nom de personne avec chiffres: '{entity_text}'",
-                    'confidence': 0.6,
-                    'entity': entity_text
-                }
-            
-            # Noms trop courts ou trop longs
-            if len(entity_text.split()) == 1 and len(entity_text) < 3:
-                return {
-                    'type': 'nom_trop_court',
-                    'description': f"Nom très court: '{entity_text}'",
-                    'confidence': 0.3,
-                    'entity': entity_text
-                }
-            elif len(entity_text) > 50:
-                return {
-                    'type': 'nom_trop_long',
-                    'description': f"Nom très long: '{entity_text[:30]}...'",
-                    'confidence': 0.7,
-                    'entity': entity_text
-                }
+
+    def _analyze_existing_metrics_enhanced(self, metadata: Dict) -> List[Dict]:
+        """Analyse métriques existantes avec seuils calibrés."""
         
-        return None
-    
-    def _check_entity_length_anomalies(self, entity_text: str, entity_type: str) -> Optional[Dict]:
-        """Détecte les anomalies de longueur dans les entités."""
-        if entity_type == 'PERSON':
-            # Noms de personnes très courts ou très longs
-            if len(entity_text) < 2:
-                return {
-                    'type': 'nom_trop_court',
-                    'description': f"Nom de personne très court: '{entity_text}'",
-                    'confidence': 0.4,
-                    'entity': entity_text
-                }
-            elif len(entity_text) > 60:
-                return {
-                    'type': 'nom_trop_long',
-                    'description': f"Nom de personne très long: '{entity_text[:30]}...'",
-                    'confidence': 0.6,
-                    'entity': entity_text
-                }
-        
-        elif entity_type == 'ORG':
-            # Organisations avec des noms suspects
-            if len(entity_text) < 2:
-                return {
-                    'type': 'org_trop_courte',
-                    'description': f"Nom d'organisation très court: '{entity_text}'",
-                    'confidence': 0.5,
-                    'entity': entity_text
-                }
-        
-        return None
-    
-    def _check_entity_character_anomalies(self, entity_text: str, entity_type: str) -> Optional[Dict]:
-        """Détecte les caractères suspects dans les entités."""
-        # Caractères non-alphabétiques suspects dans les noms
-        if entity_type == 'PERSON':
-            # Nombres dans les noms de personnes
-            if re.search(r'\d{2,}', entity_text):  # 2+ chiffres consécutifs
-                return {
-                    'type': 'nom_avec_chiffres_suspects',
-                    'description': f"Nom avec chiffres suspects: '{entity_text}'",
-                    'confidence': 0.7,
-                    'entity': entity_text
-                }
-            
-            # Caractères spéciaux suspects
-            if re.search(r'[#@$%&*+=<>{}[\]|\\]', entity_text):
-                return {
-                    'type': 'nom_caracteres_speciaux',
-                    'description': f"Nom avec caractères spéciaux: '{entity_text}'",
-                    'confidence': 0.8,
-                    'entity': entity_text
-                }
-        
-        # Mots entièrement en majuscules suspects (si pas acronyme)
-        if len(entity_text) > 4 and entity_text.isupper() and not re.match(r'^[A-Z]{2,5}$', entity_text):
-            return {
-                'type': 'entite_majuscules_suspecte',
-                'description': f"Entité en majuscules suspecte: '{entity_text}'",
-                'confidence': 0.4,
-                'entity': entity_text
-            }
-        
-        return None
-    
-    def _analyze_statistical_anomalies(self, text: str) -> List[Dict]:
-        """Analyse statistique agressive du texte."""
-        anomalies = []
-        
-        words = text.split()
-        word_count = len(words)
-        
-        # 1. Longueur suspecte (basé sur analyse des données réelles)
-        if word_count < 20:  # Très court
-            anomalies.append({
-                'type': 'longueur_trop_courte',
-                'description': f"Résumé très court: {word_count} mots",
-                'confidence': 0.6,
-                'value': word_count
-            })
-        elif word_count > 500:  # Très long
-            anomalies.append({
-                'type': 'longueur_excessive',
-                'description': f"Résumé très long: {word_count} mots",
-                'confidence': 0.7,
-                'value': word_count
-            })
-        elif word_count > 400:  # Long
-            anomalies.append({
-                'type': 'longueur_suspecte',
-                'description': f"Résumé potentiellement trop long: {word_count} mots",
-                'confidence': 0.4,
-                'value': word_count
-            })
-        
-        # 2. Ratio ponctuation/mots suspect
-        punct_count = len(re.findall(r'[^\w\s]', text))
-        if word_count > 0:
-            punct_ratio = punct_count / word_count
-            if punct_ratio > 0.15:  # Plus de 15% de ponctuation
-                anomalies.append({
-                    'type': 'ponctuation_excessive',
-                    'description': f"Ratio ponctuation élevé: {punct_ratio:.2f}",
-                    'confidence': 0.5,
-                    'value': punct_ratio
-                })
-        
-        # 3. Diversité lexicale faible
-        unique_words = len(set(word.lower() for word in words if len(word) > 2))
-        if word_count > 10:
-            lexical_diversity = unique_words / word_count
-            if lexical_diversity < 0.4:  # Moins de 40% de mots uniques
-                anomalies.append({
-                    'type': 'diversite_lexicale_faible',
-                    'description': f"Diversité lexicale faible: {lexical_diversity:.2f}",
-                    'confidence': 0.4,
-                    'value': lexical_diversity
-                })
-        
-        return anomalies
-    
-    def _analyze_syntactic_complexity(self, text: str) -> List[Dict]:
-        """Analyse de la complexité syntaxique."""
         issues = []
         
-        # 1. Longueur moyenne des phrases
-        sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
-        if sentences:
-            avg_sentence_length = sum(len(s.split()) for s in sentences) / len(sentences)
-            
-            if avg_sentence_length < 5:  # Phrases très courtes
-                issues.append({
-                    'type': 'phrases_trop_courtes',
-                    'description': f"Phrases très courtes: {avg_sentence_length:.1f} mots/phrase",
-                    'confidence': 0.5,
-                    'value': avg_sentence_length
-                })
-            elif avg_sentence_length > 30:  # Phrases très longues
-                issues.append({
-                    'type': 'phrases_trop_longues',
-                    'description': f"Phrases très longues: {avg_sentence_length:.1f} mots/phrase",
-                    'confidence': 0.6,
-                    'value': avg_sentence_length
-                })
+        coherence = metadata.get('coherence')
+        factuality = metadata.get('factuality')
+        grade = metadata.get('original_grade')
         
-        # 2. Manque de connecteurs logiques
-        connectors = ['donc', 'ainsi', 'par conséquent', 'cependant', 'néanmoins', 'toutefois', 
-                     'en effet', 'de plus', 'par ailleurs', 'en revanche']
-        connector_count = sum(1 for conn in connectors if conn in text.lower())
-        word_count = len(text.split())
-        
-        if word_count > 100 and connector_count == 0:
-            issues.append({
-                'type': 'manque_connecteurs',
-                'description': "Absence de connecteurs logiques dans un texte long",
-                'confidence': 0.3,
-                'value': connector_count
-            })
-        
-        # 3. Structure répétitive (même début de phrases)
-        if len(sentences) > 3:
-            sentence_starts = [s.split()[0].lower() if s.split() else '' for s in sentences]
-            start_counts = Counter(sentence_starts)
-            max_repetition = max(start_counts.values()) if start_counts else 0
-            
-            if max_repetition > len(sentences) // 3:  # Plus d'1/3 des phrases commencent pareil
-                issues.append({
-                    'type': 'structure_repetitive',
-                    'description': f"Structure répétitive: {max_repetition} phrases commencent de même",
-                    'confidence': 0.4,
-                    'value': max_repetition
-                })
-        
-        return issues
-    
-    def _detect_aggressive_repetitions(self, text: str) -> List[Dict]:
-        """Détection agressive des répétitions."""
-        issues = []
-        
-        # 1. Répétitions de mots simples
-        words = [w.lower() for w in re.findall(r'\b\w+\b', text) if len(w) > 3]
-        word_counts = Counter(words)
-        total_words = len(words)
-        
-        for word, count in word_counts.most_common(10):
-            frequency = count / total_words if total_words > 0 else 0
-            if frequency > 0.15 and count > 6:  # Plus de 15% et au moins 7 occurrences (CORRIGÉ - moins agressif)
-                issues.append({
-                    'type': 'mot_trop_frequent',
-                    'description': f"Mot '{word}' répété {count} fois ({frequency:.1%})",
-                    'confidence': min(0.8, frequency * 10),  # Confiance proportionnelle
-                    'word': word,
-                    'count': count
-                })
-        
-        # 2. Répétitions de bigrammes
-        words_list = text.lower().split()
-        if len(words_list) > 1:
-            bigrams = [f"{words_list[i]} {words_list[i+1]}" for i in range(len(words_list)-1)]
-            bigram_counts = Counter(bigrams)
-            
-            for bigram, count in bigram_counts.most_common(5):
-                if count > 4:  # Bigramme répété plus de 4 fois (CORRIGÉ - moins sensible)
-                    issues.append({
-                        'type': 'bigramme_repetitif',
-                        'description': f"Expression '{bigram}' répétée {count} fois",
-                        'confidence': min(0.7, count * 0.2),
-                        'bigram': bigram,
-                        'count': count
-                    })
-        
-        # 3. Phrases très similaires (distance de Levenshtein simple)
-        sentences = [s.strip().lower() for s in re.split(r'[.!?]+', text) if s.strip()]
-        if len(sentences) > 2:
-            similar_count = 0
-            for i in range(len(sentences)):
-                for j in range(i+1, len(sentences)):
-                    # Similarité simple basée sur les mots communs
-                    words_i = set(sentences[i].split())
-                    words_j = set(sentences[j].split())
-                    if words_i and words_j:
-                        similarity = len(words_i.intersection(words_j)) / len(words_i.union(words_j))
-                        if similarity > 0.7:  # 70% de mots communs
-                            similar_count += 1
-            
-            if similar_count > 0:
-                issues.append({
-                    'type': 'phrases_similaires',
-                    'description': f"{similar_count} paires de phrases très similaires",
-                    'confidence': min(0.6, similar_count * 0.2),
-                    'count': similar_count
-                })
-        
-        return issues
-    
-    def _analyze_entity_density(self, text: str) -> List[Dict]:
-        """Analyse de la densité des entités nommées."""
-        issues = []
-        
-        # Analyse NER avec spaCy
-        doc = self.nlp(text)
-        entities = [ent for ent in doc.ents if ent.label_ in ['PERSON', 'ORG', 'GPE', 'MISC']]
-        
-        words = text.split()
-        word_count = len(words)
-        entity_count = len(entities)
-        
-        if word_count > 0:
-            entity_density = entity_count / word_count
-            
-            # 1. Densité d'entités trop faible
-            if word_count > 50 and entity_density < 0.02:  # Moins de 2% d'entités dans un texte long
-                issues.append({
-                    'type': 'densite_entites_faible',
-                    'description': f"Densité d'entités faible: {entity_density:.1%} ({entity_count}/{word_count})",
-                    'confidence': 0.4,
-                    'density': entity_density,
-                    'entity_count': entity_count
-                })
-            
-            # 2. Densité d'entités trop élevée
-            elif entity_density > 0.15:  # Plus de 15% d'entités
-                issues.append({
-                    'type': 'densite_entites_elevee',
-                    'description': f"Densité d'entités élevée: {entity_density:.1%} ({entity_count}/{word_count})",
-                    'confidence': 0.5,
-                    'density': entity_density,
-                    'entity_count': entity_count
-                })
-        
-        # 3. Types d'entités déséquilibrés
-        entity_types = [ent.label_ for ent in entities]
-        if entity_types:
-            type_counts = Counter(entity_types)
-            dominant_type_count = max(type_counts.values())
-            
-            if len(type_counts) > 1 and dominant_type_count > len(entity_types) * 0.8:
-                dominant_type = max(type_counts, key=type_counts.get)
-                issues.append({
-                    'type': 'entites_desequilibrees',
-                    'description': f"Type d'entité dominant: {dominant_type} ({dominant_type_count}/{len(entity_types)})",
-                    'confidence': 0.3,
-                    'dominant_type': dominant_type,
-                    'ratio': dominant_type_count / len(entity_types)
-                })
-        
-        return issues
-    
-    def _analyze_existing_metrics(self, coherence_score: Optional[float], 
-                                 factuality_score: Optional[float], 
-                                 quality_grade: Optional[str]) -> List[Dict]:
-        """Analyse les métriques existantes pour détecter des problèmes."""
-        issues = []
-        
-        # 1. Score de cohérence suspect (basé sur données réelles)
-        if coherence_score is not None:
-            if coherence_score < 0.3:  # Cohérence très faible
+        if coherence is not None:
+            if coherence < 0.3:  # Très faible
                 issues.append({
                     'type': 'coherence_tres_faible',
-                    'description': f"Cohérence très faible: {coherence_score:.3f}",
+                    'severity': 'critical',
+                    'description': f"Cohérence très faible: {coherence:.3f}",
                     'confidence': 0.8,
-                    'value': coherence_score
+                    'value': coherence
                 })
-            elif coherence_score < 0.5:  # Cohérence faible
+            elif coherence < 0.5:  # Faible
                 issues.append({
                     'type': 'coherence_faible',
-                    'description': f"Cohérence faible: {coherence_score:.3f}",
+                    'severity': 'moderate',
+                    'description': f"Cohérence faible: {coherence:.3f}",
                     'confidence': 0.6,
-                    'value': coherence_score
-                })
-            elif coherence_score < 0.7:  # Cohérence suspecte
-                issues.append({
-                    'type': 'coherence_suspecte',
-                    'description': f"Cohérence en dessous de la moyenne: {coherence_score:.3f}",
-                    'confidence': 0.3,
-                    'value': coherence_score
+                    'value': coherence
                 })
         
-        # 2. Score de factualité suspect
-        if factuality_score is not None:
-            if factuality_score < 0.7:  # Factualité faible
+        if factuality is not None:
+            if factuality < 0.7:  # Seuil abaissé de 0.85 à 0.7
                 issues.append({
                     'type': 'factualite_faible',
-                    'description': f"Factualité faible: {factuality_score:.3f}",
-                    'confidence': 0.7,
-                    'value': factuality_score
-                })
-            elif factuality_score < 0.9:  # Factualité suspecte
-                issues.append({
-                    'type': 'factualite_suspecte',
-                    'description': f"Factualité en dessous de la moyenne: {factuality_score:.3f}",
-                    'confidence': 0.4,
-                    'value': factuality_score
-                })
-        
-        # 3. Grade de qualité problématique
-        if quality_grade is not None:
-            if quality_grade == 'D':
-                issues.append({
-                    'type': 'grade_d',
-                    'description': f"Grade de qualité D (problématique)",
-                    'confidence': 0.9,
-                    'grade': quality_grade
-                })
-            elif quality_grade == 'C':
-                issues.append({
-                    'type': 'grade_c',
-                    'description': f"Grade de qualité C (faible)",
+                    'severity': 'moderate',
+                    'description': f"Factualité en dessous du seuil: {factuality:.3f}",
                     'confidence': 0.6,
-                    'grade': quality_grade
-                })
-            elif quality_grade == 'B':
-                issues.append({
-                    'type': 'grade_b',
-                    'description': f"Grade de qualité B (moyen)",
-                    'confidence': 0.3,
-                    'grade': quality_grade
+                    'value': factuality
                 })
         
-        # 4. Corrélation suspecte entre métriques
-        if coherence_score is not None and factuality_score is not None:
-            # Si cohérence faible mais factualité élevée (suspect)
-            if coherence_score < 0.5 and factuality_score > 0.9:
+        if grade and grade in ['D']:  # Seulement grade D = critique
+            issues.append({
+                'type': 'grade_problematique',
+                'severity': 'critical',
+                'description': f"Grade de qualité {grade} (critique)",
+                'confidence': 0.9,
+                'value': grade
+            })
+        elif grade and grade in ['C']:
+            issues.append({
+                'type': 'grade_mediocre',
+                'severity': 'moderate',
+                'description': f"Grade de qualité {grade} (médiocre)",
+                'confidence': 0.7,
+                'value': grade
+            })
+        
+        # Corrélation suspecte cohérence/factualité
+        if coherence is not None and factuality is not None:
+            if coherence < 0.4 and factuality > 0.9:
                 issues.append({
                     'type': 'correlation_suspecte',
-                    'description': f"Corrélation suspecte: cohérence faible ({coherence_score:.3f}) mais factualité élevée ({factuality_score:.3f})",
-                    'confidence': 0.5,
-                    'coherence': coherence_score,
-                    'factuality': factuality_score
-                })
-            # Si factualité faible mais cohérence élevée (aussi suspect)
-            elif factuality_score < 0.7 and coherence_score > 0.8:
-                issues.append({
-                    'type': 'correlation_inversee',
-                    'description': f"Corrélation inversée: factualité faible ({factuality_score:.3f}) mais cohérence élevée ({coherence_score:.3f})",
-                    'confidence': 0.4,
-                    'coherence': coherence_score,
-                    'factuality': factuality_score
+                    'severity': 'moderate',
+                    'description': f"Corrélation suspecte: cohérence faible ({coherence:.3f}) mais factualité élevée ({factuality:.3f})",
+                    'confidence': 0.7,
+                    'value': abs(coherence - factuality)
                 })
         
         return issues
-    
-    def _detect_causal_anomalies(self, text: str) -> List[Dict]:
-        """Détecte les relations causales suspectes."""
-        anomalies = []
+
+    def _generate_fact_check_candidates_enhanced(self, summary: str, entities_count: int) -> List[Dict]:
+        """Génération candidats fact-checking calibrée."""
         
-        for cause_pattern, effect_pattern in self.causality_patterns:
-            cause_matches = list(cause_pattern.finditer(text))
-            effect_matches = list(effect_pattern.finditer(text))
-            
-            if cause_matches and effect_matches:
-                # Vérification de la proximité dans le texte
-                for cause_match in cause_matches:
-                    for effect_match in effect_matches:
-                        distance = abs(cause_match.start() - effect_match.start())
-                        
-                        # Si les deux mentions sont proches (<200 caractères)
-                        if distance < 200:
-                            anomalies.append({
-                                'type': 'relation_causale_suspecte',
-                                'description': f"Relation improbable: '{cause_match.group()}' → '{effect_match.group()}'",
-                                'confidence': 0.6,
-                                'cause': cause_match.group(),
-                                'effect': effect_match.group(),
-                                'distance': distance
-                            })
+        candidates = []
         
-        return anomalies
-    
-    def _calculate_confidence(self, temporal_anomalies: List[Dict], 
-                            entity_issues: List[Dict], 
-                            causal_anomalies: List[Dict],
-                            statistical_issues: List[Dict] = None,
-                            syntactic_issues: List[Dict] = None,
-                            repetition_issues: List[Dict] = None,
-                            entity_density_issues: List[Dict] = None,
-                            metrics_issues: List[Dict] = None) -> Tuple[float, str]:
-        """Calcule le score de confiance et le niveau de risque."""
-        base_confidence = 1.0
+        # 1. Entités nommées (si détectées)
+        if entities_count > 0:
+            candidates.append({
+                'type': 'entity_verification',
+                'priority': 0.7,
+                'description': f'Vérification des {entities_count} entités détectées'
+            })
         
-        # Initialisation des listes vides si None
-        statistical_issues = statistical_issues or []
-        syntactic_issues = syntactic_issues or []
-        repetition_issues = repetition_issues or []
-        entity_density_issues = entity_density_issues or []
-        metrics_issues = metrics_issues or []
+        # 2. Dates et chiffres
+        dates = re.findall(r'\b\d{1,2}\s+(?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre|\w+)\s+\d{4}\b', summary, re.IGNORECASE)
+        numbers = re.findall(r'\b\d{1,3}(?:\s\d{3})*(?:\s(?:millions?|milliards?))?b', summary)
         
-        # Pénalités réduites pour privilégier l'enrichissement (CORRIGÉ)
-        # Bonus pour grades de qualité élevés
-        quality_bonus = 0.0
-        if hasattr(self, '_current_quality_grade'):
-            if self._current_quality_grade in ['A+', 'A']:
-                quality_bonus = 0.4
-            elif self._current_quality_grade == 'B+':
-                quality_bonus = 0.2
-        base_confidence += quality_bonus
+        if dates:
+            candidates.append({
+                'type': 'date_verification',
+                'priority': 0.8,
+                'description': f'Vérification des dates: {dates[:2]}'
+            })
         
-        # 0. Métriques existantes (impact réduit)
-        for issue in metrics_issues:
-            penalty = issue.get('confidence', 0.5) * 0.3  # Réduit de 0.7 à 0.3
-            base_confidence -= penalty
+        if numbers:
+            candidates.append({
+                'type': 'number_verification', 
+                'priority': 0.6,
+                'description': f'Vérification des chiffres: {numbers[:3]}'
+            })
         
-        # 1. Anomalies statistiques (impact réduit)
-        for issue in statistical_issues:
-            penalty = issue.get('confidence', 0.5) * 0.2  # Réduit de 0.6 à 0.2
-            base_confidence -= penalty
+        # 3. Affirmations factuelles (patterns simples)
+        factual_patterns = [
+            r'\b(?:a\s+(?:déclaré|annoncé|confirmé|révélé))\b',
+            r'\b(?:selon|d\'après)\s+[\w\s]+\b',
+            r'\b\d+%\s+des?\b'
+        ]
         
-        # 2. Répétitions (impact réduit)
-        for issue in repetition_issues:
-            penalty = issue.get('confidence', 0.5) * 0.15  # Réduit de 0.5 à 0.15
-            base_confidence -= penalty
+        for pattern in factual_patterns:
+            matches = re.findall(pattern, summary, re.IGNORECASE)
+            if matches:
+                candidates.append({
+                    'type': 'factual_claim',
+                    'priority': 0.5,
+                    'description': f'Vérification affirmation: {pattern}'
+                })
         
-        # 3. Complexité syntaxique (impact réduit)
-        for issue in syntactic_issues:
-            penalty = issue.get('confidence', 0.5) * 0.1  # Réduit de 0.4 à 0.1
-            base_confidence -= penalty
+        return candidates[:5]  # Limite 5 candidats
+
+    def _calculate_enhanced_scores(self, issues: List[Dict], word_count: int, 
+                                 entities_detected: int, suspicious_entities: int,
+                                 metadata: Dict) -> Tuple[float, str, float]:
+        """Calcul scores de confiance, risque et priorité calibrés."""
         
-        # 4. Densité d'entités (impact minimal)
-        for issue in entity_density_issues:
-            penalty = issue.get('confidence', 0.5) * 0.05  # Réduit de 0.3 à 0.05
-            base_confidence -= penalty
+        # Score confiance de base (optimiste)
+        base_confidence = 0.8
         
-        # 5. Anomalies temporelles (impact réduit)
-        for anomaly in temporal_anomalies:
-            penalty = anomaly.get('confidence', 0.5) * 0.2  # Réduit de 0.4 à 0.2
-            base_confidence -= penalty
+        # Pénalités par sévérité (calibrées moins pénalisantes)
+        severity_penalties = {
+            'critical': 0.3,
+            'moderate': 0.15,
+            'minor': 0.05
+        }
         
-        # 6. Problèmes d'entités (impact réduit)
-        for issue in entity_issues:
-            penalty = issue.get('confidence', 0.5) * 0.1  # Réduit de 0.3 à 0.1
-            base_confidence -= penalty
+        confidence_penalty = 0
+        for issue in issues:
+            severity = issue.get('severity', 'minor')
+            confidence_penalty += severity_penalties.get(severity, 0.05)
         
-        # 7. Relations causales (impact minimal)
-        for anomaly in causal_anomalies:
-            penalty = anomaly.get('confidence', 0.5) * 0.05  # Réduit de 0.2 à 0.05
-            base_confidence -= penalty
+        # Bonus qualité
+        quality_bonus = 0
+        if word_count >= 30 and word_count <= 150:  # Longueur optimale
+            quality_bonus += 0.1
+        if entities_detected > 0:  # Présence entités
+            quality_bonus += 0.05
         
-        # Calcul du total d'issues
-        total_issues = (len(metrics_issues) + len(statistical_issues) + len(syntactic_issues) + 
-                       len(repetition_issues) + len(entity_density_issues) +
-                       len(temporal_anomalies) + len(entity_issues) + len(causal_anomalies))
+        # Score final
+        confidence_score = max(0.0, min(1.0, base_confidence - confidence_penalty + quality_bonus))
         
-        # Bonus/Malus selon le nombre total d'issues (CORRIGÉ - moins pénalisant)
-        if total_issues == 0:
-            # Pas d'anomalies détectées - bonus léger
-            base_confidence += 0.05
-        elif total_issues >= 8:  # Augmenté le seuil de 3 à 8
-            # Beaucoup d'anomalies - pénalité réduite
-            base_confidence -= 0.05  # Réduit de 0.1 à 0.05
-        
-        # Normalisation
-        confidence_score = max(0.0, min(1.0, base_confidence))
-        
-        # Détermination du niveau de risque (CORRIGÉ - moins agressif)
-        if confidence_score < 0.1 or total_issues >= 10:  # Seuils plus permissifs
+        # Niveau de risque
+        critical_issues = len([i for i in issues if i.get('severity') == 'critical'])
+        if critical_issues >= 2:
+            risk_level = 'critical'
+        elif critical_issues >= 1:
             risk_level = 'high'
-        elif confidence_score < 0.3 or total_issues >= 6:
+        elif len(issues) >= 5:
             risk_level = 'medium'
         else:
             risk_level = 'low'
         
-        return confidence_score, risk_level
-    
-    def _normalize_name(self, name: str) -> str:
-        """Normalise un nom pour la comparaison."""
-        # Suppression des accents
-        name = unicodedata.normalize('NFD', name)
-        name = ''.join(c for c in name if unicodedata.category(c) != 'Mn')
+        # Score priorité (pour niveau 3)
+        priority_score = 0.0
+        if risk_level in ['high', 'critical']:
+            priority_score = 0.8 + min(0.2, critical_issues * 0.1)
+        elif confidence_score < 0.5:
+            priority_score = 0.6
+        elif len(issues) >= 3:
+            priority_score = 0.4
         
-        # Minuscules et suppression de la ponctuation
-        name = re.sub(r'[^\w\s]', '', name.lower())
+        return confidence_score, risk_level, priority_score
+
+    def _classify_issue_severity(self, issues: List[Dict]) -> Dict[str, int]:
+        """Classification sévérité des issues."""
         
-        return name.strip()
-    
-    def _name_similarity(self, name1: str, name2: str) -> float:
-        """Calcule la similarité entre deux noms (Jaccard simple)."""
-        set1 = set(name1.split())
-        set2 = set(name2.split())
+        severity_counts = {'critical': 0, 'moderate': 0, 'minor': 0}
         
-        if not set1 or not set2:
+        for issue in issues:
+            severity = issue.get('severity', 'minor')
+            if severity in severity_counts:
+                severity_counts[severity] += 1
+        
+        return severity_counts
+
+    def _calculate_repetition_ratio(self, text: str) -> float:
+        """Calcul ratio répétition global."""
+        
+        words = text.split()
+        if len(words) < 10:
             return 0.0
         
-        intersection = len(set1.intersection(set2))
-        union = len(set1.union(set2))
+        word_counts = Counter(words)
+        repeated_words = sum(count - 1 for count in word_counts.values() if count > 1)
         
-        return intersection / union if union > 0 else 0.0
-    
-    def _generate_statistical_profile(self, text: str, statistical_issues: List[Dict]) -> Dict:
-        """Génère le profil statistique du texte."""
-        words = text.split()
-        sentences = [s for s in re.split(r'[.!?]+', text) if s.strip()]
+        return repeated_words / len(words)
+
+    def analyze_batch(self, summaries: List[Dict], 
+                     enable_progress: bool = True) -> Tuple[List[Dict], List[HeuristicResult]]:
+        """
+        Analyse en lot de résumés avec résultats enrichis.
         
-        return {
-            'word_count': len(words),
-            'sentence_count': len(sentences),
-            'avg_sentence_length': len(words) / max(1, len(sentences)),
-            'punctuation_ratio': len(re.findall(r'[^\w\s]', text)) / max(1, len(text)),
-            'lexical_diversity': len(set(words)) / max(1, len(words)),
-            'statistical_anomalies_count': len(statistical_issues),
-            'has_length_issues': any(issue.get('type') in ['longueur_trop_courte', 'longueur_excessive'] for issue in statistical_issues),
-            'has_punctuation_issues': any(issue.get('type') == 'ponctuation_excessive' for issue in statistical_issues)
-        }
-    
-    def _extract_entities_with_confidence(self, text: str, entity_issues: List[Dict]) -> Dict:
-        """Extrait les entités avec confiance."""
-        doc = self.nlp(text)
+        Args:
+            summaries: Liste résumés avec métadonnées
+            enable_progress: Affichage progression
+            
+        Returns:
+            Tuple (résumés_enrichis, résultats_analyse)
+        """
         
-        return {
-            'persons': [{'text': ent.text, 'confidence': 0.5 if any(issue.get('entity') == ent.text for issue in entity_issues) else 1.0} 
-                        for ent in doc.ents if ent.label_ == 'PERSON'],
-            'organizations': [{'text': ent.text, 'confidence': 0.5 if any(issue.get('entity') == ent.text for issue in entity_issues) else 1.0} 
-                             for ent in doc.ents if ent.label_ in ['ORG', 'NORP']],
-            'locations': [{'text': ent.text, 'confidence': 0.5 if any(issue.get('entity') == ent.text for issue in entity_issues) else 1.0} 
-                          for ent in doc.ents if ent.label_ in ['GPE', 'LOC']],
-            'suspicious_entities': len(entity_issues),
-            'total_entities': len(doc.ents)
-        }
-    
-    def _calculate_complexity_metrics(self, text: str, syntactic_issues: List[Dict]) -> Dict:
-        """Calcule les métriques de complexité."""
-        words = text.split()
-        sentences = [s for s in re.split(r'[.!?]+', text) if s.strip()]
+        enriched_summaries = []
+        analysis_results = []
         
-        return {
-            'syntactic_issues_count': len(syntactic_issues),
-            'has_length_issues': any(issue.get('type') in ['phrases_trop_longues', 'phrases_trop_courtes'] for issue in syntactic_issues),
-            'has_connector_issues': any(issue.get('type') == 'manque_connecteurs' for issue in syntactic_issues),
-            'readability_score': min(1.0, (len(words) / max(1, len(sentences))) / 20)
-        }
-    
-    def _generate_quality_indicators(self, coherence_score: Optional[float], factuality_score: Optional[float], quality_grade: Optional[str]) -> Dict:
-        """Génère les indicateurs de qualité."""
-        needs_fact_check = 0.0
-        if coherence_score and coherence_score < 0.3:
-            needs_fact_check += 0.5
-        if factuality_score and factuality_score < 0.7:
-            needs_fact_check += 0.3
-        if quality_grade in ['D', 'C']:
-            needs_fact_check += 0.4
+        total = len(summaries)
         
-        return {
-            'has_coherence_score': coherence_score is not None,
-            'has_factuality_score': factuality_score is not None,
-            'has_quality_grade': quality_grade is not None,
-            'needs_fact_check': min(1.0, needs_fact_check),
-            'priority_level': 'high' if quality_grade in ['D', 'C'] else 'medium' if quality_grade == 'B' else 'low'
-        }
-    
-    def _identify_fact_check_candidates(self, temporal_anomalies: List[Dict], entity_issues: List[Dict], causal_anomalies: List[Dict]) -> List[Dict]:
-        """Identifie les candidats pour fact-checking (CORRIGÉ - enrichissement proactif)."""
-        candidates = []
-        
-        # Entités suspectes détectées
-        for entity in entity_issues:
-            candidates.append({
-                'type': 'entity', 
-                'text': entity.get('entity', ''), 
-                'priority': 0.8, 
-                'check_method': 'external_database'
-            })
-        
-        # NOUVEAU : Extraction proactive d'entités importantes pour enrichissement
-        if hasattr(self, 'nlp') and hasattr(self, '_current_text'):
-            doc = self.nlp(self._current_text)
-            for ent in doc.ents:
-                if (ent.label_ in ['PERSON', 'ORG', 'GPE'] and 
-                    len(ent.text.strip()) > 2 and 
-                    not any(c['text'] == ent.text for c in candidates)):
-                    candidates.append({
-                        'type': 'entity',
-                        'text': ent.text,
-                        'priority': 0.6,  # Priorité standard pour enrichissement
-                        'check_method': 'external_database'
-                    })
-        
-        # Anomalies temporelles
-        for temporal in temporal_anomalies:
-            candidates.append({
-                'type': 'temporal', 
-                'text': temporal.get('text_span', ''), 
-                'priority': 0.9, 
-                'check_method': 'date_validation'
-            })
-        
-        # Relations causales
-        for causal in causal_anomalies:
-            candidates.append({
-                'type': 'causal', 
-                'text': f"{causal.get('cause', '')} → {causal.get('effect', '')}", 
-                'priority': 0.6, 
-                'check_method': 'logical_validation'
-            })
-        
-        # Limiter le nombre pour éviter la surcharge
-        return candidates[:15]  # Top 15 candidats
-    
-    def _generate_validation_hints(self, text: str, entity_issues: List[Dict], temporal_anomalies: List[Dict]) -> Dict:
-        """Génère les indices de validation (CORRIGÉ - enrichissement proactif)."""
-        words = text.split()
-        
-        # Extraction proactive d'entités pour suggestions Wikidata
-        wikidata_suggestions = [{'entity': entity.get('entity', ''), 'query_type': entity.get('type')} for entity in entity_issues]
-        
-        # Ajouter les entités importantes détectées
-        if hasattr(self, 'nlp'):
-            doc = self.nlp(text)
-            for ent in doc.ents:
-                if (ent.label_ in ['PERSON', 'ORG', 'GPE'] and 
-                    len(ent.text.strip()) > 2 and 
-                    not any(s['entity'] == ent.text for s in wikidata_suggestions)):
-                    wikidata_suggestions.append({
-                        'entity': ent.text,
-                        'query_type': 'proactive_validation'
-                    })
-        
-        return {
-            'wikidata_queries': wikidata_suggestions[:10],  # Limiter à 10
-            'date_checks': [{'element': temporal.get('text_span', ''), 'check_type': 'chronological_validation'} for temporal in temporal_anomalies],
-            'confidence_factors': {
-                'entity_density': len(entity_issues) / max(1, len(words)) * 100,
-                'temporal_consistency': len(temporal_anomalies) == 0,
-                'text_length': len(words)
+        for i, summary_data in enumerate(summaries):
+            if enable_progress and i % 50 == 0:
+                logger.info(f"Analyse niveau 1 enhanced: {i}/{total} ({i/total:.1%})")
+            
+            summary_text = summary_data.get('summary', '')
+            metadata = {
+                'strategy': summary_data.get('strategy', 'unknown'),
+                'coherence': summary_data.get('coherence'),
+                'factuality': summary_data.get('factuality'),
+                'original_grade': summary_data.get('original_grade')
             }
-        }
-    
-    def get_statistics(self, results: List[HeuristicResult]) -> Dict:
-        """Calcule des statistiques détaillées sur les résultats d'analyse."""
+            
+            # Analyse enhanced
+            result = self.analyze_summary(summary_text, metadata)
+            analysis_results.append(result)
+            
+            # Enrichissement données
+            enriched_data = summary_data.copy()
+            enriched_data.update({
+                'heuristic_result': {
+                    'is_suspect': result.is_suspect,
+                    'confidence_score': result.confidence_score,
+                    'risk_level': result.risk_level,
+                    'num_issues': len(result.issues),
+                    'priority_score': result.priority_score,
+                    'processing_time_ms': result.processing_time_ms
+                },
+                'issues_detected': [
+                    {
+                        'type': issue['type'],
+                        'severity': issue['severity'],
+                        'description': issue['description']
+                    } for issue in result.issues
+                ],
+                'fact_check_candidates_count': len(result.fact_check_candidates),
+                'corrections_suggested': result.corrections_suggested,
+                'needs_fact_check': len(result.fact_check_candidates) > 0
+            })
+            
+            enriched_summaries.append(enriched_data)
+        
+        if enable_progress:
+            logger.info(f"Analyse niveau 1 enhanced terminée: {total} résumés traités")
+        
+        return enriched_summaries, analysis_results
+
+    def get_analysis_statistics(self, results: List[HeuristicResult]) -> Dict[str, Any]:
+        """Statistiques détaillées sur les analyses."""
+        
+        if not results:
+            return {}
+        
         total = len(results)
-        valid = sum(1 for r in results if r.is_valid)
+        suspects = sum(1 for r in results if r.is_suspect)
         
-        # Collecte des types de problèmes
-        all_issues = []
-        risk_levels = [r.risk_level for r in results]
-        confidence_scores = [r.confidence_score for r in results]
+        # Distribution sévérité
+        severity_stats = {'critical': 0, 'moderate': 0, 'minor': 0}
+        issue_types = Counter()
         
-        for r in results:
-            all_issues.extend(r.detected_issues)
+        for result in results:
+            for issue in result.issues:
+                severity = issue.get('severity', 'minor')
+                if severity in severity_stats:
+                    severity_stats[severity] += 1
+                issue_types[issue['type']] += 1
         
-        issue_counts = Counter(issue.split(':')[0] for issue in all_issues)
-        
-        # Statistiques de performance
+        # Statistiques performance
         avg_processing_time = sum(r.processing_time_ms for r in results) / total
         
+        # Distribution scores
+        confidence_scores = [r.confidence_score for r in results]
+        priority_scores = [r.priority_score for r in results]
+        
         return {
-            'total_summaries': total,
-            'valid_summaries': valid,
-            'rejection_rate_percent': (total - valid) / total * 100,
-            'avg_processing_time_ms': avg_processing_time,
-            'avg_confidence_score': sum(confidence_scores) / len(confidence_scores),
-            'risk_distribution': dict(Counter(risk_levels)),
-            'detected_issues': dict(issue_counts.most_common()),
-            'confidence_distribution': {
-                'min': min(confidence_scores),
-                'max': max(confidence_scores),
-                'median': sorted(confidence_scores)[len(confidence_scores)//2]
+            'summary': {
+                'total_analyzed': total,
+                'suspects_detected': suspects,
+                'suspect_rate': suspects / total * 100,
+                'avg_processing_time_ms': avg_processing_time
+            },
+            'severity_distribution': severity_stats,
+            'top_issue_types': dict(issue_types.most_common(10)),
+            'score_statistics': {
+                'confidence': {
+                    'mean': np.mean(confidence_scores),
+                    'median': np.median(confidence_scores),
+                    'std': np.std(confidence_scores)
+                },
+                'priority': {
+                    'mean': np.mean(priority_scores),
+                    'median': np.median(priority_scores),
+                    'std': np.std(priority_scores)
+                }
+            },
+            'risk_level_distribution': Counter(r.risk_level for r in results),
+            'word_count_stats': {
+                'mean': np.mean([r.word_count for r in results]),
+                'median': np.median([r.word_count for r in results]),
+                'min': min(r.word_count for r in results),
+                'max': max(r.word_count for r in results)
             }
         }
 
 
-# Fonctions utilitaires pour usage simple
-def quick_heuristic_check(text: str, strict: bool = False) -> bool:
-    """
-    Vérification heuristique rapide d'un seul résumé.
-    
-    Args:
-        text: Texte à analyser
-        strict: Mode strict (plus de validations externes)
-        
-    Returns:
-        bool: True si valide, False si suspect
-    """
-    # Mode par défaut plus sensible
-    sensitivity_mode = "strict" if strict else "balanced"
-    detector = Level1HeuristicDetector(
-        use_external_validation=strict,
-        sensitivity_mode=sensitivity_mode
-    )
-    result = detector.detect_hallucinations(text)
-    return result.is_valid
+# Alias pour compatibilité ascendante
+EnhancedHeuristicAnalyzer = HeuristicAnalyzer
+EnhancedHeuristicResult = HeuristicResult
 
 
-
-
-
-
+# Test simple si exécuté directement
 if __name__ == "__main__":
-    # Test simple
-    test_texts = [
-        "Emmanuel Macron a déclaré hier que la France continuera ses efforts.",
-        "Napoléon a utilisé son smartphone pour contacter ses généraux en 1805.",
-        "La pluie a causé la chute de la bourse de Paris cette semaine.",
-        "Le président Emmanuel Dupont a annoncé de nouvelles mesures économiques.",
-        "L'accident de voiture a provoqué des embouteillages sur l'autoroute."
-    ]
+    analyzer = HeuristicAnalyzer(enable_wikidata=False)
     
-    detector = Level1HeuristicDetector()
+    test_summary = "Par Le Nouvel Obs avec é le à 14h30. Des chercheurs ont développé une nouvelle technologie. Des chercheurs ont développé une nouvelle technologie."
     
-    for i, text in enumerate(test_texts):
-        result = detector.detect_hallucinations(text, f"test_{i}")
-        print(f"\nTest {i}: {' VALIDE' if result.is_valid else 'SUSPECT'}")
-        print(f"  Confiance: {result.confidence_score:.3f}")
-        print(f"  Risque: {result.risk_level}")
-        print(f"  Temps: {result.processing_time_ms:.1f}ms")
-        print(f"  Texte: {text}")
-        
-        if result.detected_issues:
-            print(f"  Issues: {'; '.join(result.detected_issues[:3])}")
+    result = analyzer.analyze_summary(test_summary, {'strategy': 'confidence_weighted'})
+    
+    print(f"Suspect: {result.is_suspect}")
+    print(f"Confiance: {result.confidence_score:.2f}")
+    print(f"Issues: {len(result.issues)}")
+    print(f"Corrections suggérées: {result.corrections_suggested}")

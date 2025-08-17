@@ -1,0 +1,3 @@
+From the provided TEXT, produce a factual 70–120 word summary.
+Include who/what/where/when/key numbers. No speculation or external additions.
+Return ONLY the final summary.

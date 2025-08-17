@@ -1,0 +1,373 @@
+summary_id,tier,is_valid,validation_confidence,grade_score,coherence_score,factuality_score,issues_count,processing_time_ms,justification,original_grade,production_ready,level3_priority_final,source_id
+0_adaptive,GOOD,True,1.0,0.9,0.76,0.9026752710342408,2,0.0,Priorité standard basée sur confiance,A,True,0.7,0c862e6732c5a41a
+1_adaptive,GOOD,True,1.0,0.9,0.78,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,89580b321df35a6a
+2_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,36e1a50865a65b52
+3_adaptive,EXCELLENT,True,1.0,0.9,0.876,0.9034748077392578,1,0.0,Priorité standard basée sur confiance,A,True,0.7,0a555c36f5fbedf6
+4_adaptive,GOOD,True,1.0,1.0,0.936,0.9999998807907104,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,72687c4664f0425b
+5_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.9607664942741394,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,09da9397c8247ed8
+6_adaptive,GOOD,True,1.0,0.9,0.826,0.8889455795288086,1,0.0,Priorité standard basée sur confiance,A,True,0.7,0590c9fd6d5d779e
+7_adaptive,GOOD,False,1.0,0.9,0.826,0.997988224029541,2,0.0,Grade A non production ready - traitement ML standard,A,False,0.7,2e5d424af642656f
+8_adaptive,GOOD,True,1.0,0.9,1.0,0.9999900460243224,2,0.0,Priorité standard basée sur confiance,A,True,0.7,4545a3e73854234a
+9_adaptive,CRITICAL,False,0.1,0.2,0.0960426330566406,0.7991381883621216,2,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,c0b9d27bbaa29e21
+10_adaptive,EXCELLENT,True,1.0,1.0,0.8859999999999999,0.99607253074646,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,5bce4475862ed1f9
+11_adaptive,GOOD,True,1.0,1.0,0.916,0.9422397017478944,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,a55934d4ef922836
+12_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0000001192092896,0,0.0,Priorité standard basée sur confiance,A,True,0.7,461e0a8c5eb56c46
+13_adaptive,CRITICAL,False,0.2374944043159485,0.2,0.3385048985481262,0.994139850139618,1,0.0,Grade D - requires ML validation,D,True,0.95,fecc42217ea92412
+14_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,e87d8f1639f5afd5
+15_adaptive,EXCELLENT,True,1.0,1.0,0.916,1.0,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,a4cb3a806304a2fe
+16_adaptive,GOOD,True,1.0,0.7,1.0,0.989346444606781,2,0.0,Priorité standard basée sur confiance,B+,True,0.7,9cd674aa7b0d859c
+17_adaptive,GOOD,True,1.0,0.7,1.0,0.8219472169876099,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,ff43903241bfe43a
+18_adaptive,GOOD,True,1.0,0.9,0.796,0.9675357937812804,1,0.0,Priorité standard basée sur confiance,A,True,0.7,4dbccbbb7ebe01f5
+19_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9974556565284728,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,7e21dcf6f2e9a9c4
+20_adaptive,EXCELLENT,True,1.0,0.9,0.866,0.876602828502655,1,0.0,Priorité standard basée sur confiance,A,True,0.7,6d857e010b72ceb7
+21_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.960360825061798,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,008cc26d81dd633b
+22_adaptive,MODERATE,False,0.7999999999999999,0.6,1.0,0.5475156903266907,3,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,3e6b976943164224
+23_adaptive,CRITICAL,False,0.1083521854877472,0.2,0.097365864767478,0.961173951625824,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,1513e5c48872c7b7
+24_adaptive,GOOD,True,1.0,0.7,1.0,0.7335177063941956,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,30b59fad542d9cd6
+25_adaptive,GOOD,True,1.0,0.7,1.0,0.9066699743270874,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,efb6f87d9e44632e
+26_adaptive,GOOD,True,1.0,0.7,1.0,0.8033843040466309,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,dcbcafb254cf39f0
+27_adaptive,EXCELLENT,True,1.0,0.9,0.916,0.9241381287574768,1,0.0,Priorité standard basée sur confiance,A,True,0.7,c23802b762d33311
+28_adaptive,GOOD,True,0.86,0.6,1.0,0.5902926325798035,0,0.0,Priorité standard basée sur confiance,B,True,0.7,d92c051212ee70d3
+29_adaptive,GOOD,True,1.0,0.7,1.0,0.9101421236991882,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,7299a0c0bbc5f318
+30_adaptive,EXCELLENT,True,1.0,0.9,0.876,0.9523348808288574,1,0.0,Priorité standard basée sur confiance,A,True,0.7,22fcd83dc4ec45b8
+31_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0,0,0.0,Priorité standard basée sur confiance,A,True,0.7,cc214d510c169588
+32_adaptive,GOOD,True,1.0,0.7,1.0,0.7923498749732971,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,4691c1a4539820aa
+33_adaptive,GOOD,True,0.9944467234611511,0.7,1.0,0.7148224115371704,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,dcf970d9be575d00
+34_adaptive,GOOD,True,0.9810346412658691,0.7,1.0,0.6701154708862305,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,34f54ff5931d88aa
+35_adaptive,GOOD,True,1.0,0.7,1.0,0.9168684482574464,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,cb0d45859d179bc4
+36_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.91572242975235,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,dca963b3974af02c
+37_adaptive,CRITICAL,False,0.1,0.2,0.0838055736607029,0.4729487299919128,0,0.0,Grade D - requires ML validation,D,True,1.0,ca9d74420c3403c6
+38_adaptive,GOOD,True,1.0,0.9,0.936,0.7744740843772888,2,0.0,Priorité standard basée sur confiance,A,True,0.7,0e88ca86d5142566
+39_adaptive,GOOD,True,1.0,0.7,1.0,0.7945106029510498,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,5a73b9ddc6e4afd3
+40_adaptive,GOOD,True,1.0,0.7,1.0,0.9957470893859864,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,6c14f312a2c75ffb
+41_adaptive,EXCELLENT,True,1.0,0.9,0.956,0.7815355062484741,0,0.0,Priorité standard basée sur confiance,A,True,0.7,67d9f55319ad7459
+42_adaptive,GOOD,True,1.0,1.0,0.926,0.9594295620918274,3,0.0,Priorité standard basée sur confiance,A+,True,0.7,e1864dd354ae15e1
+43_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.889445424079895,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,190053938e10f6d6
+44_adaptive,CRITICAL,False,0.1,0.2,0.226674094429157,0.8344650864601135,0,0.0,Grade D - requires ML validation,D,True,1.0,610004a7830078a4
+45_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,256861282562ab89
+46_adaptive,GOOD,True,1.0,0.9,0.866,0.9555639028549194,2,0.0,Priorité standard basée sur confiance,A,True,0.7,7d94ef8e1b1735c9
+47_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9644334316253662,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,88e6c8cf5c61f213
+48_adaptive,GOOD,True,1.0,0.7,1.0,1.0,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,691e1d90ece6679d
+50_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,a38511d05577177c
+51_adaptive,GOOD,True,1.0,0.9,0.936,0.8085412979125977,2,0.0,Priorité standard basée sur confiance,A,True,0.7,7862b61eda0e044d
+52_adaptive,EXCELLENT,True,1.0,1.0,0.8860000000000001,0.9983360171318054,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,b7ed24b60ea1e109
+53_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0000001192092896,0,0.0,Priorité standard basée sur confiance,A,True,0.7,393cb92c737d9597
+54_adaptive,CRITICAL,False,0.12,0.2,0.1040031760931015,1.0,1,0.0,Grade D - requires ML validation,D,True,0.98,d0ce8501d6bea224
+55_adaptive,CRITICAL,False,0.12,0.2,0.1648215651512146,1.0,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,6ad584baee3e5434
+56_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9674214124679564,0,0.0,Priorité standard basée sur confiance,A,True,0.7,113da3cfde6533dd
+57_adaptive,CRITICAL,False,0.12,0.2,0.147315427660942,1.0,0,0.0,Grade D - requires ML validation,D,True,0.98,6f59a7955c7c4b10
+58_adaptive,GOOD,False,1.0,1.0,0.936,0.9628560543060304,3,0.0,Grade A+ non production ready - traitement ML standard,A+,False,0.7,b21b9571a9fe8d73
+59_adaptive,MODERATE,True,0.9614323925971986,0.7,1.0,0.8047746419906616,3,0.0,Priorité standard basée sur confiance,B+,True,0.7,f13a89625677bcc5
+60_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9999999403953552,1,0.0,Priorité standard basée sur confiance,A,True,0.7,5647e002a835b567
+61_adaptive,GOOD,True,1.0,0.9,0.936,0.8477396965026855,2,0.0,Priorité standard basée sur confiance,A,True,0.7,afd0e376c006d420
+62_adaptive,GOOD,True,1.0,1.0,0.936,0.8908538818359375,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,b63b8252e450f462
+63_adaptive,GOOD,True,1.0,0.7,1.0,0.8990553617477417,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,6bb5fec6c8eb5e8b
+64_adaptive,MODERATE,True,0.962383772134781,0.7,0.64,0.8079459071159363,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,b048475115a73fd8
+65_adaptive,GOOD,True,0.9858821082115174,0.7,1.0,0.6862736940383911,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,382f495ebb0e6ea1
+66_adaptive,GOOD,True,1.0,0.9,0.74,0.99534273147583,2,0.0,Priorité standard basée sur confiance,A,True,0.7,04b3e43e6463dd21
+67_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9997036457061768,0,0.0,Priorité standard basée sur confiance,A,True,0.7,0fef8f52921322f5
+68_adaptive,CRITICAL,False,0.1307198703289032,0.2,0.3614397406578064,0.4470188319683075,0,0.0,Grade D - requires ML validation,D,True,0.969,2da8feefe2ab36b9
+69_adaptive,GOOD,True,0.8704813647270202,0.6,1.0,0.6349378824234009,1,0.0,Priorité standard basée sur confiance,B,True,0.7,a1fef770615bb2e5
+70_adaptive,GOOD,True,0.9917066860198976,0.7,1.0,0.7056889533996582,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,af6c35080467f02e
+71_adaptive,GOOD,True,1.0,0.9,1.0,0.9920610189437866,3,0.0,Priorité standard basée sur confiance,A,True,0.7,267a43bc1cfca9d7
+72_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9819724559783936,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,4fadd51d69e701a5
+73_adaptive,GOOD,True,1.0,0.7,1.0,0.7521225810050964,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,cb752b34f63df7e2
+74_adaptive,GOOD,True,1.0,0.7,1.0,0.8774645328521729,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,98cfb81085297808
+75_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9117754697799684,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,68eae07b7f193824
+76_adaptive,GOOD,True,1.0,0.7,1.0,0.9707658886909484,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,19ee41a13c9862aa
+77_adaptive,CRITICAL,False,0.1199999821186065,0.2,0.0181165495660246,0.9999999403953552,0,0.0,Grade D - requires ML validation,D,True,0.98,079d1e666f0a9185
+78_adaptive,GOOD,True,0.86,0.6,1.0,0.5482409000396729,0,0.0,Priorité standard basée sur confiance,B,True,0.7,3d32211474049e06
+79_adaptive,GOOD,True,1.0,0.9,0.826,0.9330039024353028,0,0.0,Priorité standard basée sur confiance,A,True,0.7,78f4bb460dcce286
+80_adaptive,MODERATE,False,0.9,0.7,1.0,0.5769590139389038,1,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,2e04f86309b1c1a9
+81_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9999999403953552,0,1.001596450805664,Priorité standard basée sur confiance,A,True,0.7,e147dddb08ce381c
+82_adaptive,GOOD,True,1.0,0.7,1.0,0.7782987952232361,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,452bb2019ea76931
+83_adaptive,GOOD,True,1.0,0.7,1.0,0.975460410118103,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,406da419258b2c43
+84_adaptive,GOOD,True,1.0,0.7,1.0,0.8372348546981812,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,ecb41e3235605396
+85_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.992521345615387,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,7d61a0c658b9ecd8
+86_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,e73ba9ac04d370cf
+87_adaptive,EXCELLENT,True,1.0,1.0,0.8959999999999999,0.9488303065299988,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,84d84605845187ca
+88_adaptive,CRITICAL,False,0.2091194824188474,0.2,0.3156939394890315,0.9375750422477722,2,0.0,Grade D - requires ML validation,D,True,0.95,a40f253f02938458
+89_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9507016539573668,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,f51f3fdf75da15eb
+90_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,0e804803f285436a
+91_adaptive,GOOD,True,1.0,1.0,0.8460000000000001,0.9495419263839722,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,2a3b035bd28680d6
+92_adaptive,GOOD,True,1.0,0.9,0.796,0.9705080986022948,0,0.0,Priorité standard basée sur confiance,A,True,0.7,90228e266121cdac
+93_adaptive,GOOD,True,1.0,0.9,0.796,0.9152163863182068,0,0.0,Priorité standard basée sur confiance,A,True,0.7,bdba07ba99c1603d
+94_adaptive,GOOD,True,1.0,0.9,0.796,0.9170922040939332,0,0.0,Priorité standard basée sur confiance,A,True,0.7,827f942284082973
+95_adaptive,GOOD,True,1.0,0.9,0.796,0.8605238795280457,1,0.0,Priorité standard basée sur confiance,A,True,0.7,29c2143168e14c13
+96_adaptive,EXCELLENT,True,1.0,0.9,0.916,0.7837063670158386,1,0.0,Priorité standard basée sur confiance,A,True,0.7,361caff2d40d0c74
+97_adaptive,GOOD,True,1.0,0.9,0.756,0.9478301405906676,2,0.0,Priorité standard basée sur confiance,A,True,0.7,bf5d2558cecf909d
+98_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.9107520580291748,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,8ec18d19e58d9fad
+99_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9048036336898804,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,619ac2b75ec51a6a
+100_adaptive,GOOD,True,1.0,0.9,0.796,0.9938597083091736,1,0.0,Priorité standard basée sur confiance,A,True,0.7,8faad6d1ca7e63e2
+101_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,184a7f323236a6fd
+102_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9110892415046692,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,1ea2b6b6fcad0d49
+103_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9678342342376708,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,a68c6f882eda290f
+104_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,8a1f882da3f5ce5a
+105_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.975658118724823,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,7973920660d3016b
+106_adaptive,GOOD,True,1.0,0.7,1.0,0.7408313751220703,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,d244b64e457fe322
+107_adaptive,CRITICAL,False,0.12,0.2,0.0589774213731288,1.0,0,0.0,Grade D - requires ML validation,D,True,0.98,86ed15eb33588d32
+108_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.970884382724762,0,0.0,Priorité standard basée sur confiance,A,True,0.7,f60056647b2e6c04
+109_adaptive,GOOD,True,1.0,0.7,1.0,0.9154999256134032,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,1799497d236cc8f8
+110_adaptive,GOOD,True,0.9741581010818482,0.7,1.0,0.6471936702728271,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,d4f31d71e0474ed9
+111_adaptive,GOOD,True,1.0,0.7,1.0,0.7501144409179688,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,b16c0e23e7e392f5
+112_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9999999403953552,0,0.0,Priorité standard basée sur confiance,A,True,0.7,d56c177562711942
+113_adaptive,MODERATE,True,0.9721047592163086,0.7,0.756,0.8403491973876953,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,2363f8c60633af2c
+114_adaptive,EXCELLENT,True,1.0,0.9,0.916,0.921579122543335,1,0.0,Priorité standard basée sur confiance,A,True,0.7,c04de690539938a3
+115_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.8131664991378784,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,055073e2129cf69b
+116_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.9999998211860656,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,75ba98cb0fed4c2b
+117_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0000001192092896,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,220b430da44459f0
+118_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9532846212387084,1,0.0,Priorité standard basée sur confiance,A,True,0.7,8f6ca28dd2ee370b
+119_adaptive,GOOD,True,1.0,0.7,1.0,0.7542929649353027,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,b4e4db65dfa7463a
+120_adaptive,EXCELLENT,True,1.0,1.0,0.8860000000000001,0.9951480031013488,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,33d8bf8a5fa6bafe
+121_adaptive,GOOD,True,0.86,0.6,1.0,0.5423725843429565,0,0.0,Priorité standard basée sur confiance,B,True,0.7,3c19808010f2ba6f
+122_adaptive,GOOD,True,1.0,0.7,1.0,0.9048365354537964,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,e4abac464be73d82
+123_adaptive,GOOD,True,0.9905367779731752,0.7,1.0,0.7017892599105835,0,0.0,Priorité standard basée sur confiance,B+,True,0.7,d986d498cedd168b
+124_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9884721040725708,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,11b758cdb3f94344
+125_adaptive,CRITICAL,False,0.1,0.2,0.1792868459224701,0.8493684530258179,0,1.0018348693847656,Grade D - requires ML validation,D,True,1.0,b389db4ec28884a7
+126_adaptive,GOOD,True,1.0,0.7,1.0,1.0,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,227ac58da54eafb8
+127_adaptive,CRITICAL,False,0.1,0.2,0.0427785050766221,0.8856436014175415,0,0.0,Grade D - requires ML validation,D,True,1.0,0b488a9b19eada6b
+128_adaptive,GOOD,True,1.0,1.0,0.936,0.8908538818359375,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,34cd2441459ad119
+129_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.975658118724823,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,7d3985e16d7fe3c3
+130_adaptive,GOOD,True,1.0,0.9,1.0,0.9999900460243224,2,0.0,Priorité standard basée sur confiance,A,True,0.7,72f5963b314b2205
+131_adaptive,GOOD,True,1.0,0.9,1.0,0.9920610189437866,3,0.0,Priorité standard basée sur confiance,A,True,0.7,574e875ed09a7233
+132_adaptive,CRITICAL,False,0.2374944043159485,0.2,0.3385048985481262,0.994139850139618,1,0.0,Grade D - requires ML validation,D,True,0.95,78350a8803037c44
+133_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0000001192092896,0,0.0,Priorité standard basée sur confiance,A,True,0.7,2a8f3c660f23ce58
+134_adaptive,GOOD,True,1.0,1.0,0.936,0.9999998807907104,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,0f8286a243bf5959
+135_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9644334316253662,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,99413af17e23056b
+136_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,ea15ec09d109a0a2
+137_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,e71c77eeede3f484
+138_adaptive,EXCELLENT,True,1.0,0.9,0.876,0.9034748077392578,1,0.0,Priorité standard basée sur confiance,A,True,0.7,242a3ca05ca41b2b
+139_adaptive,EXCELLENT,True,1.0,1.0,0.916,1.0,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,8c2e90f73778fe01
+140_adaptive,GOOD,True,1.0,0.7,1.0,1.0,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,7d064f4fcc38c633
+141_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,4421f40861287733
+142_adaptive,GOOD,True,1.0,0.9,0.796,0.9938597083091736,1,0.0,Priorité standard basée sur confiance,A,True,0.7,dce264d64f8e55f6
+143_adaptive,GOOD,True,1.0,0.9,0.796,0.9170922040939332,0,0.0,Priorité standard basée sur confiance,A,True,0.7,05780a2789456792
+144_adaptive,CRITICAL,False,0.12,0.2,0.147315427660942,1.0,0,0.0,Grade D - requires ML validation,D,True,0.98,e6f76679684a9086
+145_adaptive,GOOD,True,1.0,0.7,1.0,0.989346444606781,2,0.0,Priorité standard basée sur confiance,B+,True,0.7,0d87b82f8cae8d91
+146_adaptive,EXCELLENT,True,1.0,1.0,0.8860000000000001,0.9983360171318054,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,a5ba7160697af071
+147_adaptive,CRITICAL,False,0.12,0.2,0.1040031760931015,1.0,1,0.0,Grade D - requires ML validation,D,True,0.98,e6564e4511d975f9
+148_adaptive,GOOD,True,1.0,1.0,0.916,0.9422397017478944,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,ccaeb36c17b66e74
+149_adaptive,GOOD,True,1.0,0.9,0.756,0.9478301405906676,2,0.0,Priorité standard basée sur confiance,A,True,0.7,4c1586531d2f89cb
+150_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,e800abc9da273934
+151_adaptive,GOOD,True,1.0,0.9,0.78,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,54fc5d6419a488d6
+152_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.9107520580291748,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,ed4171a50b778bf1
+153_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,766dd98f47fa732a
+154_adaptive,GOOD,True,1.0,1.0,0.8460000000000001,0.9495419263839722,2,0.0,Priorité standard basée sur confiance,A+,True,0.7,d5ba6bfeda33143f
+155_adaptive,CRITICAL,False,0.2091194824188474,0.2,0.3156939394890315,0.9375750422477722,2,0.0,Grade D - requires ML validation,D,True,0.95,61d596e29bd4b14a
+156_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0000001192092896,0,0.0,Priorité standard basée sur confiance,A,True,0.7,49ae6d076953d5bd
+157_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.889445424079895,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,3cde8ae9de372e72
+158_adaptive,GOOD,True,1.0,0.9,0.796,0.9705080986022948,0,0.0,Priorité standard basée sur confiance,A,True,0.7,7f6d6e5c350c2d54
+159_adaptive,EXCELLENT,True,1.0,1.0,0.936,0.9607664942741394,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,0f0a3e78186db74e
+160_adaptive,CRITICAL,False,0.1,0.2,0.226674094429157,0.8344650864601135,0,0.0,Grade D - requires ML validation,D,True,1.0,6568364a4f7fbda8
+161_adaptive,GOOD,True,1.0,0.9,0.74,0.99534273147583,2,0.0,Priorité standard basée sur confiance,A,True,0.7,619f4cf2b1395245
+162_adaptive,GOOD,True,1.0,1.0,0.926,0.9594295620918274,3,0.0,Priorité standard basée sur confiance,A+,True,0.7,8bbcd409c87ef232
+163_adaptive,EXCELLENT,True,1.0,1.0,0.916,0.9507016539573668,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,5b8b3f9f85aad069
+164_adaptive,GOOD,True,1.0,0.9,0.866,0.9555639028549194,2,0.0,Priorité standard basée sur confiance,A,True,0.7,8b21515c9f3d868d
+165_adaptive,EXCELLENT,True,1.0,0.9,0.916,0.7837063670158386,1,0.0,Priorité standard basée sur confiance,A,True,0.7,6b57123fecfade63
+166_adaptive,CRITICAL,False,0.12,0.2,0.1648215651512146,1.0,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,9b3f1b1ab89f027c
+167_adaptive,GOOD,True,1.0,0.9,0.796,0.9675357937812804,1,0.0,Priorité standard basée sur confiance,A,True,0.7,99d16a57294f1b0e
+168_adaptive,GOOD,True,1.0,0.9,0.826,0.8889455795288086,1,0.0,Priorité standard basée sur confiance,A,True,0.7,64f219af63d28f29
+169_adaptive,MODERATE,True,0.962383772134781,0.7,0.64,0.8079459071159363,1,0.0,Priorité standard basée sur confiance,B+,True,0.7,7435cd45bd0306c9
+170_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,5b5290265a041690
+171_adaptive,CRITICAL,False,0.1,0.2,0.0960426330566406,0.7991381883621216,2,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,f86a025051ba7281
+172_adaptive,GOOD,True,1.0,0.9,0.76,0.9026752710342408,2,0.0,Priorité standard basée sur confiance,A,True,0.7,d4216a7e1a1dfdea
+173_adaptive,GOOD,True,1.0,0.9,0.796,0.9152163863182068,0,0.0,Priorité standard basée sur confiance,A,True,0.7,21d1e319f5063f79
+175_adaptive,EXCELLENT,True,1.0,1.0,0.956,0.9048036336898804,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,6026998fa9091211
+176_adaptive,EXCELLENT,True,1.0,0.9,1.0,1.0,1,0.0,Priorité standard basée sur confiance,A,True,0.7,2961a15e188b5dfe
+177_adaptive,EXCELLENT,True,1.0,0.9,1.0,0.9674214124679564,0,0.993967056274414,Priorité standard basée sur confiance,A,True,0.7,c5279b46ca86926c
+178_adaptive,GOOD,True,1.0,0.9,0.936,0.8085412979125977,2,0.0,Priorité standard basée sur confiance,A,True,0.7,75e207f8433c9905
+179_adaptive,EXCELLENT,True,1.0,0.9,0.866,0.876602828502655,1,0.0,Priorité standard basée sur confiance,A,True,0.7,cf0a5b5e72cbc7dc
+180_adaptive,EXCELLENT,True,1.0,1.0,0.956,1.0,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,42a653482c761faa
+181_adaptive,GOOD,True,1.0,0.9,0.796,0.8605238795280457,1,0.0,Priorité standard basée sur confiance,A,True,0.7,d75592606f1a6df5
+182_adaptive,CRITICAL,False,0.1083521854877472,0.2,0.097365864767478,0.961173951625824,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,2d93580017c5f706
+183_adaptive,GOOD,False,1.0,0.9,0.826,0.997988224029541,2,0.0,Grade A non production ready - traitement ML standard,A,False,0.7,696099548cf1f22b
+184_adaptive,EXCELLENT,True,1.0,1.0,0.8859999999999999,0.99607253074646,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,d7dc94edc71fd9b0
+185_adaptive,EXCELLENT,True,1.0,1.0,0.8959999999999999,0.9488303065299988,1,0.0,Priorité standard basée sur confiance,A+,True,0.7,614db6878cf3974d
+6_confidence_weighted,MODERATE,False,0.8598385190963744,0.7,0.6464282115869018,0.666128396987915,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0590c9fd6d5d779e
+66_confidence_weighted,MODERATE,False,0.7510791524884272,0.6,0.5206489675516225,0.8691822290420532,6,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,04b3e43e6463dd21
+112_confidence_weighted,CRITICAL,False,0.1629447992810784,0.2,0.3111251418131946,0.891274094581604,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d56c177562711942
+161_confidence_weighted,MODERATE,False,0.7510791524884272,0.6,0.5206489675516225,0.8691822290420532,6,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,619f4cf2b1395245
+168_confidence_weighted,MODERATE,False,0.8598385190963744,0.7,0.6464282115869018,0.666128396987915,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,64f219af63d28f29
+49_adaptive,EXCELLENT,True,1.0,1.0,0.8860000000000001,0.9325799345970154,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,bcd7413fdd20743c
+174_adaptive,EXCELLENT,True,1.0,1.0,0.8860000000000001,0.9325799345970154,0,0.0,Priorité standard basée sur confiance,A+,True,0.7,07730c9602dd0a82
+0_confidence_weighted,MODERATE,False,0.9007769930362702,0.7,0.6742194616977225,0.9025899767875672,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0c862e6732c5a41a
+1_confidence_weighted,MODERATE,False,0.9524178957939148,0.7,0.6844615384615385,0.9747263193130492,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,89580b321df35a6a
+2_confidence_weighted,MODERATE,False,0.9673879945278168,0.7,0.6843982683982685,0.924626648426056,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,36e1a50865a65b52
+3_confidence_weighted,MODERATE,False,0.9120409047603606,0.7,0.6408878923766815,0.8401363492012024,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0a555c36f5fbedf6
+4_confidence_weighted,MODERATE,False,0.9749277913570404,0.7,0.6840434782608695,0.949759304523468,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,72687c4664f0425b
+5_confidence_weighted,MODERATE,False,0.913939290046692,0.7,0.6776292134831461,0.9464643001556396,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,09da9397c8247ed8
+7_confidence_weighted,CRITICAL,False,0.1,0.2,0.3016747270187687,0.8915548324584961,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,2e5d424af642656f
+8_confidence_weighted,CRITICAL,False,0.1,0.2,0.3286540308094263,0.8446868658065796,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,4545a3e73854234a
+9_confidence_weighted,MODERATE,False,0.9058420443534853,0.7,0.6502446043165468,0.7194734811782837,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,c0b9d27bbaa29e21
+10_confidence_weighted,MODERATE,False,0.8962094521522521,0.7,0.6534874371859297,0.7873648405075073,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,5bce4475862ed1f9
+11_confidence_weighted,MODERATE,False,0.8903544831275941,0.7,0.6837837837837838,0.86784827709198,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,a55934d4ef922836
+12_confidence_weighted,CRITICAL,False,0.166808764112662,0.2,0.3978944309009528,0.8595384955406189,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,461e0a8c5eb56c46
+13_confidence_weighted,MODERATE,False,0.9541268312931062,0.7,0.6854080996884735,0.8804227709770203,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,fecc42217ea92412
+14_confidence_weighted,CRITICAL,False,0.4585685718496793,0.4,0.4806069541851986,0.9275503158569336,4,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,e87d8f1639f5afd5
+15_confidence_weighted,MODERATE,False,0.8847560155391693,0.7,0.634423645320197,0.8491867184638977,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,a4cb3a806304a2fe
+16_confidence_weighted,CRITICAL,False,0.3470788849680076,0.4,0.4009624769863387,0.8886588215827942,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,9cd674aa7b0d859c
+17_confidence_weighted,CRITICAL,False,0.2928974306797806,0.4,0.4038974380921965,0.7031623721122742,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,ff43903241bfe43a
+18_confidence_weighted,MODERATE,False,0.9195828187465668,0.7,0.6803775100401606,0.965276062488556,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,4dbccbbb7ebe01f5
+19_confidence_weighted,MODERATE,False,0.9798573696613312,0.7,0.6811737451737452,0.9661912322044371,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7e21dcf6f2e9a9c4
+20_confidence_weighted,MODERATE,False,0.8679102158546448,0.7,0.6836772616136919,0.6930340528488159,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,6d857e010b72ceb7
+21_confidence_weighted,MODERATE,False,0.895914123058319,0.7,0.6828000000000001,0.786380410194397,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,008cc26d81dd633b
+22_confidence_weighted,CRITICAL,False,0.1,0.2,0.3761467169911884,0.6441677808761597,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,3e6b976943164224
+23_confidence_weighted,MODERATE,False,0.9143824553489686,0.7,0.649061224489796,0.847941517829895,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,1513e5c48872c7b7
+24_confidence_weighted,MODERATE,False,0.8983214342594147,0.7,0.6862272727272727,0.6944047808647156,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,30b59fad542d9cd6
+25_confidence_weighted,CRITICAL,False,0.1334665986626668,0.2,0.3615392678438273,0.8089898824691772,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,efb6f87d9e44632e
+26_confidence_weighted,CRITICAL,False,0.1,0.2,0.3164650266537679,0.6975960731506348,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,dcbcafb254cf39f0
+27_confidence_weighted,MODERATE,False,0.8878199136257172,0.7,0.6872876712328767,0.7593997120857239,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,c23802b762d33311
+28_confidence_weighted,CRITICAL,False,0.1,0.2,0.3621281896925904,0.6679369211196899,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d92c051212ee70d3
+29_confidence_weighted,CRITICAL,False,0.3267639348237038,0.4,0.4061306876596452,0.8123286366462708,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,7299a0c0bbc5f318
+30_confidence_weighted,MODERATE,False,0.925846574306488,0.7,0.6857714285714286,0.8861552476882935,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,22fcd83dc4ec45b8
+31_confidence_weighted,CRITICAL,False,0.4157899438564217,0.4,0.4406990216621234,0.9514681100845336,5,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,cc214d510c169588
+32_confidence_weighted,CRITICAL,False,0.1295407000395811,0.2,0.3682176047987057,0.7847729921340942,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,4691c1a4539820aa
+33_confidence_weighted,CRITICAL,False,0.1538737920076907,0.2,0.389210343987,0.7308954000473022,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,dcf970d9be575d00
+34_confidence_weighted,CRITICAL,False,0.1,0.2,0.3389859568714243,0.7230283617973328,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,34f54ff5931d88aa
+35_confidence_weighted,CRITICAL,False,0.1334000570764937,0.2,0.3943594470005825,0.7540677785873413,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,cb0d45859d179bc4
+36_confidence_weighted,MODERATE,False,0.8809822654724122,0.7,0.6819305993690852,0.736607551574707,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,dca963b3974af02c
+37_confidence_weighted,MODERATE,False,0.8433802163600921,0.7,0.6869387755102041,0.6112673878669739,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,ca9d74420c3403c6
+38_confidence_weighted,MODERATE,False,0.8753535139560701,0.7,0.6878045112781954,0.8178450465202332,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0e88ca86d5142566
+39_confidence_weighted,CRITICAL,False,0.1015419646620041,0.2,0.3659054057835116,0.6952975392341614,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,5a73b9ddc6e4afd3
+40_confidence_weighted,CRITICAL,False,0.1319044037778352,0.2,0.368569635573859,0.8920652866363525,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,6c14f312a2c75ffb
+41_confidence_weighted,MODERATE,False,0.8837355279922485,0.7,0.6878115942028986,0.6457850933074951,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,67d9f55319ad7459
+42_confidence_weighted,MODERATE,False,0.9270703411102296,0.7,0.6853333333333333,0.8902344703674316,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e1864dd354ae15e1
+43_confidence_weighted,MODERATE,False,0.8664055931568145,0.7,0.6791734317343173,0.7880186438560486,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,190053938e10f6d6
+44_confidence_weighted,MODERATE,False,0.942548521757126,0.7,0.6892046332046332,0.8418284058570862,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,610004a7830078a4
+45_confidence_weighted,MODERATE,False,0.9311925923824308,0.7,0.6799999999999999,0.9039753079414368,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,256861282562ab89
+46_confidence_weighted,MODERATE,False,0.9339223301410676,0.7,0.6772875536480687,0.9130744338035583,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7d94ef8e1b1735c9
+47_confidence_weighted,MODERATE,False,0.929657814502716,0.7,0.6398683127572017,0.8988593816757202,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,88e6c8cf5c61f213
+48_confidence_weighted,CRITICAL,False,0.1659869103231065,0.2,0.3491403469638096,0.8380557894706726,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,691e1d90ece6679d
+49_confidence_weighted,MODERATE,False,0.8822974598407745,0.7,0.6845477178423237,0.7409915328025818,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,bcd7413fdd20743c
+50_confidence_weighted,CRITICAL,False,0.3903676436400199,0.4,0.4601107021283675,0.8343743085861206,5,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,a38511d05577177c
+51_confidence_weighted,MODERATE,False,0.8723696386814117,0.7,0.6846925795053004,0.7078987956047058,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7862b61eda0e044d
+52_confidence_weighted,MODERATE,False,0.961855080127716,0.7,0.6828126520681266,0.9061836004257202,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,b7ed24b60ea1e109
+53_confidence_weighted,CRITICAL,False,0.1751214896781104,0.2,0.3992165063108716,0.9850441217422484,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,393cb92c737d9597
+54_confidence_weighted,MODERATE,False,0.958808662891388,0.7,0.6829113149847095,0.8960288763046265,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,d0ce8501d6bea224
+55_confidence_weighted,MODERATE,False,0.9481866681575776,0.7,0.6875702479338843,0.860622227191925,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,6ad584baee3e5434
+56_confidence_weighted,CRITICAL,False,0.13837710888655,0.2,0.3510541063839399,0.8428335189819336,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,113da3cfde6533dd
+57_confidence_weighted,MODERATE,False,0.944551566839218,0.7,0.6748059701492537,0.9485052227973938,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,6f59a7955c7c4b10
+58_confidence_weighted,MODERATE,False,0.8996862101554871,0.7,0.6812631578947369,0.8989540338516235,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,b21b9571a9fe8d73
+59_confidence_weighted,CRITICAL,False,0.3473994819812587,0.4,0.409153660236321,0.8760755062103271,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,f13a89625677bcc5
+60_confidence_weighted,CRITICAL,False,0.1695250737293897,0.2,0.3610008405892727,0.8300821781158447,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,5647e002a835b567
+61_confidence_weighted,MODERATE,False,0.9276874458789826,0.7,0.6817746478873239,0.8922914862632751,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,afd0e376c006d420
+62_confidence_weighted,MODERATE,False,0.8960528898239136,0.7,0.6806464646464646,0.8868429660797119,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,b63b8252e450f462
+63_confidence_weighted,CRITICAL,False,0.3991622772279396,0.4,0.4364655475741655,0.9030983448028564,5,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,6bb5fec6c8eb5e8b
+64_confidence_weighted,MODERATE,False,0.9210188663005828,0.7,0.6773477088948787,0.8700628876686096,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,b048475115a73fd8
+65_confidence_weighted,CRITICAL,False,0.1409422458324382,0.2,0.3185519292182822,0.8055542707443237,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,382f495ebb0e6ea1
+67_confidence_weighted,CRITICAL,False,0.1,0.2,0.303004664583427,0.6369819045066833,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,0fef8f52921322f5
+68_confidence_weighted,MODERATE,False,0.8801719808578491,0.7,0.6864854368932038,0.6339066028594971,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,2da8feefe2ab36b9
+69_confidence_weighted,CRITICAL,False,0.1,0.2,0.3995285934203869,0.6210489869117737,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,a1fef770615bb2e5
+70_confidence_weighted,CRITICAL,False,0.3903777112279619,0.4,0.4171840718814305,0.805952250957489,4,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,af6c35080467f02e
+71_confidence_weighted,CRITICAL,False,0.3728246117731293,0.4,0.4355597688953796,0.9168157577514648,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,267a43bc1cfca9d7
+72_confidence_weighted,MODERATE,False,0.9224545097351072,0.7,0.6825564738292011,0.8748483657836914,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,4fadd51d69e701a5
+73_confidence_weighted,CRITICAL,False,0.1,0.2,0.3056199340790592,0.6689532995223999,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,cb752b34f63df7e2
+74_confidence_weighted,CRITICAL,False,0.377692923467713,0.4,0.4473731158601391,0.8133545517921448,5,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,98cfb81085297808
+75_confidence_weighted,MODERATE,False,0.8738634324073791,0.7,0.6911515151515151,0.7128781080245972,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,68eae07b7f193824
+76_confidence_weighted,CRITICAL,False,0.1266494838445604,0.2,0.3556044801174045,0.7961574792861938,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,19ee41a13c9862aa
+77_confidence_weighted,MODERATE,False,0.9407488310337068,0.7,0.6807540983606557,0.8358294367790222,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,079d1e666f0a9185
+78_confidence_weighted,CRITICAL,False,0.1,0.2,0.359418525458781,0.6593196392059326,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,3d32211474049e06
+79_confidence_weighted,MODERATE,False,0.9464989686012268,0.7,0.6824107485604606,0.8549965620040894,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,78f4bb460dcce286
+80_confidence_weighted,CRITICAL,False,0.3610046307083066,0.4,0.4502169592849601,0.8529871702194214,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,2e04f86309b1c1a9
+81_confidence_weighted,CRITICAL,False,0.1040585771169816,0.2,0.3538021975689241,0.8238582611083984,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,e147dddb08ce381c
+82_confidence_weighted,CRITICAL,False,0.1009886463388564,0.2,0.3776669923275236,0.7738505005836487,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,452bb2019ea76931
+83_confidence_weighted,CRITICAL,False,0.163839684116006,0.2,0.338537160132647,0.8485703468322754,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,406da419258b2c43
+84_confidence_weighted,CRITICAL,False,0.1195302555099176,0.2,0.3678576153785083,0.8520048260688782,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,ecb41e3235605396
+85_confidence_weighted,MODERATE,False,0.883692262172699,0.7,0.685568345323741,0.7456408739089966,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7d61a0c658b9ecd8
+86_confidence_weighted,MODERATE,False,0.9418833410739896,0.7,0.6720240963855422,0.9396111369132996,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e73ba9ac04d370cf
+87_confidence_weighted,MODERATE,False,0.976969381570816,0.7,0.6488813559322034,0.9565646052360536,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,84d84605845187ca
+88_confidence_weighted,MODERATE,False,0.9004857051372529,0.7,0.6796281179138322,0.901619017124176,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,a40f253f02938458
+89_confidence_weighted,MODERATE,False,0.9040339028835296,0.7,0.6824848484848485,0.8134463429450989,5,2.129077911376953,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,f51f3fdf75da15eb
+90_confidence_weighted,MODERATE,False,0.9421352183818816,0.7,0.6753513513513514,0.9404507279396056,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0e804803f285436a
+91_confidence_weighted,MODERATE,False,0.900300704240799,0.7,0.6750673575129533,0.9010023474693298,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,2a3b035bd28680d6
+92_confidence_weighted,MODERATE,False,0.9713441276550292,0.7,0.6830089285714286,0.9378137588500975,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,90228e266121cdac
+93_confidence_weighted,MODERATE,False,0.9705504262447358,0.7,0.6782764227642276,0.9351680874824524,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,bdba07ba99c1603d
+94_confidence_weighted,MODERATE,False,0.9656328999996184,0.7,0.6750781563126252,0.9187763333320618,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,827f942284082973
+95_confidence_weighted,MODERATE,False,0.9416583752632142,0.7,0.6774761904761906,0.9388612508773804,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,29c2143168e14c13
+96_confidence_weighted,MODERATE,False,0.7427604171375728,0.6,0.5312238805970149,0.7238282561302185,5,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,361caff2d40d0c74
+97_confidence_weighted,MODERATE,False,0.913346700668335,0.7,0.6799269406392694,0.9444890022277832,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,bf5d2558cecf909d
+98_confidence_weighted,MODERATE,False,0.942150399684906,0.7,0.6714948805460751,0.94050133228302,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,8ec18d19e58d9fad
+99_confidence_weighted,MODERATE,False,0.930096892118454,0.7,0.6812559726962457,0.9003229737281799,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,619ac2b75ec51a6a
+100_confidence_weighted,MODERATE,False,0.8396779625015404,0.6,0.5177099236641222,0.969410002231598,4,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,8faad6d1ca7e63e2
+101_confidence_weighted,MODERATE,False,0.9074831521511078,0.7,0.6918115183246074,0.8249438405036926,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,184a7f323236a6fd
+102_confidence_weighted,MODERATE,False,0.961497219800949,0.7,0.6678933333333333,0.9049907326698304,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,1ea2b6b6fcad0d49
+103_confidence_weighted,MODERATE,False,0.9255613839626312,0.7,0.6871917098445596,0.8852046132087708,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,a68c6f882eda290f
+104_confidence_weighted,MODERATE,False,0.9784472966194152,0.7,0.688,0.9614909887313844,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,8a1f882da3f5ce5a
+105_confidence_weighted,MODERATE,False,0.9150077676773072,0.7,0.6790813953488372,0.8500258922576904,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7973920660d3016b
+106_confidence_weighted,CRITICAL,False,0.1123401412350391,0.2,0.3283215349877786,0.793931245803833,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d244b64e457fe322
+107_confidence_weighted,MODERATE,False,0.9558836781978608,0.7,0.6832727272727273,0.8862789273262024,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,86ed15eb33588d32
+108_confidence_weighted,CRITICAL,False,0.1609882364573335,0.2,0.306892690241785,0.8918063044548035,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,f60056647b2e6c04
+109_confidence_weighted,CRITICAL,False,0.1499991615535892,0.2,0.392596384668763,0.8123365640640259,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,1799497d236cc8f8
+110_confidence_weighted,CRITICAL,False,0.1,0.2,0.3080407447283318,0.6362269520759583,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d4f31d71e0474ed9
+111_confidence_weighted,CRITICAL,False,0.1306580046773988,0.2,0.3166177399875798,0.87449711561203,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,b16c0e23e7e392f5
+113_confidence_weighted,MODERATE,False,0.9236935651302338,0.7,0.680972972972973,0.8789785504341125,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,2363f8c60633af2c
+114_confidence_weighted,MODERATE,False,0.9454425251483918,0.7,0.6840506329113925,0.9514750838279724,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,c04de690539938a3
+115_confidence_weighted,MODERATE,False,0.8526701903343201,0.7,0.6845333333333333,0.6422339677810669,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,055073e2129cf69b
+116_confidence_weighted,MODERATE,False,0.8974722254276276,0.7,0.688,0.8915740847587585,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,75ba98cb0fed4c2b
+117_confidence_weighted,MODERATE,False,0.9078328585624696,0.7,0.6919641255605382,0.8261095285415649,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,220b430da44459f0
+118_confidence_weighted,CRITICAL,False,0.3897219284862261,0.4,0.4917889707267245,0.8794248104095459,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,8f6ca28dd2ee370b
+119_confidence_weighted,CRITICAL,False,0.1808710512219281,0.2,0.3356055443879788,0.910227596759796,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,b4e4db65dfa7463a
+120_confidence_weighted,MODERATE,False,0.9439481234550476,0.7,0.6712336448598131,0.9464937448501588,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,33d8bf8a5fa6bafe
+121_confidence_weighted,MODERATE,False,0.8896838986873626,0.7,0.696,0.6656129956245422,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,3c19808010f2ba6f
+122_confidence_weighted,MODERATE,False,0.9193734383583068,0.7,0.6917939914163089,0.864578127861023,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e4abac464be73d82
+123_confidence_weighted,CRITICAL,False,0.161421635744715,0.2,0.3961727154210097,0.7444509267807007,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d986d498cedd168b
+124_confidence_weighted,MODERATE,False,0.8992445576190949,0.7,0.688,0.8974818587303162,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,11b758cdb3f94344
+125_confidence_weighted,MODERATE,False,0.8777473783493042,0.7,0.6824285714285714,0.7258245944976807,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,b389db4ec28884a7
+126_confidence_weighted,CRITICAL,False,0.1406827930498854,0.2,0.3365334566213162,0.8747202157974243,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,227ac58da54eafb8
+127_confidence_weighted,MODERATE,False,0.8729198670387268,0.7,0.6501666666666667,0.7097328901290894,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0b488a9b19eada6b
+128_confidence_weighted,MODERATE,False,0.8960528898239136,0.7,0.6806464646464646,0.8868429660797119,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,34cd2441459ad119
+129_confidence_weighted,MODERATE,False,0.9150077676773072,0.7,0.6790813953488372,0.8500258922576904,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7d3985e16d7fe3c3
+130_confidence_weighted,CRITICAL,False,0.1,0.2,0.3286540308094263,0.8446868658065796,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,72f5963b314b2205
+131_confidence_weighted,CRITICAL,False,0.3728246117731293,0.4,0.4355597688953796,0.9168157577514648,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,574e875ed09a7233
+132_confidence_weighted,MODERATE,False,0.9541268312931062,0.7,0.6854080996884735,0.8804227709770203,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,78350a8803037c44
+133_confidence_weighted,CRITICAL,False,0.1751214896781104,0.2,0.3992165063108716,0.9850441217422484,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,2a8f3c660f23ce58
+134_confidence_weighted,MODERATE,False,0.9749277913570404,0.7,0.6840434782608695,0.949759304523468,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0f8286a243bf5959
+135_confidence_weighted,MODERATE,False,0.929657814502716,0.7,0.6398683127572017,0.8988593816757202,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,99413af17e23056b
+136_confidence_weighted,MODERATE,False,0.9421352183818816,0.7,0.6753513513513514,0.9404507279396056,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,ea15ec09d109a0a2
+137_confidence_weighted,MODERATE,False,0.9311925923824308,0.7,0.6799999999999999,0.9039753079414368,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e71c77eeede3f484
+138_confidence_weighted,MODERATE,False,0.9120409047603606,0.7,0.6408878923766815,0.8401363492012024,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,242a3ca05ca41b2b
+139_confidence_weighted,MODERATE,False,0.8847560155391693,0.7,0.634423645320197,0.8491867184638977,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,8c2e90f73778fe01
+140_confidence_weighted,CRITICAL,False,0.1659869103231065,0.2,0.3491403469638096,0.8380557894706726,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,7d064f4fcc38c633
+141_confidence_weighted,MODERATE,False,0.9673879945278168,0.7,0.6843982683982685,0.924626648426056,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,4421f40861287733
+142_confidence_weighted,MODERATE,False,0.8396779625015404,0.6,0.5177099236641222,0.969410002231598,4,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,dce264d64f8e55f6
+143_confidence_weighted,MODERATE,False,0.9656328999996184,0.7,0.6750781563126252,0.9187763333320618,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,05780a2789456792
+144_confidence_weighted,MODERATE,False,0.944551566839218,0.7,0.6748059701492537,0.9485052227973938,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e6f76679684a9086
+145_confidence_weighted,CRITICAL,False,0.3470788849680076,0.4,0.4009624769863387,0.8886588215827942,6,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,0d87b82f8cae8d91
+146_confidence_weighted,MODERATE,False,0.961855080127716,0.7,0.6828126520681266,0.9061836004257202,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,a5ba7160697af071
+147_confidence_weighted,MODERATE,False,0.958808662891388,0.7,0.6829113149847095,0.8960288763046265,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,e6564e4511d975f9
+148_confidence_weighted,MODERATE,False,0.8903544831275941,0.7,0.6837837837837838,0.86784827709198,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,ccaeb36c17b66e74
+149_confidence_weighted,MODERATE,False,0.913346700668335,0.7,0.6799269406392694,0.9444890022277832,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,4c1586531d2f89cb
+150_confidence_weighted,CRITICAL,False,0.3903676436400199,0.4,0.4601107021283675,0.8343743085861206,5,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,e800abc9da273934
+151_confidence_weighted,MODERATE,False,0.9524178957939148,0.7,0.6844615384615385,0.9747263193130492,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,54fc5d6419a488d6
+152_confidence_weighted,MODERATE,False,0.942150399684906,0.7,0.6714948805460751,0.94050133228302,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,ed4171a50b778bf1
+153_confidence_weighted,MODERATE,False,0.9074831521511078,0.7,0.6918115183246074,0.8249438405036926,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,766dd98f47fa732a
+154_confidence_weighted,MODERATE,False,0.900300704240799,0.7,0.6750673575129533,0.9010023474693298,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,d5ba6bfeda33143f
+155_confidence_weighted,MODERATE,False,0.9004857051372529,0.7,0.6796281179138322,0.901619017124176,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,61d596e29bd4b14a
+156_confidence_weighted,CRITICAL,False,0.166808764112662,0.2,0.3978944309009528,0.8595384955406189,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,49ae6d076953d5bd
+157_confidence_weighted,MODERATE,False,0.8664055931568145,0.7,0.6791734317343173,0.7880186438560486,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,3cde8ae9de372e72
+158_confidence_weighted,MODERATE,False,0.9713441276550292,0.7,0.6830089285714286,0.9378137588500975,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7f6d6e5c350c2d54
+159_confidence_weighted,MODERATE,False,0.913939290046692,0.7,0.6776292134831461,0.9464643001556396,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,0f0a3e78186db74e
+160_confidence_weighted,MODERATE,False,0.942548521757126,0.7,0.6892046332046332,0.8418284058570862,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,6568364a4f7fbda8
+162_confidence_weighted,MODERATE,False,0.9270703411102296,0.7,0.6853333333333333,0.8902344703674316,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,8bbcd409c87ef232
+163_confidence_weighted,MODERATE,False,0.9040339028835296,0.7,0.6824848484848485,0.8134463429450989,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,5b8b3f9f85aad069
+164_confidence_weighted,MODERATE,False,0.9339223301410676,0.7,0.6772875536480687,0.9130744338035583,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,8b21515c9f3d868d
+165_confidence_weighted,MODERATE,False,0.7427604171375728,0.6,0.5312238805970149,0.7238282561302185,5,0.0,Grade B non production ready - traitement ML élevé,B,False,0.75,6b57123fecfade63
+166_confidence_weighted,MODERATE,False,0.9481866681575776,0.7,0.6875702479338843,0.860622227191925,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,9b3f1b1ab89f027c
+167_confidence_weighted,MODERATE,False,0.9195828187465668,0.7,0.6803775100401606,0.965276062488556,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,99d16a57294f1b0e
+169_confidence_weighted,MODERATE,False,0.9210188663005828,0.7,0.6773477088948787,0.8700628876686096,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,7435cd45bd0306c9
+170_confidence_weighted,MODERATE,False,0.9418833410739896,0.7,0.6720240963855422,0.9396111369132996,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,5b5290265a041690
+171_confidence_weighted,MODERATE,False,0.9058420443534853,0.7,0.6502446043165468,0.7194734811782837,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,f86a025051ba7281
+172_confidence_weighted,MODERATE,False,0.9007769930362702,0.7,0.6742194616977225,0.9025899767875672,6,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,d4216a7e1a1dfdea
+173_confidence_weighted,MODERATE,False,0.9705504262447358,0.7,0.6782764227642276,0.9351680874824524,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,21d1e319f5063f79
+174_confidence_weighted,MODERATE,False,0.8822974598407745,0.7,0.6845477178423237,0.7409915328025818,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,07730c9602dd0a82
+175_confidence_weighted,MODERATE,False,0.930096892118454,0.7,0.6812559726962457,0.9003229737281799,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,6026998fa9091211
+176_confidence_weighted,CRITICAL,False,0.4585685718496793,0.4,0.4806069541851986,0.9275503158569336,4,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,2961a15e188b5dfe
+177_confidence_weighted,CRITICAL,False,0.13837710888655,0.2,0.3510541063839399,0.8428335189819336,5,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,c5279b46ca86926c
+178_confidence_weighted,MODERATE,False,0.8723696386814117,0.7,0.6846925795053004,0.7078987956047058,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,75e207f8433c9905
+179_confidence_weighted,MODERATE,False,0.8679102158546448,0.7,0.6836772616136919,0.6930340528488159,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,cf0a5b5e72cbc7dc
+180_confidence_weighted,MODERATE,False,0.9784472966194152,0.7,0.688,0.9614909887313844,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,42a653482c761faa
+181_confidence_weighted,MODERATE,False,0.9416583752632142,0.7,0.6774761904761906,0.9388612508773804,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,d75592606f1a6df5
+182_confidence_weighted,MODERATE,False,0.9143824553489686,0.7,0.649061224489796,0.847941517829895,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,2d93580017c5f706
+183_confidence_weighted,CRITICAL,False,0.1,0.2,0.3016747270187687,0.8915548324584961,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,696099548cf1f22b
+184_confidence_weighted,MODERATE,False,0.8962094521522521,0.7,0.6534874371859297,0.7873648405075073,5,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,d7dc94edc71fd9b0
+185_confidence_weighted,MODERATE,False,0.976969381570816,0.7,0.6488813559322034,0.9565646052360536,4,0.0,Grade B+ non production ready - traitement ML élevé,B+,False,0.75,614db6878cf3974d

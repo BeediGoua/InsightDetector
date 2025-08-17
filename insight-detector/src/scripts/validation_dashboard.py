@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 # validation_dashboard.py
 
+import sys
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import json
 import plotly.express as px
 import plotly.graph_objects as go
-from pathlib import Path
 import numpy as np
+
+# Configuration des chemins pour exécution depuis src/scripts/
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 # Configuration
 st.set_page_config(

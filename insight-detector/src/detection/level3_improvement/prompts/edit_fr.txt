@@ -1,0 +1,4 @@
+Réécris ce résumé en CONSERVANT STRICTEMENT les faits. 
+Supprime répétitions et ambiguïtés. 70–120 mots. Style factuel, clair, phrases courtes.
+INTERDICTION d’utiliser des connaissances externes ou des informations absentes du contexte fourni.
+Ne renvoie QUE le résumé final.

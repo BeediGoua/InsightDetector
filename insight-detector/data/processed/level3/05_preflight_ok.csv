@@ -1,0 +1,573 @@
+summary_id,tier,is_valid,validation_confidence,grade_score,coherence_score,factuality_score,issues_count,processing_time_ms,justification,original_grade,production_ready,level3_priority_final,source_id_x,tier_rank,source_id_m1,source_id_m2,source_id_filled,source_id_y,title,url,article_id_x,text,article_id_y,strategy,summary_before,n1_coherence,n1_factuality,l3_mode,mode_reason,has_text,enough_length,lang,lang_mismatch,topic_overlap_before_text
+22_confidence_weighted,CRITICAL,False,0.1,0.2,0.3761467169911884,0.6441677808761597,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,3e6b976943164224,0,,,3e6b976943164224,3e6b976943164224,Watch: Man dons bear costume in Japanese Police animal attack drill,https://www.bbc.com/news/videos/cn0z0k42djgo,22,"Japanese Police and local hunters in Nikko, Tochigi Prefecture have practiced their response to potential bear attacks in a simulated drill.
+
+The demonstration saw a man dressed as a bear chased off by firecrackers, and showed participants how to safely approach an animal after it has been shot or tranquillised.
+
+Tochigi has seen three bear attacks so far this year, local media reported.",22,confidence_weighted,"Par Le Nouvel Obs avec é le à 19h32 , mis à jour le 20 juin, le ministère du Logement a annoncé que les aides Ménov’ étaient d’ores et déjà en cours et que l’Etat avait arrêté une liste des dossiers à traiter entre le mois de juin et le début de la fin juin. Par Le Nouvel Obs avec é le à 19h32 , mis à jour le 20 juin, le ministère du Logement a annoncé que les aides Ménov’ étaient d’ores et déjà en cours et que l’Etat avait arrêté une liste des dossiers à traiter entre le mois de juin et le début de la fin juin. Par Le Nouvel Obs avec é le à 19h32 , mis à jour le 20 juin, le ministère du Logement a annoncé que les aides Ménov’ étaient d’ores et déjà en cours et que l’Etat avait arrêté une liste des dossiers à traiter entre le mois de juin et le début de la fin juin. Par Le Nouvel Obs avec é le à 19h32 , mis à jour le 20 juin, le ministère du Logement a annoncé que les aides Ménov’ étaient d’ores et déjà en cours et que l’Etat avait arrêté une liste des dossiers à traiter entre le mois de juin et le début de la fin juin. Par Le Nouvel Obs avec é le à 19h32 , mis à jour le 20 juin, le ministère du Logement a annoncé que les aides Ménov’ étaient d’ores et déjà en cours et que l’Etat avait arrêté une liste des dossiers à traiter entre le mois de juin et le début de la fin juin. Les aides Ménov’ vont bien reprendre en septembre, mais de façon plus limitée ès un afflux important de dossiers depuis le début de l’année. L’objectif était de financer 62 000 rénovations globales d’ici 2025 (hors copropriétés). Les aides Ménov’ vont bien reprendre en septembre, mais de façon plus limitée ès un afflux important de dossiers depuis le début de l’année. L’objectif était de financer 62 000 rénovations globales d’ici 2025 (hors copropriétés). Les aides Ménov’ vont bien reprendre en septembre, mais de façon plus limitée ès un afflux important de dossiers depuis le début de l’année. L’objectif était de financer 62 000 rénovations globales d’ici 2025 (hors copropriétés). Les aides Ménov’ vont bien reprendre en septembre, mais de façon plus limitée ès un afflux important de dossiers depuis le début de l’année. L’objectif était de financer 62 000 rénovations globales d’ici 2025 (hors copropriétés). Les aides Ménov’ vont bien reprendre en septembre, mais de façon plus limitée ès un afflux important de dossiers depuis le début de l’année. L’objectif était de financer 62 000 rénovations globales d’ici 2025 (hors copropriétés).",0.3761,0.6442,edit,cw_critical_no_text,True,False,en,False,0.0
+81_confidence_weighted,CRITICAL,False,0.1040585771169816,0.2,0.3538021975689241,0.8238582611083984,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,e147dddb08ce381c,0,,,e147dddb08ce381c,e147dddb08ce381c,Gilbert Melki en « Vendeur » est éblouissant,https://www.nouvelobs.com/teleobs/20250724.OBS106182/gilbert-melki-en-vendeur-est-eblouissant.html,81,"Pio Marmaï et Gilbert Melki dans « Vendeur » de Sylvain Desclous © SÉSAME FILMS / FRANCE 2 CINÉMA
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+Serge est capable de vendre du sable en plein désert. Depuis trente ans, c’est au commerce des cuisines qu’il met tout son art, fourguant la plus chère aux clients venus acheter la plus modeste, jonglant avec les offres de crédit, cajolant les ménagères sans rebuter les maris. Il est la star des vendeurs, l’idole de ses employeurs, qui le donnent en modèle aux débutants.
+
+Débutant, son fils le devient, lui qui a besoin d’argent pour payer les traites de son restaurant. Mais si Serge est un surdoué, Gérald n’a pas les mêmes dispositions. Du moins dans un premier temps… Voir au cinéma des gens se faire rouler dans la farine est toujours plaisant. De même, les relations père-fils et les scènes de transmission ouvrent sur des scènes aussi intéressantes dans les grands magasins qu’au pays du western.
+
+Publicité
+
+Pour son premier film, Sylvain Desclous, as du court-métrage, avait toutes les cartes en main. Il les a jouées avec discernement, orchestrant la progression dramatique, dessinant des personnages auxquels d’excellents acteurs prêtent vie. Gilbert Melki est éblouissant. On se demande pourquoi le cinéma français ne fait pas plus souvent appel à lui.
+
+◗ Jeudi 24 juillet à 22h30 sur France 4. Comédie dramatique française (2015). Avec Gilbert Melki, Pio Marmaï, Pascal Elso, Sara Giraudeau. 89 min.",81,confidence_weighted,"Une pagode endommagée par l’artillerie thaïlandaise dans la province d’Oddar Mean Chey, dans le nord-ouest du Cambodge, le . Une pagode endommagée par l’artillerie thaïlandaise dans la province d’Oddar Mean Chey, dans le nord-ouest du Cambodge, le . Une pagode endommagée par l’artillerie thaïlandaise dans la province d’Oddar Mean Chey, dans le nord-ouest du Cambodge, le . Une pagode endommagée par l’artillerie thaïlandaise dans la province d’Oddar Mean Chey, dans le nord-ouest du Cambodge, le . Une pagode endommagée par l’artillerie thaïlandaise dans la province d’Oddar Mean Chey, dans le nord-ouest du Cambodge, le . La région frontalière du Cambodge et de la Thalande est le théâtre d'affrontements militaires violents. La violence s'est intensifiée à plusieurs endroits disputés par les deux pays. Plus de 130 000 habitants ont été évacués vers des abris temporaires, a déclaré l'armée thalandaise. La région frontalière du Cambodge et de la Thalande est le théâtre d'affrontements militaires violents. La violence s'est intensifiée à plusieurs endroits disputés par les deux pays. Plus de 130 000 habitants ont été évacués vers des abris temporaires, a déclaré l'armée thalandaise. La région frontalière du Cambodge et de la Thalande est le théâtre d'affrontements militaires violents. La violence s'est intensifiée à plusieurs endroits disputés par les deux pays. Plus de 130 000 habitants ont été évacués vers des abris temporaires, a déclaré l'armée thalandaise. La région frontalière du Cambodge et de la Thalande est le théâtre d'affrontements militaires violents. La violence s'est intensifiée à plusieurs endroits disputés par les deux pays. Plus de 130 000 habitants ont été évacués vers des abris temporaires, a déclaré l'armée thalandaise. La région frontalière du Cambodge et de la Thalande est le théâtre d'affrontements militaires violents. La violence s'est intensifiée à plusieurs endroits disputés par les deux pays. Plus de 130 000 habitants ont été évacués vers des abris temporaires, a déclaré l'armée thalandaise.",0.3538,0.8239,re_summarize,cw_critical_with_text,True,True,fr,False,0.0108108108108108
+84_confidence_weighted,CRITICAL,False,0.1195302555099176,0.2,0.3678576153785083,0.8520048260688782,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,ecb41e3235605396,0,,,ecb41e3235605396,ecb41e3235605396,"« Vachette », par Suzanne Duval, ou comment dire la réalité de la vie et du corps des femmes",https://www.nouvelobs.com/bibliobs/20250724.OBS106179/vachette-par-suzanne-duval-ou-comment-dire-la-realite-de-la-vie-et-du-corps-des-femmes.html,84,"Suzanne Duval. LAUSANNEPHOTO STUDIO
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+« Je suis en train de devenir Vachette » : voilà comment la narratrice annonce sa grossesse à son compagnon, rebaptisé « Taurino » dans le même élan. Pourquoi « vachette » ? Non pas en hommage à « Intervilles », mais en souvenir d’une conversation avec un collègue enseignant-chercheur qui jugeait que sa femme enceinte « devenait une grosse vache ». Au tour de l’héroïne de connaître le même destin. Elle meugle à tout bout de champ, rumine, caresse l’envie de se rouler dans l’herbe fraîche et rêve de sa future velle (bien qu’elle préférerait dire « veaue »). « Tout le monde semblait trouver que ce qui m’arrivait était normal, que c’était, tout ou plus, amusant. »
+
+Publicité
+
+Suzanne Duval, remarquée en 2020 pour « Ta grossesse » autour de l’IVG, décrit avec originalité et ironie cet état transitoire à la fois miraculeux et hyperbanal. Avec ce roman à la limite du surnaturel, elle rejoint le corpus trop peu touffu de romancières ayant osé s’emparer des vicissitudes de la maternité (Marie Darrieussecq, Eliette Abécassis, Julia Kerninon…) Dire la réalité de la vie et du corps des femmes, une démarche politique. A meuh-…",84,confidence_weighted,"Gaza a atteint des niveaux de désespoir sans précédent » Le Programme alimentaire mondial (PAM) de l'ONU ne fait pas le poids. Gaza a atteint des niveaux de désespoir sans précédent » Le Programme alimentaire mondial (PAM) de l'ONU ne fait pas le poids. Gaza a atteint des niveaux de désespoir sans précédent » Le Programme alimentaire mondial (PAM) de l'ONU ne fait pas le poids. Gaza a atteint des niveaux de désespoir sans précédent » Le Programme alimentaire mondial (PAM) de l'ONU ne fait pas le poids. Gaza a atteint des niveaux de désespoir sans précédent » Le Programme alimentaire mondial (PAM) de l'ONU ne fait pas le poids. L'armée israélienne affirme qu'elle autorisera l'aide humanitaire dans la bande de Gaza à partir de vendredi 25 juillet. Les Palestiniens attendent de recevoir de la nourriture près de bâtiments résidentiels détruits lors d'une offensive. La Jordanie devrait effectuer le premier largage, peut-être dès vendredi. L'armée israélienne affirme qu'elle autorisera l'aide humanitaire dans la bande de Gaza à partir de vendredi 25 juillet. Les Palestiniens attendent de recevoir de la nourriture près de bâtiments résidentiels détruits lors d'une offensive. La Jordanie devrait effectuer le premier largage, peut-être dès vendredi. L'armée israélienne affirme qu'elle autorisera l'aide humanitaire dans la bande de Gaza à partir de vendredi 25 juillet. Les Palestiniens attendent de recevoir de la nourriture près de bâtiments résidentiels détruits lors d'une offensive. La Jordanie devrait effectuer le premier largage, peut-être dès vendredi. L'armée israélienne affirme qu'elle autorisera l'aide humanitaire dans la bande de Gaza à partir de vendredi 25 juillet. Les Palestiniens attendent de recevoir de la nourriture près de bâtiments résidentiels détruits lors d'une offensive. La Jordanie devrait effectuer le premier largage, peut-être dès vendredi. L'armée israélienne affirme qu'elle autorisera l'aide humanitaire dans la bande de Gaza à partir de vendredi 25 juillet. Les Palestiniens attendent de recevoir de la nourriture près de bâtiments résidentiels détruits lors d'une offensive. La Jordanie devrait effectuer le premier largage, peut-être dès vendredi.",0.3679,0.852,re_summarize,cw_critical_with_text,True,True,fr,False,0.0115606936416184
+133_confidence_weighted,CRITICAL,False,0.1751214896781104,0.2,0.3992165063108716,0.9850441217422484,6,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,2a8f3c660f23ce58,0,,,2a8f3c660f23ce58,2a8f3c660f23ce58,« Aux jours qui viennent » : un film entre thriller conjugal et mélo familiale,https://www.nouvelobs.com/cinema/20250722.OBS106130/aux-jours-qui-viennent-un-film-entre-thriller-conjugal-et-melo-familiale.html,133,"Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Compte-tenu du refus du dépôt de cookies que vous avez exprimé, afin de respecter votre choix, nous avons bloqué la lecture de cette vidéo. Si vous souhaitez continuer et lire la vidéo, vous devez nous donner votre accord en cliquant sur le bouton ci-dessous.
+
+Lire la vidéo",133,confidence_weighted,"Le groupe Meta a annoncé ce vendredi 25 juillet qu'il ne publiera plus de publicité à caractère politique sur ses plateformes dans l'Union européenne. Le groupe Meta a annoncé ce vendredi 25 juillet qu'il ne publiera plus de publicité à caractère politique sur ses plateformes dans l'Union européenne. Le groupe Meta a annoncé ce vendredi 25 juillet qu'il ne publiera plus de publicité à caractère politique sur ses plateformes dans l'Union européenne. Le groupe Meta a annoncé ce vendredi 25 juillet qu'il ne publiera plus de publicité à caractère politique sur ses plateformes dans l'Union européenne. Le groupe Meta a annoncé ce vendredi 25 juillet qu'il ne publiera plus de publicité à caractère politique sur ses plateformes dans l'Union européenne. Le groupe propriétaire de Facebook et Instagram blâme les régulations en place par Bruxelles, trop strictes selon son PDG Mark Zuckerberg. Meta est le deuxième grand groupe de la tech américaine à interdire les publicités politiques dans l'espace européen. Le groupe propriétaire de Facebook et Instagram blâme les régulations en place par Bruxelles, trop strictes selon son PDG Mark Zuckerberg. Meta est le deuxième grand groupe de la tech américaine à interdire les publicités politiques dans l'espace européen. Le groupe propriétaire de Facebook et Instagram blâme les régulations en place par Bruxelles, trop strictes selon son PDG Mark Zuckerberg. Meta est le deuxième grand groupe de la tech américaine à interdire les publicités politiques dans l'espace européen. Le groupe propriétaire de Facebook et Instagram blâme les régulations en place par Bruxelles, trop strictes selon son PDG Mark Zuckerberg. Meta est le deuxième grand groupe de la tech américaine à interdire les publicités politiques dans l'espace européen. Le groupe propriétaire de Facebook et Instagram blâme les régulations en place par Bruxelles, trop strictes selon son PDG Mark Zuckerberg. Meta est le deuxième grand groupe de la tech américaine à interdire les publicités politiques dans l'espace européen.",0.3992,0.985,edit,cw_critical_no_text,True,False,fr,False,0.0
+112_confidence_weighted,CRITICAL,False,0.1629447992810784,0.2,0.3111251418131946,0.891274094581604,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,d56c177562711942,0,,,d56c177562711942,d56c177562711942,« Le Panache » : l’éloquence de Joachim Arseguel,https://www.nouvelobs.com/teleobs/20250723.OBS106151/le-panache-l-eloquence-de-joachim-arseguel.html,112,"José Garcia, Joachim Arseguel dans « Le Panache » VERTIGO PRODUCTIONS / SND / THIBAULT GRABHERR
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+Un lycéen bègue vivant avec sa mère (Aure Atika, toujours impeccable) se met en tête d’interpréter le rôle-titre de « Cyrano de Bergerac ». Dans ce défi, il est soutenu par un professeur rebelle enseignant dans un établissement catholique forcément rigide.
+
+Soyons francs : c’est l’archétype même du résumé qui, sur le papier, fait peur. Pourtant, le mélange assumé entre « le Cercle des poètes disparus » et « Billy Elliot » surprend agréablement grâce à la mise en scène fluide de l’autrice de « Sage-homme ».
+
+Publicité
+
+Son regard sans insistance fait mouche, surtout lorsqu’il se pose sur ses acteurs, le prometteur Joachim Arseguel, ainsi que José Garcia, excellent en prof faillible et engagé.
+
+Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Compte-tenu du refus du dépôt de cookies que vous avez exprimé, afin de respecter votre choix, nous avons bloqué la lecture de cette vidéo. Si vous souhaitez continuer et lire la vidéo, vous devez nous donner votre accord en cliquant sur le bouton ci-dessous. Lire la vidéo
+
+◗ Mercredi 23 juillet à 22h30 sur Canal+ Cinéma(s). Comédie dramatique de Jennifer Devoldère (2024). Avec José Garcia, Joachim Arseguel, Aure Atika. 93 min. (Disponible à la demande sur myCANAL).",112,confidence_weighted,"Le bitcoin et les cryptomonnaies plus généralement ont le vent en poupe, portées par l'optimisme des États-Unis où Donald Trump est particulièrement favorable au secteur. Le bitcoin et les cryptomonnaies plus généralement ont le vent en poupe, portées par l'optimisme des États-Unis où Donald Trump est particulièrement favorable au secteur. Le bitcoin et les cryptomonnaies plus généralement ont le vent en poupe, portées par l'optimisme des États-Unis où Donald Trump est particulièrement favorable au secteur. Le bitcoin et les cryptomonnaies plus généralement ont le vent en poupe, portées par l'optimisme des États-Unis où Donald Trump est particulièrement favorable au secteur. Le bitcoin et les cryptomonnaies plus généralement ont le vent en poupe, portées par l'optimisme des États-Unis où Donald Trump est particulièrement favorable au secteur. Le leader des cryptomonnaies a dépassé pour la première fois les 120 000 dollars en bourse le 14 juillet. L'ether, deuxième monnaie numérique la plus cée, dépassait quant à elle les 3 000 $. Mais cette vague d'optimisme s'étend-elle jusqu'à la France ? Le leader des cryptomonnaies a dépassé pour la première fois les 120 000 dollars en bourse le 14 juillet. L'ether, deuxième monnaie numérique la plus cée, dépassait quant à elle les 3 000 $. Mais cette vague d'optimisme s'étend-elle jusqu'à la France ? Le leader des cryptomonnaies a dépassé pour la première fois les 120 000 dollars en bourse le 14 juillet. L'ether, deuxième monnaie numérique la plus cée, dépassait quant à elle les 3 000 $. Mais cette vague d'optimisme s'étend-elle jusqu'à la France ? Le leader des cryptomonnaies a dépassé pour la première fois les 120 000 dollars en bourse le 14 juillet. L'ether, deuxième monnaie numérique la plus cée, dépassait quant à elle les 3 000 $. Mais cette vague d'optimisme s'étend-elle jusqu'à la France ? Le leader des cryptomonnaies a dépassé pour la première fois les 120 000 dollars en bourse le 14 juillet. L'ether, deuxième monnaie numérique la plus cée, dépassait quant à elle les 3 000 $. Mais cette vague d'optimisme s'étend-elle jusqu'à la France ?",0.3111,0.8913,re_summarize,cw_critical_with_text,True,True,fr,False,0.0159574468085106
+60_confidence_weighted,CRITICAL,False,0.1695250737293897,0.2,0.3610008405892727,0.8300821781158447,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,5647e002a835b567,0,,,5647e002a835b567,5647e002a835b567,"« Avoir un restaurant de plage, c’est incroyable » : Kalypso, la délicieuse cabane de plage",https://www.nouvelobs.com/tendances/20250725.OBS106203/avoir-un-restaurant-de-plage-c-est-incroyable-kalypso-la-delicieuse-cabane-de-plage.html,60,"Tanguy Thomassin ouvre quelques huîtres pour le service de midi, sur la terrasse de son restaurant, le 16 juin 2025. LOUISE QUIGNON POUR « LE NOUVEL OBS »
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+Pour aller plus loin
+
+Plantons déjà le décor : la plage de Saint-Sieux, dans les Côtes-d’Armor. Partout la mer, devant et de tous les côtés. En face l’archipel des Ebihens, que l’on peut rejoindre un peu plus loin à pied. Et sur le sable, Kalypso La Cabane : la dénomination de cabane n’est pas un euphémisme, mais bien l’esprit de ce restaurant, ancien snack de plage qui a été rasé puis re-construit avec l’aide de beaucoup d’ingéniosité, de frères et d’amis. Cela donne une salle en longueur avec une grande baie vitrée, ouverte sur les embruns, des chaises et des fauteuils en bois, un mur de miroirs dans lequel se reflète l’eau, et la grande cuisine en enfilade. Une pure vision de villégiature (1).
+
+Publicité
+
+Pour Tanguy Thomassin, la « cabane » est un aboutissement, lui qui adolescent travaillait dans une poissonnerie du marché de Dinard et vendait des saint-jacques de plongée. Après un master dans le vin, à tout juste 22 ans, il monte sa première adresse à Dinard, l’Oyster Club, où il fait tout, tout seul, avec une simple carte de fruits de mer. Suit une seconde adresse sur le même modèle à Paris. Sa compagne, Adèle Grunberger, qui travaille alors …",60,confidence_weighted,"Sur le marché des box internet avec la fibre, deux offres se démarquent actuellement par leur prix attractif de seulement 19,99 € par mois : la RED Box sans engagement de RED by SFR et la série spéciale Freebox Révolution Light de Free. Sur le marché des box internet avec la fibre, deux offres se démarquent actuellement par leur prix attractif de seulement 19,99 € par mois : la RED Box sans engagement de RED by SFR et la série spéciale Freebox Révolution Light de Free. Sur le marché des box internet avec la fibre, deux offres se démarquent actuellement par leur prix attractif de seulement 19,99 € par mois : la RED Box sans engagement de RED by SFR et la série spéciale Freebox Révolution Light de Free. Sur le marché des box internet avec la fibre, deux offres se démarquent actuellement par leur prix attractif de seulement 19,99 € par mois : la RED Box sans engagement de RED by SFR et la série spéciale Freebox Révolution Light de Free. Sur le marché des box internet avec la fibre, deux offres se démarquent actuellement par leur prix attractif de seulement 19,99 € par mois : la RED Box sans engagement de RED by SFR et la série spéciale Freebox Révolution Light de Free. La RED Box sans engagement de Red par SFR et la série spéciale Freebox Révolution Light de Free. Les deux offres se démarquent actuellement par leur prix attractif de 19,99 € par mois. Le prix de la Boxe n'a cessé de baisser ces derniers mois, mais il est désormais proposé à 19,99 $. Pour faciliter votre déplacement, Red propose de rembourser jusqu’à 100 € sur les frais de résiliation de votre ancien opérateur. La RED Box sans engagement de Red par SFR et la série spéciale Freebox Révolution Light de Free. Les deux offres se démarquent actuellement par leur prix attractif de 19,99 € par mois. Le prix de la Boxe n'a cessé de baisser ces derniers mois, mais il est désormais proposé à 19,99 $. Pour faciliter votre déplacement, Red propose de rembourser jusqu’à 100 € sur les frais de résiliation de votre ancien opérateur. La RED Box sans engagement de Red par SFR et la série spéciale Freebox Révolution Light de Free. Les deux offres se démarquent actuellement par leur prix attractif de 19,99 € par mois. Le prix de la Boxe n'a cessé de baisser ces derniers mois, mais il est désormais proposé à 19,99 $. Pour faciliter votre déplacement, Red propose de rembourser jusqu’à 100 € sur les frais de résiliation de votre ancien opérateur. La RED Box sans engagement de Red par SFR et la série spéciale Freebox Révolution Light de Free. Les deux offres se démarquent actuellement par leur prix attractif de 19,99 € par mois. Le prix de la Boxe n'a cessé de baisser ces derniers mois, mais il est désormais proposé à 19,99 $. Pour faciliter votre déplacement, Red propose de rembourser jusqu’à 100 € sur les frais de résiliation de votre ancien opérateur. La RED Box sans engagement de Red par SFR et la série spéciale Freebox Révolution Light de Free. Les deux offres se démarquent actuellement par leur prix attractif de 19,99 € par mois. Le prix de la Boxe n'a cessé de baisser ces derniers mois, mais il est désormais proposé à 19,99 $. Pour faciliter votre déplacement, Red propose de rembourser jusqu’à 100 € sur les frais de résiliation de votre ancien opérateur.",0.361,0.8301,re_summarize,cw_critical_with_text,True,True,fr,False,0.0220994475138121
+70_confidence_weighted,CRITICAL,False,0.3903777112279619,0.4,0.4171840718814305,0.805952250957489,4,0.0,Grade C non production ready - traitement ML critique,C,False,1.0,af6c35080467f02e,0,,,af6c35080467f02e,af6c35080467f02e,"Chantal et son mari, 80 ans, se sont fait voler 120 000 euros par un faux conseiller bancaire (et leur banque ne veut rien rembourser)",https://www.nouvelobs.com/justice/20250725.OBS106193/chantal-et-son-mari-80-ans-se-sont-fait-voler-120-000-euros-par-un-faux-conseiller-bancaire-et-leur-banque-ne-veut-rien-rembourser.html,70,"Les deux quadragénaires ont vu la totalité de leur compte courant s’évaporer à cause de faux conseillers bancaires DADDY CLOCK POUR LE NOUVEL OBS
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+C’était un appel inattendu, d’un homme à la voix calme et posée, du genre à vous donner confiance. « Il s’est présenté à mon mari comme faisant partie du service de la lutte contre la fraude de notre banque. Il a dit qu’il voyait des paiements suspects sur notre compte, des règlements d’environ 800 euros sur Booking.com et sur Airbnb, que nous n’avions pas faits et qu’il allait donc intercepter », raconte Chantal (le prénom a été changé), dont le verbe clair ne trahit pas ses 80 ans. Les époux, qui ont 120 000 euros dormant sur leur compte courant, sont inquiets pour leurs économies. Nous sommes à quelques semaines de Noël, avec ses incontournables dépenses pour les agapes familiales et les cadeaux aux petits-enfants. Mais la voix au bout du fil est rassurante, pro, déterminée. Alors ce couple de personnes âgées de Thonon-les-Bains ne se méfie pas outre mesure. D’autant qu’après l’appel a suivi un mail ressemblant parfaitement à ceux de la BNP, avec « le bon logo, sans aucune faute d’orthographe ». Le conseiller rappelle, expliquant qu’il faut d’urgence transférer l’argent sur un nouveau compte bien intitulé à leur nom, l’ancien étant désormais piraté. « En tout, nous avons viré les 120 000 euros en sept virements, sur deux-trois jours. Cet homme nous a rappelés plusieurs fois, était très courtois, sympathique même. Je lui ai dit que c’était gentil de veiller sur notre patrimoine, raconte Chantal, toujours stupéfaite de l’audace de l’escroc. Nous n’avons jamais eu le moindre doute. Ces arnaqueurs sont très habiles. »
+
+Publicité
+
+La banque leur propose 8 000 euros de remboursement
+
+Mais quand les époux se reconnectent au site de la BNP, c’est la stupéfaction. Leur compte courant est vide ; le compte nouvellement créé n’apparaît plus. « J’ai contacté le responsable de notre banque, qui nous a dit que nous avions été victimes d’une fraude, que l’argent était perdu, que l’on ne pouvait rien faire. » Pour eux, cette réponse de la banque est vécue comme une double peine : ils a…",70,confidence_weighted,"Chine et l’Union européenne (UE) ne sont pas les seuls à faire pression sur la Chine pour que celle-ci s’engage. Chine et l’Union européenne (UE) ne sont pas les seuls à faire pression sur la Chine pour que celle-ci s’engage. Chine et l’Union européenne (UE) ne sont pas les seuls à faire pression sur la Chine pour que celle-ci s’engage. Chine et l’Union européenne (UE) ne sont pas les seuls à faire pression sur la Chine pour que celle-ci s’engage. Chine et l’Union européenne (UE) ne sont pas les seuls à faire pression sur la Chine pour que celle-ci s’engage. Le sommet est censé célébrer le 50e anniversaire des relations diplomatiques entre l'UE et la Chine. Les dirigeants sont arrivés avec une longue liste de contentieux, qu'ils aborderont donc à Pékin ce jeudi 24 juillet. Le sommet est censé célébrer le 50e anniversaire des relations diplomatiques entre l'UE et la Chine. Les dirigeants sont arrivés avec une longue liste de contentieux, qu'ils aborderont donc à Pékin ce jeudi 24 juillet. Le sommet est censé célébrer le 50e anniversaire des relations diplomatiques entre l'UE et la Chine. Les dirigeants sont arrivés avec une longue liste de contentieux, qu'ils aborderont donc à Pékin ce jeudi 24 juillet. Le sommet est censé célébrer le 50e anniversaire des relations diplomatiques entre l'UE et la Chine. Les dirigeants sont arrivés avec une longue liste de contentieux, qu'ils aborderont donc à Pékin ce jeudi 24 juillet. Le sommet est censé célébrer le 50e anniversaire des relations diplomatiques entre l'UE et la Chine. Les dirigeants sont arrivés avec une longue liste de contentieux, qu'ils aborderont donc à Pékin ce jeudi 24 juillet.",0.4172,0.806,re_summarize,cw_critical_with_text,True,True,fr,False,0.0216450216450216
+73_confidence_weighted,CRITICAL,False,0.1,0.2,0.3056199340790592,0.6689532995223999,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,cb752b34f63df7e2,0,,,cb752b34f63df7e2,cb752b34f63df7e2,"Plus de décès que de naissances en France : « Ce n’est pas un accident statistique, mais un signal démographique fort »",https://www.nouvelobs.com/societe/20250724.OBS106190/plus-de-deces-que-de-naissances-en-france-ce-n-est-pas-un-accident-statistique-mais-un-signal-demographique-fort.html,73,"D’après les chiffres de l’Insee, pour la première fois depuis la Seconde Guerre mondiale, la France a enregistré fin mai davantage de décès que de naissances sur douze mois. Un basculement qui n’est pas sans conséquence sur le modèle social français, analyse Didier Breton, démographe à l’INED.",73,confidence_weighted,"La série ProArt d'Asus se compose d’ordinateurs portables élégants dotés de la technologie DLSS 3 (Deep Learning Super Sampling). La série ProArt d'Asus se compose d’ordinateurs portables élégants dotés de la technologie DLSS 3 (Deep Learning Super Sampling). La série ProArt d'Asus se compose d’ordinateurs portables élégants dotés de la technologie DLSS 3 (Deep Learning Super Sampling). La série ProArt d'Asus se compose d’ordinateurs portables élégants dotés de la technologie DLSS 3 (Deep Learning Super Sampling). La série ProArt d'Asus se compose d’ordinateurs portables élégants dotés de la technologie DLSS 3 (Deep Learning Super Sampling). Le nouveau ProArt P16 d'Asus est alimenté par AMD. Il s'illustre par la puissance et la performance, dans une esthétique élégante. L'écran ultra brillant a tendance à éblouir. Le nouveau ProArt P16 d'Asus est alimenté par AMD. Il s'illustre par la puissance et la performance, dans une esthétique élégante. L'écran ultra brillant a tendance à éblouir. Le nouveau ProArt P16 d'Asus est alimenté par AMD. Il s'illustre par la puissance et la performance, dans une esthétique élégante. L'écran ultra brillant a tendance à éblouir. Le nouveau ProArt P16 d'Asus est alimenté par AMD. Il s'illustre par la puissance et la performance, dans une esthétique élégante. L'écran ultra brillant a tendance à éblouir. Le nouveau ProArt P16 d'Asus est alimenté par AMD. Il s'illustre par la puissance et la performance, dans une esthétique élégante. L'écran ultra brillant a tendance à éblouir.",0.3056,0.669,edit,cw_critical_no_text,True,False,en,True,0.0
+108_confidence_weighted,CRITICAL,False,0.1609882364573335,0.2,0.306892690241785,0.8918063044548035,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,f60056647b2e6c04,0,,,f60056647b2e6c04,f60056647b2e6c04,Pédocriminel arrêté de justesse près d’Orléans : « C’est vraiment monsieur Tout-le-Monde »,https://www.nouvelobs.com/justice/20250723.OBS106155/pedocriminel-arrete-de-justesse-pres-d-orleans-c-est-vraiment-monsieur-tout-le-monde.html,108,"L’homme a été interpellé grâce à un enquêteur infiltré sur des forums pédocriminels. FOTOGRAV DI ANTONIO GRAVANTE/SCI / SCIENCE PHOTO LIBRARY VIA AFP
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+Il projetait de kidnapper, violer et tuer une fillette d’une dizaine d’années, selon les enquêteurs. Grâce aux services de police, il n’en aura pas eu le temps. En moins de vingt-quatre heures, mi-juin, un homme d’une cinquantaine d’années vivant près d’Orléans (Loiret), a été identifié, interpellé puis mis en examen pour « association de malfaiteurs en vue de commettre un crime », « instigation d’une personne à commettre une infraction sexuelle sur mineur », mais aussi pour « détention, fixation, enregistrement et diffusion d’images pédopornographiques », a révélé Franceinfo mardi 22 juillet. Il a été placé en détention provisoire le 23 juin.
+
+Publicité
+
+Une prouesse qui n’aurait pas été possible sans les compétences d’un policier infiltré de l’Office central de Lutte contre les Violences faites aux Mineurs (Ofmin), qui a identifié cet homme sur un forum pédocriminel du darkweb. Déjà condamné pour détention d’images pédopornographiques, le suspect projetait, selon les enquêteurs, de s’en prendre à une fillette vivant près de chez lui dont il connaît la famille. Chez lui, les enquêteurs ont décou…",108,confidence_weighted,"C’est ce que révèlent les chiffres mensuels publiés par l’Institut national de la statistique et des études économiques (Insee) du 1er juin 2024 au . C’est ce que révèlent les chiffres mensuels publiés par l’Institut national de la statistique et des études économiques (Insee) du 1er juin 2024 au . C’est ce que révèlent les chiffres mensuels publiés par l’Institut national de la statistique et des études économiques (Insee) du 1er juin 2024 au . C’est ce que révèlent les chiffres mensuels publiés par l’Institut national de la statistique et des études économiques (Insee) du 1er juin 2024 au . C’est ce que révèlent les chiffres mensuels publiés par l’Institut national de la statistique et des études économiques (Insee) du 1er juin 2024 au . Sur les douze derniers mois, on dénombre 651 200 décès contre 650 400 naissances. Le président français Emmanuel Macron à un « réarmement démogr ». Sur les douze derniers mois, on dénombre 651 200 décès contre 650 400 naissances. Le président français Emmanuel Macron à un « réarmement démogr ». Sur les douze derniers mois, on dénombre 651 200 décès contre 650 400 naissances. Le président français Emmanuel Macron à un « réarmement démogr ». Sur les douze derniers mois, on dénombre 651 200 décès contre 650 400 naissances. Le président français Emmanuel Macron à un « réarmement démogr ». Sur les douze derniers mois, on dénombre 651 200 décès contre 650 400 naissances. Le président français Emmanuel Macron à un « réarmement démogr ».",0.3069,0.8918,re_summarize,cw_critical_with_text,True,True,fr,False,0.0130718954248366
+119_confidence_weighted,CRITICAL,False,0.1808710512219281,0.2,0.3356055443879788,0.910227596759796,4,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,b4e4db65dfa7463a,0,,,b4e4db65dfa7463a,b4e4db65dfa7463a,"Bruno Retailleau estime que le macronisme « alimente l’impuissance », Elisabeth Borne l’accuse de vouloir « diviser »",https://www.nouvelobs.com/politique/20250723.OBS106144/bruno-retailleau-estime-que-le-macronisme-alimente-l-impuissance-elisabeth-borne-l-accuse-de-vouloir-diviser.html,119,La ministre de l’Education nationale a accusé mardi son collègue du ministère de l’Intérieur de « tenter de diviser le socle commun » et d’« affaiblir les remparts contre les extrêmes » après son entretien dans l’hebdomadaire d’extrême droite « Valeurs Actuelles ».,119,confidence_weighted,"Secret Story, La maison de la tentation, L’île des cœurs brisés, Les secrets de La Maison des secrets, les émissions de téléréalité ont-elles disparu ? Secret Story, La maison de la tentation, L’île des cœurs brisés, Les secrets de La Maison des secrets, les émissions de téléréalité ont-elles disparu ? Secret Story, La maison de la tentation, L’île des cœurs brisés, Les secrets de La Maison des secrets, les émissions de téléréalité ont-elles disparu ? Secret Story, La maison de la tentation, L’île des cœurs brisés, Les secrets de La Maison des secrets, les émissions de téléréalité ont-elles disparu ? Secret Story, La maison de la tentation, L’île des cœurs brisés, Les secrets de La Maison des secrets, les émissions de téléréalité ont-elles disparu ? La « Love Room » a été rasée de la Maison des secrets sur TF1. On peut voir les candidats dire qu'ils ne sont pas monogames, et observer la relation se déployer (ou non). La « Love Room » a été rasée de la Maison des secrets sur TF1. On peut voir les candidats dire qu'ils ne sont pas monogames, et observer la relation se déployer (ou non). La « Love Room » a été rasée de la Maison des secrets sur TF1. On peut voir les candidats dire qu'ils ne sont pas monogames, et observer la relation se déployer (ou non). La « Love Room » a été rasée de la Maison des secrets sur TF1. On peut voir les candidats dire qu'ils ne sont pas monogames, et observer la relation se déployer (ou non). La « Love Room » a été rasée de la Maison des secrets sur TF1. On peut voir les candidats dire qu'ils ne sont pas monogames, et observer la relation se déployer (ou non).",0.3356,0.9102,edit,cw_critical_no_text,True,False,fr,False,0.0
+9_adaptive,CRITICAL,False,0.1,0.2,0.0960426330566406,0.7991381883621216,2,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,c0b9d27bbaa29e21,0,,,c0b9d27bbaa29e21,c0b9d27bbaa29e21,UK condemns Hong Kong cash offer for help in arresting activists,https://www.bbc.com/news/articles/cdx069we39xo,9,"UK condemns Hong Kong cash offer for help in arresting activists
+
+A demonstrator holds a flag during a protest supporting the 45 pro-democracy activists sentenced to jail by Hong Kong's High Court, outside the Chinese Embassy in London last November
+
+China has denounced as ""interference"" criticism over this type of appeal, which it has made three times previously .
+
+People are being offered between $25,000 (HK$200,000) and $125,000 for information leading to the arrest of 19 individuals, all of whom are pro-democracy activists living abroad.
+
+In a joint statement, Foreign Secretary David Lammy and Home Secretary Yvette Cooper described the move as ""another example of transnational repression"".
+
+The UK has condemned the latest cash offer from Hong Kong authorities for people who help in the arrest of pro-democracy activists living in Britain.
+
+The 19 people are accused of violating Beijing's national security law imposed in 2020 in response to the 2019 anti-government protests that rocked the city for months.
+
+The amounts on offer vary depending on the individual. Among the highest offers on the list are those for Choi Ming-da and Fok Ka-chi, who Hong Kong police said operated a social media channel named ""Tuesdayroad"". Politician Nathan Law – who had been a lawmaker on the Legislative Council of Hong Kong – and activist and commentator Yuan Gong-Yi also appear on the lists.
+
+The first such rewards were issued in July and December 2023. They targeted Nathan Law - who told the BBC that his life became more dangerous after a bounty was announced - and Simon Cheng, a former UK consulate employee detained in 2019 in a high-profile case.
+
+The third series of rewards targeted six pro-democracy activists living in the UK and Canada, including Tony Chung, the former leader of a pro-independence group.
+
+A special visa scheme introduced in 2021 saw around 150,000 Hong Kong residents move to the UK, according to the Home Office.
+
+In November last year a Hong Kong court sentenced dozens of pro-democracy leaders to years in jail for subversion, following a controversial national security trial.
+
+In their statement in response to the latest bounty, Ms Cooper and Mr Lammy said ""this government will continue to stand with the people of Hong Kong, including those who have made the UK their home. We take the protection of their rights, freedoms, and safety very seriously.""
+
+Their joint statement added: ""The UK is committed to human rights, the rule of law, and the safety of all individuals in the UK. That's why we have taken further steps to complete the severing of ties between the UK and Hong Kong extradition systems by removing Hong Kong from the Extradition Act 2003.""",9,adaptive,Par Le Nouvel Obs avec é le à 21h01 Lecture : 2 min. Illustration de la 49e édition du Festival International de l’édition (SNE) n’a pas donné suite.,0.096,0.7991,edit,adaptive_edit_rule,True,True,en,False,0.0
+171_adaptive,CRITICAL,False,0.1,0.2,0.0960426330566406,0.7991381883621216,2,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,f86a025051ba7281,0,,,f86a025051ba7281,f86a025051ba7281,"Emmanuel Macron, Conseil constitutionnel et RIP : les recours contre la loi Duplomb au-delà du débat à l’Assemblée",https://www.nouvelobs.com/politique/20250721.OBS106084/emmanuel-macron-conseil-constitutionnel-et-rip-les-recours-contre-la-loi-duplomb-au-dela-du-debat-a-l-assemblee.html,171,"Un rassemblement contre la proposition de loi Duplomb devant l’Assemblée nationale, à Paris, le 27 mai 2025. SEVGI/SIPA
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+C’est bien beau les pétitions… surtout quand elles atteignent, comme l’initiative lancée le 10 juillet par une étudiante demandant l’abrogation de la loi Duplomb, texte à l’origine de la réintroduction de l’acétamipride, pesticide de la famille des néonicotinoïdes, plus de 1,3 million de signatures sur le site de l’Assemblée nationale – selon un décompte arrêté ce lundi 21 juillet à la mi-journée. Le seuil des 500 000 signatures pouvant ouvrir la voie à une discussion sur le bien-fondé de ce texte dans l’Hémicycle ayant été largement franchi et la présidente de la chambre basse du Parlement, Yaël Braun-Pivet, y étant « favorable », un débat pourrait voir lieu entre les députés. Ce qui constituerait une première dans l’histoire de la Ve République. Ce sera à la conférence des présidents de l’Assemblée, qui fixe l’agenda, d’en décider mi-septembre lors de la rentrée parlementaire. Mais cette discussion en séance publique ne permettra pas a priori un réexamen ou une abrogation de cette loi agricole adoptée le 8 juillet et décriée pour son impact environnemental.
+
+Publicité
+
+Recours au président de la République, examen par le Conseil constitutionnel ou référendum d’initiative partagée (RIP) : au-delà de l’Hémicycle, il existe d’autres voies de recours pour les opposants à la loi Duplomb, au vu du nombre record de personnes mobilisées contre ce texte. Voilà peut-être pourquoi le sénateur Les Républicains Laurent Duplomb, à l’initiative de la loi, a changé de discours, passant d’un bref « ça ne m’inspire pas grand-ch…",171,adaptive,Par Le Nouvel Obs avec é le à 21h01 Lecture : 2 min. Illustration de la 49e édition du Festival International de l’édition (SNE) n’a pas donné suite.,0.096,0.7991,edit,adaptive_edit_rule,True,True,fr,False,0.0059523809523809
+23_adaptive,CRITICAL,False,0.1083521854877472,0.2,0.097365864767478,0.961173951625824,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,1513e5c48872c7b7,0,,,1513e5c48872c7b7,1513e5c48872c7b7,Top 10 AI Tools That Will Transform Your Content Creation in 2025,https://techncruncher.blogspot.com/2025/01/top-10-ai-tools-that-will-transform.html,23,"Top 10 AI Tools That Will Transform Your Content Creation in 2025
+
+
+
+
+
+Looking to level up your content creation game in 2025? You're in the right place! The digital landscape has evolved dramatically, and AI tools have become essential for creators who want to stay ahead of the curve. In this guide, I'll show you the top 10 AI tools that are revolutionizing content creation and making creators' lives easier.
+
+Why You Need These AI Tools in 2025
+
+Content creation has become more demanding than ever. Whether you're a social media influencer, marketer, or business owner, keeping up with the constant need for fresh, engaging content can be overwhelming. That's where AI tools come in – they're not just fancy tech, they're your secret weapon for creating better content faster.
+
+Let's Dive Into the Top 10 AI Tools for 2025
+
+
+
+
+
+1. ChatGPT : Content Ideation and Scriptwriting
+
+What Makes It Special: ChatGPT has evolved into a comprehensive content creation assistant by combining advanced language understanding with specialized content optimization features. Its ability to generate, edit, and optimize content while maintaining brand voice and industry expertise makes it an essential tool for creators who need to produce high-quality written content at scale.
+
+Key Features:
+
+Advanced content generation
+
+SEO optimization
+
+Brand voice maintenance
+
+Research capabilities
+
+Multi-format adaptation
+
+Pricing:
+
+Free tier available
+
+Plus: $20/month
+
+Pro: $200/month
+
+Perfect For: Content writers, marketers, and businesses needing consistent, high-quality written content.
+
+2. Canva Magic Studio : Visual Design and Social Media Content Creation
+
+What Makes It Special: Canva Magic Studio has transformed the graphic design landscape by combining its user-friendly interface with powerful AI capabilities. The platform's ability to understand design principles and automatically generate on-brand content while maintaining professional aesthetics makes it accessible for beginners while providing enough sophistication for professional designers.
+
+Key Features:
+
+AI design generation
+
+Brand kit integration
+
+Magic resize
+
+Animation tools
+
+Template library
+
+Pricing:
+
+Free tier available
+
+Pro: $6.50/user/month
+
+Teams: $5/user/month
+
+Perfect For: Small businesses, social media managers, and anyone needing quick, professional-looking designs.
+
+3. RunwayML : AI Video Generator
+
+What Makes It Special: RunwayML stands out as the ultimate video creation powerhouse by combining professional-grade effects with user-friendly AI technology. Its game-changing ability to manipulate video content – from changing weather effects with a text prompt to removing objects seamlessly in real-time – makes it indispensable for creators who want to produce high-quality video content without getting bogged down by technical complexities.
+
+Key Features:
+
+Advanced video generation & editing
+
+Real-time visual effects
+
+Smart motion tracking
+
+Green screen effects without actual green screen
+
+AI-powered editing suite
+
+Pricing:
+
+Free tier available
+
+Standard: $12/month
+
+Pro: $28/month
+
+Unlimited: $76/month
+
+Enterprise: Custom Price
+
+Perfect For: Video creators, YouTubers, and social media managers who want to create professional-quality videos quickly.
+
+4. MidJourney : AI Art Generation
+
+What Makes It Special: Midjourney V6 has redefined AI image generation by mastering the nuances of professional photography and artistic style. Its ability to understand and execute complex creative directions – from specific lighting conditions to branded visual styles – while maintaining consistent quality across multiple generations makes it the go-to tool for creators who need stunning visuals that align perfectly with their brand identity.
+
+Key Features:
+
+Photorealistic image generation
+
+Advanced style control
+
+Quick generation time
+
+Commercial usage rights
+
+Strong community support
+
+Pricing:
+
+Basic: $10/month
+
+Standard: $30/month
+
+Pro: $60/month
+
+Mega: $120/month
+
+Perfect For: Social media managers, digital marketers, and anyone needing professional-quality visuals consistently.
+
+5. Synthesia : AI Avatar-Based Video Creation
+
+What Makes It Special: Synthesia has transformed video creation by making it possible to create professional-looking AI avatar videos in minutes. Its ability to generate natural-looking presentations in multiple languages with synchronized lip movements and gestures makes it invaluable for creators who need to produce video content at scale without the traditional filming process.
+
+Key Features:
+
+AI avatar Video creation
+
+Multi-language support
+
+Custom avatar options
+
+Professional templates
+
+Script to video conversion
+
+Pricing:
+
+Free tier available
+
+Starter: $18/month
+
+Creator: $64/month
+
+Enterprise: Custom pricing
+
+Perfect For: Businesses and educators creating training videos, presentations, and multilingual content.
+
+6. Descript : Podcast and Video Editing with Transcription Features
+
+What Makes It Special: Descript has transformed audio and video editing by making it as simple as editing a text document. Its innovative approach to media editing, combined with powerful AI features like automatic transcription and filler word removal, makes professional-quality editing accessible to creators of all skill levels.
+
+Key Features:
+
+Text-based video editing
+
+Automatic transcription
+
+Filler word removal
+
+Screen recording
+
+Collaborative editing
+
+Pricing:
+
+Hobbyist: $12/month
+
+Creator: $24/month
+
+Business: $40/month
+
+Enterprise: Custom pricing
+
+Perfect For: Podcasters, video creators, and teams needing efficient audio/video editing solutions.
+
+7. ElevenLabs : AI VOICE GENERATION
+
+What Makes It Special: ElevenLabs has revolutionized voice synthesis by achieving unprecedented levels of natural speech quality and emotional expression. Its ability to clone voices accurately and generate multiple languages with proper accents and inflections makes it the ultimate tool for creators who need professional-quality voiceovers without the traditional recording process or voice actor limitations.
+
+Key Features:
+
+Ultra-realistic voice synthesis
+
+Voice cloning capability
+
+Multi-language support
+
+Emotion control
+
+Real-time generation
+
+Pricing:
+
+Free tier available
+
+Starter: $5/month
+
+Creator: $11/month
+
+Pro: $99/month
+
+Scale: $330/month
+
+Business: $1321/month
+
+Enterprise: Custom pricing
+
+Perfect For: Podcasters, video creators, and content creators needing professional voiceovers in multiple languages.
+
+8. Tribescaler : Viral Content and Headline Optimization
+
+What Makes It Special: Tribescaler brings a scientific approach to viral content creation by combining trend analysis with content optimization. Its powerful AI engine analyzes successful content patterns across platforms and provides actionable insights to help creators craft content that's more likely to go viral, while maintaining authenticity and audience engagement.
+
+Key Features:
+
+Viral content prediction
+
+Trend analysis
+
+Content optimization
+
+Performance tracking
+
+Multi-platform scheduling
+
+Pricing:
+
+Free tier available
+
+Pro: $49/month
+
+Perfect For: Content creators and social media managers focused on maximizing reach and engagement.
+
+9. Clickable : Automated Ad Creation and Optimization
+
+What Makes It Special: Clickable revolutionizes ad creation by seamlessly blending data-driven insights with creative automation. Its ability to analyze brand assets and automatically generate platform-optimized ad variations while maintaining brand voice transforms the tedious process of ad creation into a streamlined, results-driven workflow that consistently delivers high-performing content.
+
+Key Features:
+
+Automated ad creation
+
+Multi-platform optimization
+
+Built-in A/B testing
+
+Performance analytics
+
+Template library
+
+Perfect For: Digital marketers and businesses looking to scale their ad production efficiently.
+
+What Makes It Special: CopyAI has established itself as a powerhouse in AI-powered copywriting by offering specialized content generation for various marketing formats. Its sophisticated understanding of marketing psychology and brand voice, combined with its ability to generate compelling copy across multiple formats and industries, makes it invaluable for marketers and content creators who need to produce engaging, conversion-focused content at scale.
+
+Key Features:
+
+Advanced marketing copy generation
+
+Multiple content type templates
+
+Brand voice customization
+
+Multilingual support
+
+A/B testing variations
+
+Pricing:
+
+Free tier available
+
+Pro: $49/month
+
+Advanced: $249/month
+
+Enterprise: Custom pricing
+
+Perfect For: Marketing teams, copywriters, and businesses needing high-converting marketing copy across multiple channels.
+
+Conclusion
+
+The AI tools listed here are revolutionizing the content creation landscape in 2025, making it easier than ever to produce high-quality, engaging, and impactful content. By integrating these tools into your workflow, you can save time, unleash your creativity, and achieve better results.
+
+AI doesn't replace creativity; it amplifies it. As a content creator, your unique voice and vision are irreplaceable. These tools serve as enablers, helping you focus on what you do best—creating. Explore, experiment, and innovate. The future of content creation is here, and it's brimming with possibilities.
+
+Embrace these technologies, stay ahead of the curve, and watch your creative potential soar. The only limit is your imagination!
+
+Note:
+
+All features and pricing information are subject to change. Please verify current details with the respective platforms, Also this article contain affiliate links which means we make a small comission if yo buy any premium plan from our links
+
+Pricing updated on 01/02/ 2025",23,adaptive,"Par Le Nouvel Obs avec AFP Publié le à 13h25 , mis à jour le : à 16h17 Lecture : 2 min. Bertrand Cantat au festival des Eurockéennes de Belfort, le .",0.0974,0.9612,edit,adaptive_edit_rule,True,True,en,False,0.0
+55_adaptive,CRITICAL,False,0.12,0.2,0.1648215651512146,1.0,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,6ad584baee3e5434,0,,,6ad584baee3e5434,6ad584baee3e5434,« Mulan » : pour l’honneur de sa famille,https://www.nouvelobs.com/teleobs/20250725.OBS106209/mulan-pour-l-honneur-de-sa-famille.html,55,"Yifei Liu dans « Mulan ». JASIN BOLAND/2019 DISNEY ENTERPRISES, INC.
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+Remake en live du dessin animé de 1998, en mieux. C’est du Disney à la sauce chinoise, avec le menu complet, production massive (le générique final est interminable), grands sentiments, moments fun et un doigt de nunucherie.
+
+Mulan (Liu Yifei), jeune fille hyper-super-top-douée pour les arts martiaux, se fait passer pour un homme et va combattre les salauds qui veulent la peau de l’empereur, Fils du Ciel, un peu comme jadis la Mademoiselle de Maupin de Théophile Gautier. Non seulement Mulan est agile, mais elle est jolie comme un cœur. On l’aime forcément.
+
+Publicité
+
+Les combats sont superbes, les paysages, divins, les costumes, nickel, les acteurs, parfaits. Alors ? Alors la réalisation. Niki Caro, cinéaste néo-zélandaise, fait le job, a minima. Une mise en scène inspirée aurait été la bienvenue. Mais le film est charmant.
+
+◗ Vendredi 25 juillet à 21h10 sur M6. Film d’aventures de Niki Caro (2020). Avec Liu Yifei, Gong Li, Yoson An, Jet Li (1h55).",55,adaptive,"Par Le Nouvel Obs avec é le à 21h30 Lecture : 1 min. Francois Bayrou à l’Elysée, le . J.E.",0.1648,1.0,edit,adaptive_edit_rule,True,True,fr,False,0.0
+166_adaptive,CRITICAL,False,0.12,0.2,0.1648215651512146,1.0,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,9b3f1b1ab89f027c,0,,,9b3f1b1ab89f027c,9b3f1b1ab89f027c,"Le Bloc-notes de Jérôme Garcin : les Schneider, père et fille",https://www.nouvelobs.com/chroniques/20250721.OBS106089/le-bloc-notes-de-jerome-garcin-les-schneider-pere-et-fille.html,166,"Vanessa Schneider fait le portrait de son père, Michel Schneider, dont paraît un livre posthume sur Conrad.",166,adaptive,"Par Le Nouvel Obs avec é le à 21h30 Lecture : 1 min. Francois Bayrou à l’Elysée, le . J.E.",0.1648,1.0,edit,adaptive_edit_rule,True,False,fr,False,0.0
+182_adaptive,CRITICAL,False,0.1083521854877472,0.2,0.097365864767478,0.961173951625824,1,0.0,Grade D non production ready - traitement ML critique,D,False,1.0,2d93580017c5f706,0,,,2d93580017c5f706,2d93580017c5f706,"Roselyne, 54 ans, pensait être en couple avec David Hallyday : elle a versé 60 000 euros à des brouteurs",https://www.nouvelobs.com/justice/20250721.OBS106073/roselyne-54-ans-pensait-etre-en-couple-avec-david-hallyday-elle-a-verse-60-000-euros-a-des-brouteurs.html,182,"Les arnaques aux sentiments, souvent réalisées par des brouteurs d’Afrique de l’Ouest, font des ravages, grâce à des manipulations qui peuvent durer des années. Roselyne est tombée dans ce piège avec une fausse célébrité.",182,adaptive,"Par Le Nouvel Obs avec AFP Publié le à 13h25 , mis à jour le : à 16h17 Lecture : 2 min. Bertrand Cantat au festival des Eurockéennes de Belfort, le .",0.0974,0.9612,edit,adaptive_edit_rule,True,False,fr,False,0.0
+125_adaptive,CRITICAL,False,0.1,0.2,0.1792868459224701,0.8493684530258179,0,1.0018348693847656,Grade D - requires ML validation,D,True,1.0,b389db4ec28884a7,0,,,b389db4ec28884a7,b389db4ec28884a7,Interpol lève la notice rouge visant le militant écologiste Paul Watson,https://www.nouvelobs.com/ecologie/20250722.OBS106138/interpol-leve-la-notice-rouge-visant-le-militant-ecologiste-paul-watson.html,125,"Par Le Nouvel Obs avec AFP
+
+Publié le 22 juillet 2025 à 22h07 , mis à jour le 23 juillet 2025 à 9h45 Lecture : 2 min.
+
+Paul Watson lors d’une conférence à Tours, le 28 juin 2025. CHARLES BURY/SIPA
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+Interpol a levé ce mardi 22 juillet la notice rouge visant à l’arrestation, sur demande du Japon, du militant écologiste américano-canadien Paul Watson, figure de la défense des baleines, a indiqué à l’AFP Me William Julié, l’un de ses avocats.
+
+A lire aussi
+
+« Notice rouge annulée ! Les baleiniers japonais ont été dans mon dos depuis quatorze ans et ma première arrestation à Francfort (Allemagne), en mai 2012 », a salué Paul Watson sur le site internet de sa fondation en faveur des océans, qui porte son nom.
+
+Publicité
+
+« Ça a été une incroyable traque par une nation très puissante, utilisant des ressources illimitées, mais je suis finalement libéré de leur vendetta et de leur persécution incessante », s’est-il encore félicité.
+
+Une arrestation qui serait « disproportionnée »
+
+Un porte-parole d’Interpol, l’organisation internationale de police criminelle, a confirmé à l’AFP que la commission de contrôle des fichiers (CCF) avait « décidé d’effacer » cette notice rouge.
+
+A lire aussi
+
+« Ce n’est pas un jugement sur le fond du dossier, ou sur ces événements qui ont eu lieu en 2010, mais une décision basée sur les règles d’Interpol en matière de gestion des données », a expliqué ce porte-parole. « La décision de la CCF a été prise à la lumière de nouveaux faits, incluant le refus du Danemark d’extrader Paul Watson », a-t-il ajouté.
+
+Selon des extraits de la décision auxquels l’AFP a eu accès, la commission a estimé qu’une arrestation de Paul Watson via cette notice rouge (d’abord suspendue en avril) serait « disproportionnée » au vu des faits reprochés.
+
+Publicité
+
+Pour la CCF, ce dossier a fait preuve d’un « engagement proactif et répété des autorités japonaises », qui « tend à mettre en lumière le caractère stratégique de ce dossier et son importance symbolique », au-delà de son intérêt réel au fond, ce qui « pourrait démontrer l’existence d’éléments politiques autour du dossier ».
+
+« Aspect politique »
+
+Dans un communiqué, Me Julié assure que la CCF a aussi évoqué dans sa décision « la possible seule implication indirecte de Paul Watson (ce qui est contesté), le temps considérable écoulé depuis les faits allégués et le fait que plusieurs autres pays ont refusé d’agir conformément aux demandes nippones d’arrestation ou d’extradition ».
+
+A lire aussi
+
+Me Julié s’est félicité que la CCF souligne « subtilement mais significativement l’aspect politique du dossier ».
+
+Paul Watson, 74 ans, a été détenu au Groenland pendant cinq mois, avant que le Danemark ne rejette une demande d’extradition émanant du Japon, qui l’accuse d’être coresponsable de dommages et blessures à bord d’un navire baleinier japonais en 2010 dans le cadre d’une campagne menée par l’ONG Sea Shepherd. Il a pu rentrer à Paris, où il vit depuis dix ans, le 20 décembre.
+
+Publicité
+
+Interpol émet des notices rouges, qui constituent des demandes de localiser une personne suspecte et de procéder à son arrestation provisoire dans l’attente de son extradition, mais celles-ci n’ont pas le statut de mandat d’arrêt.
+
+« Cette décision met un terme à une tentative injustifiée de criminalisation, et reconnaît ce que nous avons toujours dénoncé : une instrumentalisation de la justice pour protéger les intérêts des baleiniers japonais », a indiqué Sea Shepherd sur X. « Le mandat d’arrêt japonais demeure actif, et tout pays peut encore choisir de l’exécuter », s’est toutefois inquiétée l’ONG.",125,adaptive,Donald Trump au lit avec le diable dans le premier épisode de la saison 27 de South Park. Rien de tel pour comprendre l'Amérique qu'un épisode d'une série culte.,0.1793,0.8494,edit,adaptive_edit_rule,True,True,en,True,0.0
+127_adaptive,CRITICAL,False,0.1,0.2,0.0427785050766221,0.8856436014175415,0,0.0,Grade D - requires ML validation,D,True,1.0,0b488a9b19eada6b,0,,,0b488a9b19eada6b,0b488a9b19eada6b,"Ozzy Osbourne, légende du heavy metal et chanteur de Black Sabbath, est mort",https://www.nouvelobs.com/culture/20250722.OBS106136/ozzy-osbourne-legende-du-heavy-metal-et-chanteur-de-black-sabbath-est-mort.html,127,"Par Le Nouvel Obs avec AFP
+
+Publié le 22 juillet 2025 à 20h26 , mis à jour le 23 juillet 2025 à 9h57 Lecture : 1 min.
+
+Ozzy Osbourne à Berlin, le 8 juillet 2010. STAR PRESS/SIPA
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+Le Britannique Ozzy Osbourne, légende du heavy metal et leader du groupe Black Sabbath, est mort à l’âge de 76 ans, a annoncé ce mardi 22 juillet sa famille dans un communiqué.
+
+« C’est avec une tristesse que les mots ne peuvent exprimer que nous devons annoncer que notre cher Ozzy Osbourne est mort ce matin. Il était entouré de sa famille et d’amour », écrivent sa femme Sharon et ses enfants. « Nous demandons à tous de respecter la vie privée de notre famille en ce moment », ajoutent ses proches.
+
+Publicité
+
+Le chanteur, surnommé le « Prince des ténèbres », souffrait depuis plusieurs années de la maladie de Parkinson.
+
+Un dernier concert début juillet
+
+Le 5 juillet, il avait donné un concert d’adieu avec Black Sabbath à Birmingham en Angleterre, ville d’origine du groupe, devant des dizaines de milliers de fans de metal venus du monde entier.
+
+A lire aussi
+
+« Je vous aime ! » avait lancé de sa voix toujours grinçante le charismatique chanteur à la foule, qui l’a soutenu à chaque seconde de ce « last show », entouré des plus grandes stars du metal, de Metallica à Anthrax. Il avait alors chanté assis, prisonnier de ses tremblements, les yeux rougis cerclés de noir.
+
+Parrain du metal et icône déjantée, Ozzy Osbourne était notamment connu pour avoir croqué la tête d’une chauve-souris vivante en plein concert. Mais aussi pour son émission de téléréalité familiale dans les années 2000, « The Osbournes », un des plus grands succès de MTV, qui lui avait permis de toucher un tout autre public.",127,adaptive,"À gauche, une image publiée sur TikTok le 7 mai montre Satria Arta Kumbara portant l’uniforme indonésien. À droite, il est nécessaire d’autoriser les cookies de mesure d'audience et de publicité.",0.0428,0.8856,edit,adaptive_edit_rule,True,True,fr,False,0.0053475935828877
+160_adaptive,CRITICAL,False,0.1,0.2,0.226674094429157,0.8344650864601135,0,0.0,Grade D - requires ML validation,D,True,1.0,6568364a4f7fbda8,0,,,6568364a4f7fbda8,6568364a4f7fbda8,« Aucun de nous n’a le souvenir d’avoir vu un collaborateur mourir de faim » : la SDJ de l’AFP alerte sur la santé des journalistes à Gaza,https://www.nouvelobs.com/medias/20250721.OBS106095/aucun-de-nous-n-a-le-souvenir-d-avoir-vu-un-collaborateur-mourir-de-faim-la-sdj-de-l-afp-alerte-sur-la-sante-des-journalistes-a-gaza.html,160,"Par Service Actu
+
+Publié le 21 juillet 2025 à 21h16 , mis à jour le 22 juillet 2025 à 8h20 Lecture : 1 min.
+
+Des personnes en deuil se recueillent devant le corps du journaliste palestinien Hassan Eslaiah, tué lors d’une frappe israélienne sur l’hôpital Nasser à Khan Younès, dans le sud de la bande de Gaza, le 13 mai 2025. JEHAD ALSHRAFI/AP/SIPA
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner
+
+« Depuis que l’AFP a été fondée en août 1944, nous avons perdu des journalistes dans des conflits, nous avons eu des blessés et des prisonniers dans nos rangs, mais aucun de nous n’a le souvenir d’avoir vu un collaborateur mourir de faim. » Par ce communiqué, posté ce lundi 21 juillet sur X, la Société des Journalistes (SDJ) de l’Agence France-Presse (AFP) cherche à alerter sur l’état de santé de ses collaborateurs présents dans la bande de Gaza, touchés par la famine.
+
+Depuis que l’AFP a été fondée en août 1944, nous avons perdu des journalistes dans des conflits, nous avons eu des blessés et des prisonniers dans nos rangs, mais aucun de nous n’a le souvenir d’avoir vu un collaborateur mourir de faim.
+
+Nous refusons de les voir mourir. pic.twitter.com/cIEp5PhmNV — La SDJ de l'AFP (@SDJ_AFP) July 21, 2025
+
+Depuis le départ de ses journalistes titulaires de l’enclave courant 2024 – la presse internationale n’est pas autorisée sur le territoire –, l’AFP travaille avec un pigiste texte, trois photographes et six pigistes vidéo. Même s’ils perçoivent un salaire de l’AFP, « il n’y a rien à acheter ou alors à des prix totalement exorbitants », précise le texte de la SDJ, « le plus gros problème est le manque de nourriture et d’eau. »
+
+Publicité
+
+« Nous risquons d’apprendre leur mort à tout moment et cela nous est insupportable. Leurs appels au secours, déchirants, sont désormais quotidiens », s’inquiète l’agence.
+
+« Sortir de cet enfer »
+
+Dans le communiqué, la SDJ prend l’exemple de Bashar, 30 ans, collaborateur pour l’AFP depuis 2010, d’abord comme fixeur puis comme photographe. « Je n’ai plus la force de travailler pour les médias. Mon corps est maigre et je ne peux plus travailler », explique-t-il dans un message publié sur Facebook samedi 19 juillet.
+
+Ce dimanche, Bashar a indiqué à l’un des membres de la SDJ de l’AFP : « Je souhaiterais que M. Macron puisse m’aider à sortir de cet enfer. »
+
+A lire aussi
+
+Selon un décompte de plus de 200 organisations de défense de la liberté de la presse et de rédactions internationales, dont Reporters sans Frontières et du Comité pour la Protection des Journalistes, près de 200 journalistes palestiniens ont été tués en vingt et un mois par l’armée israélienne dans l’enclave, dont au moins 45 dans l’exercice de leur profession. Selon l’ONU, les quelque 2,4 millions d’habitants de Gaza sont menacés de famine.",160,adaptive,"L’intelligence artificielle rejoint plus que jamais la géopolitique. La technologie est pour les États-Unis et son président Donald Trump un moyen d’affirmer sa domination économique et sa supériorité sur la Chine, son premier adversaire. Toute l’actualité de la tech avec TechCrunch.",0.2267,0.8345,edit,adaptive_edit_rule,True,True,fr,False,0.0084388185654008
+147_adaptive,CRITICAL,False,0.12,0.2,0.1040031760931015,1.0,1,0.0,Grade D - requires ML validation,D,True,0.98,e6564e4511d975f9,0,,,e6564e4511d975f9,e6564e4511d975f9,Rachida Dati et Carlos Ghosn renvoyés en procès pour corruption et trafic d’influence,https://www.nouvelobs.com/justice/20250722.OBS106113/rachida-dati-et-carlos-ghosn-renvoyes-en-proces-pour-corruption.html,147,"La ministre de la Culture Rachida Dati et Carlos Ghosn sont renvoyés en procès pour corruption, a appris l’AFP ce mardi de source judiciaire.",147,adaptive,"Un humour qui n'est pas du goût du président des Etats-Unis. Mercredi 23 juillet, la série télévisée d'animation South Park a diffusé le premier épisode de sa 27e saison, intitulé Sermon on the Mount (""Sermon sur la montagne""), avec une cible principale : Donald Trump.",0.104,1.0,edit,adaptive_edit_rule,True,False,en,True,0.0
+57_adaptive,CRITICAL,False,0.12,0.2,0.147315427660942,1.0,0,0.0,Grade D - requires ML validation,D,True,0.98,6f59a7955c7c4b10,0,,,6f59a7955c7c4b10,6f59a7955c7c4b10,"« A Gaza, tu ne deviens pas journaliste parce que tu le veux mais parce que tu le dois »",https://www.nouvelobs.com/monde/20250725.OBS106207/a-gaza-tu-ne-deviens-pas-journaliste-parce-que-tu-le-veux-mais-parce-que-tu-le-dois.html,57,"La journaliste palestinienne Rita Baroud prononce un discours lors du Forum de Paris sur la paix, le 13 juin 2025. THIBAUD MORITZ/AFP
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+Rita Baroud est une jeune Gazaouie originaire du nord de l’enclave palestinienne. Pendant un an et demi, elle a enfilé son gilet presse et a documenté la guerre menée par Israël dans la bande de Gaza. En juin, elle a pu être évacuée avec des membres de sa famille. Désormais, elle continue, depuis la France, à témoigner et documenter.
+
+Publicité
+
+Elle n’avait que 20 ans quand le conflit a éclaté le 7 octobre 2023, après le massacre perpétré par le Hamas dans le sud de l’Etat hébreu. La jeune femme étudiait alors le français et espérait poursuivre ses études à l’étranger. Sa maison familiale, située à Rimal, dans le nord du territoire côtier, a été détruite trois jours après le début de la guerre par un bombardement, laissant ses proches et elle sans ressources. De déplacement en déplacem…",57,adaptive,Les entreprises IA ont trouvé leur champion en la personne de Donald Trump. L’AI Action Plan du président américain leur donne en effet un chèque en blanc pour faire à peu près ce qu’elles veulent. Y compris piller les contenus protégés par le droit d’auteur.,0.1473,1.0,edit,adaptive_edit_rule,True,True,fr,False,0.0
+77_adaptive,CRITICAL,False,0.1199999821186065,0.2,0.0181165495660246,0.9999999403953552,0,0.0,Grade D - requires ML validation,D,True,0.98,079d1e666f0a9185,0,,,079d1e666f0a9185,079d1e666f0a9185,« On a mis au point une thérapie très horizontale » : quand les champignons hallucinogènes combattent la dépendance à l’alcool,https://www.nouvelobs.com/societe/20250724.OBS106186/on-a-mis-au-point-une-therapie-tres-horizontale-quand-les-champignons-hallucinogenes-combattent-la-dependance-a-l-alcool.html,77,"Des Psilocybe cubensis, connus familièrement sous le nom de champignons « magiques » psychédéliques, aux Rose City Laboratories, à Portland (Oregon), le 10 mai 2023. En février 2024, le CHU de Nîmes a entrepris un essai clinique autour de la psilocybine, le principe actif des champignons hallucinogènes, chez des patients atteints de troubles de l’usage d’alcool associés à la dépression. ROBYN BECK/AFP
+
+Lire plus tard Google Actualités Partager Masquer ce message Vous souhaitez partager cet article ? Facebook Bluesky E-mail Copier le lien Saisir ici votre nom Adresse email des ou du destinataire Votre message S’abonner pour lire
+
+Peut-on combattre l’alcoolisme à l’aide de champignons hallucinogènes ? La question n’a rien de farfelu : elle a été explorée scientifiquement – et avec succès – par Amandine Luquiens, psychiatre spécialisée en addictologie au CHU de Nîmes. La parution de son étude pilote ce jeudi 24 juillet dans la revue « Addiction(s) » fera date. Car c’est la première publication de ce type en France depuis plus d’un demi-siècle. Et elle confirme le potentiel médical des psychothérapies augmentées par des substances psychédéliques. Des stratégies de soin non conventionnelles, qui représentent un nouvel espoir en santé mentale.
+
+Publicité
+
+Rappelons que l’alcoolisme est un mal très français : un enjeu de santé publique majeur, sur lequel les soignants sont souvent en impasse thérapeutique. C’est aussi un sujet de grande hypocrisie politique, tant les mesures de prévention et de réduction des risques sont insuffisantes. La surconsommation d’alcool est en effet, dans notre pays, l’une des principales causes d’hospitalisation avec 3,5 millions de buveurs à risque et plus de 42 000 mo…",77,adaptive,"En quête d'économies pour le budget 2026, François Bayrou et sa ministre du Travail veulent réduire le coût de ce dispositif qui permet au salarié de toucher l'allocation chômage, accusé de se substituer à des démissions ou des licenciements. C'est un dispositif populaire, mais dans le viseur.",0.0181,1.0,edit,adaptive_edit_rule,True,True,fr,False,0.0057471264367816
+13_adaptive,CRITICAL,False,0.2374944043159485,0.2,0.3385048985481262,0.994139850139618,1,0.0,Grade D - requires ML validation,D,True,0.95,fecc42217ea92412,0,,,fecc42217ea92412,fecc42217ea92412,Tee time with Trump - striking balls and deals over 18 holes,https://www.bbc.com/news/articles/cly2y4w47deo,13,"Tee time with Trump - striking balls and deals over 18 holes
+
+5 hours ago Share Save Anthony Zurcher North America correspondent Share Save
+
+EPA Trump at his National Golf Club in Sterling, Virginia
+
+Mick Mulvaney thought he had beaten Donald Trump. The president and his White House chief of staff were playing golf at Trump's Bedminster club in 2019, and Mulvaney was up by one stroke with three holes left. ""I slapped him on the shoulder and joked with him, 'I got you today, old man,'"" Mulvaney told the BBC. ""He looked at me, half smiled, half-sneered and just laughed."" The president birdied two of the next three holes and beat Mulvaney by two. Mulvaney, who worked in Trump's White House for three years in his first term, says he played golf with, or in the group just behind, the president around 40 times and never beat the man 21 years his elder. ""Just soul-crushing"" is how he described it. Golf has been a popular activity for many modern American presidents, but none has had quite the same relationship with the sport as Trump, who is in Scotland this weekend for the opening of a new Trump course near Balmedie in Aberdeenshire. For presidents like Barack Obama and George W Bush, golf seemed to serve as a diversion from the burdens of office. For the current president, however, golf is a business venture, a networking opportunity and – as Mulvaney recounts - a fiercely competitive undertaking. On the fairways and greens, he says, the president is focused on the game and has little tolerance for poor shots or slow play. ""In fact, if you are slow,"" Mulvaney said, ""you aren't going to get invited back and might get left behind on the course.""
+
+PA Trump at his course in Ayrshire, UK, in 2023
+
+British golf journalist Kevin Brown experienced that first-hand when he played with Trump on his Balmedie course in 2012. He said he was taking in the scenery on the second hole, when one of the other players in his foursome told him that Trump had asked if he could ""get a move on"". ""He was more focused, head down, motoring on ahead of us,"" Brown said. ""Most of the time, he was just playing his own game and obviously thinking about stuff he had to do."" After the round, however, Brown spoke to Trump for nearly an hour about his connection to golf. He said the future president's passion was clear. ""He's nuts about golf,"" he said. ""He knew the background and history of the game. It was impressive."" Trump, a real-estate developer turned politician, has played golf since his college days and bought his first golf property, Trump International Golf Club in West Palm Beach Florida, in 1999. Trump Golf currently owns 11 courses in the US and three in the UK, manages several others and has plans for new resorts in Oman, Indonesia, Vietnam and Qatar. Golf clubs are a prized possession for Trump – and not always a profit-making one. According to filings with the British government, Trump's Balmedie course lost $1.83m (£1.35m) in 2023 – its 11th-straight year running a deficit. Turnberry, on the other hand, reported about $5m in profit. Trump has at times clashed with local authorities over land use and sought to restrict construction of wind turbines off the coast of his Balmedie property. While his US courses have hosted major professional tournaments, he has long wanted Turnberry, which he will visit this weekend, to be the site of a future British Open Championship. The historic course has hosted four of the prestigious competitions, but none since Trump purchased the property in 2014.
+
+PA Trump with Rupert Murdoch at Trump's golf course in Aberdeen in 2016
+
+According to Brown, Trump is drawn to high-profile golf properties because of the prestige they provide. ""He just likes the quality and the pedigree,"" he said. ""It's about attracting the right people – i.e. filthy rich businessmen with pretty deep pockets."" A single round of golf at Turnberry, for instance, costs around $1,350. Golf has long been an avocation enjoyed by the elite, where the wealthy and the powerful could conduct business and make connections in an exclusive – and, until recently in many cases exclusively white and male – environment. For businessman Trump, it was a pathway to the kind of connections helpful to building his real estate empire. It has offered him a means to connect with American politicians and foreign leaders – even if he did promise in 2016 that he was ""not going to have time to play golf"" if he was ever voted into White House. Early in his first presidential term, Japanese Prime Minister Shinzo Abe gifted Trump a golden golf club. The two would later play five rounds together – forging a friendship that lasted until Abe was assassinated in 2022. Trump's regular golf partners have included close political allies, like South Carolina Senator Lindsey Graham, and Republicans with whom he sought to forge new connections, such as 2016 presidential rival Rand Paul of Kentucky. ""He's a little better golfer than I am, admittedly, but we had a good time,"" Paul said after a 2017 round with the president, adding that the two mostly focused on golf – but also discussed Trump's tax policies.
+
+Getty Images Trump with Abe at Mobara Country Club in Japan in 2019
+
+In March of this year, Trump golfed with Finnish President Alexander Stubb in West Palm Beach, partnering in a club tournament Trump said the two men won. Stubb would later say that they talked about the war in Ukraine, Russia and global security. ""In Finnish history, it's quite rare that the Finnish president has spent so much time with the president of the United States, either physically or on the phone or messaging,"" Stubb told Canadian broadcaster CBC News. It's this kind of access, and influence, that has made a tee time with Trump a coveted prize for those seeking a presidential audience. ""Anybody who is sophisticated dealing with Donald quickly understands that everything about him is transactional,"" said Professor David Cay Johnston of Rochester Institute of Technology, who as a reporter covered Trump for decades and has written three books about the man. ""If you're the head of a company or the head of a nation, you either try and minimise any prospective damage he might do to you by buttering him up or to size him up on something if you're unsure."" Even back at the White House, foreign leaders have tried to parlay a golf connection into a friendly reception. When South African President Cyril Ramaphosa visited the Oval Office in May, he gave the president an illustrated South African golf book and included golf professionals Ernie Els and Retief Goosen in his national delegation. That didn't help much, however, as the meeting devolved into an extended confrontation over South African land confiscation policies.
+
+Truth Social/@realDonaldTrump Trump partnered with Finnish President Alexander Stubb in a tournament earlier this year",13,adaptive,"POLITIQUE - Il présentera le texte tel quel, sans s’arrêter sur les recommandations du Conseil d’État. Le projet de révision constitutionnelle sur la Corse, qui vise à octroyer à l’île « une autonomie dans la République », doit être présenté en Conseil des ministres mercredi prochain, mais il a tout pour déplaire aux élus de droite Les Républicains.",0.3385,0.9941,edit,adaptive_edit_rule,True,True,fr,True,0.0
+132_adaptive,CRITICAL,False,0.2374944043159485,0.2,0.3385048985481262,0.994139850139618,1,0.0,Grade D - requires ML validation,D,True,0.95,78350a8803037c44,0,,,78350a8803037c44,78350a8803037c44,« Frantz Fanon » : ces années que le psychiatre et figure de l’anticolonialisme passa à l’hôpital de Blida,https://www.nouvelobs.com/cinema/20250722.OBS106131/frantz-fanon-ces-annees-que-le-psychiatre-et-figure-de-l-anticolonialisme-passa-a-l-hopital-de-blida.html,132,"Le visionnage de cette vidéo est susceptible d'entraîner un dépôt de cookies de la part de l'opérateur de la plate-forme vidéo vers laquelle vous serez dirigé(e). Compte-tenu du refus du dépôt de cookies que vous avez exprimé, afin de respecter votre choix, nous avons bloqué la lecture de cette vidéo. Si vous souhaitez continuer et lire la vidéo, vous devez nous donner votre accord en cliquant sur le bouton ci-dessous.
+
+Lire la vidéo",132,adaptive,"POLITIQUE - Il présentera le texte tel quel, sans s’arrêter sur les recommandations du Conseil d’État. Le projet de révision constitutionnelle sur la Corse, qui vise à octroyer à l’île « une autonomie dans la République », doit être présenté en Conseil des ministres mercredi prochain, mais il a tout pour déplaire aux élus de droite Les Républicains.",0.3385,0.9941,edit,adaptive_edit_rule,True,False,en,True,0.0

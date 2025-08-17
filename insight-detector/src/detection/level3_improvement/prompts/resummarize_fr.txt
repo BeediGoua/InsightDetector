@@ -1,0 +1,3 @@
+À partir du TEXTE fourni, produis un résumé factuel de 70–120 mots.
+Inclure qui/quoi/où/quand/chiffres clés. Aucune spéculation ni ajout externe.
+Ne renvoie QUE le résumé final.

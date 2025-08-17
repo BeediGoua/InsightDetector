@@ -6,7 +6,18 @@
       "Bash(python:*)",
       "Bash(move:*)",
       "Bash(ren:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(grep:*)",
+      "Bash(cut:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(jq:*)",
+      "mcp__ide__executeCode",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(awk:*)",
+      "Bash(dir:*)"
     ],
     "deny": []
   }

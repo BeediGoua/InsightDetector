@@ -1,81 +1,119 @@
-"""
-Niveau 0 : Pré-filtrage qualité (<50ms)
-
-Module de pré-filtrage rapide pour éliminer les cas manifestement problématiques
-avant toute analyse coûteuse de détection d'hallucinations.
-
-Critères d'exclusion calibrés sur 372 résumés :
-- Longueur anormale : <15 mots ou >200 mots
-- Répétitions identiques >3x
-- Métadonnées parasites
-- Anomalies d'encodage
-"""
-
+# src/detection/level0_prefilter
 import re
+import time
 import unicodedata
-from typing import Dict, List, Tuple, Optional, Union
+from typing import Dict, List, Tuple, Optional, Union, Any
 from dataclasses import dataclass
 from collections import Counter
 import logging
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Import du validateur enhanced pour auto-correction
+import sys
+sys.path.append(str(Path(__file__).parent.parent))
+try:
+    from validation.summary_validator import SummaryValidator
+    ENHANCED_VALIDATION_AVAILABLE = True
+except ImportError:
+    logger.warning("SummaryValidator non disponible - fonctionnalités de correction limitées")
+    ENHANCED_VALIDATION_AVAILABLE = False
+
 
 @dataclass
 class FilterResult:
-    """Résultat du pré-filtrage d'un résumé."""
+    """Résultat enrichi du pré-filtrage avec correction automatique."""
     is_valid: bool
+    original_summary: str
+    corrected_summary: str
+    corrections_applied: List[str]
     rejection_reasons: List[str]
     word_count: int
+    original_word_count: int
     repetition_score: float
+    corruption_score: float
+    processing_time_ms: float
+    validation_details: Dict[str, Any]
+    severity: str  # 'valid', 'moderate', 'critical'
+    can_be_used: bool  # True si utilisable après correction
     metadata_detected: List[str]
     encoding_issues: List[str]
-    processing_time_ms: float
 
 
 class QualityFilter:
     """
-    Filtre de qualité pour le pré-filtrage rapide des résumés.
+    Filtre de qualité enhanced avec correction automatique des résumés corrompus.
     
-    Calibré sur 372 résumés avec seuils optimisés pour maximiser
-    la précision tout en gardant un temps de traitement <50ms.
+    Corrections apportées:
+    - Calibrage sur données SAINES uniquement
+    - Détection et correction corruption confidence_weighted  
+    - Seuils ajustés selon analyse empirique
+    - Intégration validateur intelligent
     """
     
     def __init__(self, 
                  min_words: Optional[int] = None,
                  max_words: Optional[int] = None,
-                 max_repetitions: int = 5,
+                 enable_auto_correction: bool = True,
+                 enable_smart_calibration: bool = True,
                  strict_mode: bool = False,
                  auto_calibrate_data: Optional[List[Dict]] = None):
         """
-        Initialise le filtre qualité.
+        Initialise le filtre enhanced.
         
         Args:
-            min_words: Nombre minimum de mots accepté (None = auto-calibrage)
-            max_words: Nombre maximum de mots accepté (None = auto-calibrage)
-            max_repetitions: Nombre maximum de répétitions identiques
-            strict_mode: Mode strict avec critères plus sévères
+            min_words: Minimum mots (None = auto-calibrage intelligent)
+            max_words: Maximum mots (None = auto-calibrage intelligent) 
+            enable_auto_correction: Active correction automatique
+            enable_smart_calibration: Active calibrage sur données saines
+            strict_mode: Mode strict (plus conservateur)
             auto_calibrate_data: Données pour calibrage automatique des seuils
         """
         
-        # Auto-calibrage si données fournies
-        if auto_calibrate_data is not None:
+        # Initialisation validateur enhanced
+        self.validator = None
+        if ENHANCED_VALIDATION_AVAILABLE and enable_auto_correction:
+            self.validator = SummaryValidator()
+        
+        self.enable_auto_correction = enable_auto_correction
+        self.enable_smart_calibration = enable_smart_calibration
+        self.strict_mode = strict_mode
+        
+        # Initialiser les seuils par défaut AVANT tout
+        if strict_mode:
+            self.min_words = min_words or 20
+            self.max_words = max_words or 150  # Très conservateur
+            self.max_repetition_ratio = 0.20   # 20% max répétitions
+            self.corruption_threshold = 0.05   # 5% max corruption
+        else:
+            self.min_words = min_words or 15
+            self.max_words = max_words or 250  # Corrigé vs 600 original
+            self.max_repetition_ratio = 0.30   # 30% max répétitions  
+            self.corruption_threshold = 0.10   # 10% max corruption
+        
+        # Initialiser les patterns AVANT le calibrage automatique
+        self._initialize_patterns()
+        
+        # Auto-calibrage INTELLIGENT si données fournies (écrase les seuils par défaut)
+        if auto_calibrate_data is not None and enable_smart_calibration:
+            calibrated_params = self._auto_calibrate_on_clean_data(auto_calibrate_data)
+            self.min_words = min_words or calibrated_params['min_words']
+            self.max_words = max_words or calibrated_params['max_words']
+            logger.info(f"Seuils auto-calibrés INTELLIGENTS: min={self.min_words}, max={self.max_words}")
+        elif auto_calibrate_data is not None:
+            # Fallback sur ancien calibrage
             calibrated_params = self._auto_calibrate_thresholds(auto_calibrate_data)
             self.min_words = min_words or calibrated_params['min_words']
             self.max_words = max_words or calibrated_params['max_words']
             logger.info(f"Seuils auto-calibrés: min={self.min_words}, max={self.max_words}")
-        else:
-            # Valeurs par défaut conservatrices
-            self.min_words = min_words or 10
-            self.max_words = max_words or 600
-            
-        self.max_repetitions = max_repetitions
-        self.strict_mode = strict_mode
-        
+    
+    def _initialize_patterns(self):
+        """Initialise tous les patterns et regex."""
         # Patterns de métadonnées parasites (moins restrictifs)
         self.metadata_patterns = [
             # Navigation et interface (seulement les plus évidents)
@@ -104,6 +142,27 @@ class QualityFilter:
             r"Ã\x82Â|Ã\x83Â|Â\x80",  # Erreurs d'encodage UTF-8 courantes
         ]
         
+        # Patterns corruption confidence_weighted spécifiques (NOUVELLE FONCTIONNALITÉ)
+        self.confidence_weighted_corruption = [
+            r'Par\s+[\w\s]+\s+avec\s+[^\w\s]\s+le\s+[^\w\s]\s+\d+h\d+',  # "Par Le Nouvel Obs avec é le à"
+            r'mis\s+[^\w\s]\s+jour\s+le\s+\d+\s+\w+',                   # "mis à jour le XX"
+            r'[^\w\s]+abonner[^\w\s]+newsletter',                       # newsletter corrompu
+        ]
+        
+        # Patterns encodage corruption étendus (AMÉLIORÉ)
+        self.encoding_corruption_patterns = [
+            r'Ã©',  # é mal encodé
+            r'Ã ',  # à mal encodé
+            r'Ã¨',  # è mal encodé
+            r'Ã´',  # ô mal encodé
+            r'Ãª',  # ê mal encodé
+            r'Ã§',  # ç mal encodé
+            r'â',   # caractères étranges
+            r'\\x[0-9a-fA-F]{2}',  # séquences hex
+            r'\\u[0-9a-fA-F]{4}',  # séquences unicode
+            r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]',  # caractères contrôle
+        ]
+        
         # Compilation des regex pour performance
         self.metadata_regex = re.compile(
             '|'.join(self.metadata_patterns), 
@@ -114,96 +173,327 @@ class QualityFilter:
             re.MULTILINE
         )
         
-    def filter_summary(self, text: str, summary_id: Optional[str] = None) -> FilterResult:
+        # Compilation patterns corruption confidence_weighted (NOUVEAU)
+        self.cw_corruption_regex = re.compile('|'.join(self.confidence_weighted_corruption), re.IGNORECASE)
+        self.encoding_corruption_regex = re.compile('|'.join(self.encoding_corruption_patterns))
+        
+        # Patterns répétitions (phrases complètes) - AMÉLIORÉ
+        self.repetition_detection = re.compile(r'(.{20,}?)\1{2,}', re.IGNORECASE)
+        
+    def filter_summary(self, text: str, summary_id: Optional[str] = None, metadata: Optional[Dict] = None) -> FilterResult:
         """
-        Filtre un résumé selon les critères de qualité niveau 0.
+        Filtre un résumé avec correction automatique si nécessaire (VERSION ENHANCED).
         
         Args:
             text: Texte du résumé à filtrer
             summary_id: Identifiant optionnel pour logging
+            metadata: Métadonnées optionnelles (strategy, article_id, etc.)
             
         Returns:
-            FilterResult: Résultat détaillé du filtrage
+            FilterResult: Résultat détaillé du filtrage avec correction
         """
-        import time
         start_time = time.time()
+        original_summary = text
         
-        rejection_reasons = []
+        # Métadonnées par défaut
+        if metadata is None:
+            metadata = {}
         
-        # Nettoyage préliminaire du texte
-        cleaned_text = self._clean_text(text)
+        strategy = metadata.get('strategy', 'unknown')
+        source_text = metadata.get('source_text', '')
         
-        # 1. Vérification longueur
-        words = cleaned_text.split()
-        word_count = len(words)
+        # 1. Validation initiale avec le validateur intelligent (NOUVEAU)
+        validation_result = {}
+        if self.validator:
+            validation_result = self.validator.validate_summary(
+                summary=text,
+                source_text=source_text,
+                strategy=strategy
+            )
+        else:
+            # Fallback: validation basique
+            validation_result = {
+                'is_valid': True,
+                'can_be_corrected': False,
+                'severity': 'unknown',
+                'repetition_ratio': 0.0,
+                'issues': []
+            }
         
-        if word_count < self.min_words:
-            rejection_reasons.append(f"Trop court: {word_count} mots < {self.min_words}")
-        elif word_count > self.max_words:
-            rejection_reasons.append(f"Trop long: {word_count} mots > {self.max_words}")
+        # 2. Correction automatique si activée et nécessaire (NOUVEAU)
+        corrected_summary = text
+        corrections_applied = []
+        
+        if (self.enable_auto_correction and self.validator and
+            not validation_result['is_valid'] and 
+            validation_result['can_be_corrected']):
             
-        # 2. Détection répétitions
-        repetition_score, repetition_issues = self._detect_repetitions(cleaned_text)
-        if repetition_issues:
-            rejection_reasons.extend(repetition_issues)
+            corrected_summary, corrections_applied = self.validator.correct_summary(
+                summary=text,
+                source_text=source_text,
+                validation_result=validation_result
+            )
             
-        # 3. Détection métadonnées parasites
-        metadata_detected = self._detect_metadata(cleaned_text)
-        if metadata_detected:
-            rejection_reasons.append(f"Métadonnées parasites: {', '.join(metadata_detected[:3])}")
-            
-        # 4. Anomalies d'encodage
+            # Re-validation après correction
+            if corrections_applied:
+                validation_result = self.validator.validate_summary(
+                    summary=corrected_summary,
+                    source_text=source_text,
+                    strategy=strategy
+                )
+        
+        # 3. Analyse spécifique préfiltre (AMÉLIORÉ)
+        filter_analysis = self._analyze_for_prefilter(corrected_summary, original_summary)
+        
+        # 4. Détection répétitions (original)
+        repetition_score, repetition_issues = self._detect_repetitions(corrected_summary)
+        
+        # 5. Détection métadonnées parasites (original)
+        metadata_detected = self._detect_metadata(corrected_summary)
+        
+        # 6. Anomalies d'encodage (original)
         encoding_issues = self._detect_encoding_issues(text)  # Sur texte original
-        if encoding_issues:
-            rejection_reasons.append(f"Problèmes encodage: {len(encoding_issues)} détectés")
-            
-        # 5. Critères additionnels en mode strict
-        if self.strict_mode:
-            strict_issues = self._strict_quality_checks(cleaned_text)
-            rejection_reasons.extend(strict_issues)
         
-        # Calcul temps de traitement
+        # 7. Décision finale enhanced
+        is_valid, rejection_reasons, can_be_used = self._make_filtering_decision_enhanced(
+            validation_result, filter_analysis, corrections_applied, repetition_issues, 
+            metadata_detected, encoding_issues
+        )
+        
         processing_time_ms = (time.time() - start_time) * 1000
-        
-        # Décision finale
-        is_valid = len(rejection_reasons) == 0
         
         # Logging pour cas problématiques
         if not is_valid and summary_id:
             logger.warning(f"Résumé {summary_id} rejeté: {'; '.join(rejection_reasons)}")
+        elif corrections_applied and summary_id:
+            logger.info(f"Résumé {summary_id} corrigé: {'; '.join(corrections_applied)}")
         
         return FilterResult(
             is_valid=is_valid,
+            original_summary=original_summary,
+            corrected_summary=corrected_summary,
+            corrections_applied=corrections_applied,
             rejection_reasons=rejection_reasons,
-            word_count=word_count,
+            word_count=len(corrected_summary.split()),
+            original_word_count=len(original_summary.split()),
             repetition_score=repetition_score,
+            corruption_score=filter_analysis['corruption_score'],
+            processing_time_ms=processing_time_ms,
+            validation_details=validation_result,
+            severity=validation_result['severity'],
+            can_be_used=can_be_used,
             metadata_detected=metadata_detected,
-            encoding_issues=encoding_issues,
-            processing_time_ms=processing_time_ms
+            encoding_issues=encoding_issues
         )
+
+    def _analyze_for_prefilter(self, summary: str, original_summary: str) -> Dict[str, Any]:
+        """Analyse spécifique au préfiltre (performance, corruption, etc.)."""
+        
+        analysis = {
+            'corruption_score': 0.0,
+            'has_cw_corruption': False,
+            'encoding_issues_count': 0,
+            'repetition_patterns': [],
+            'length_category': 'normal'
+        }
+        
+        # Détection corruption confidence_weighted
+        cw_matches = self.cw_corruption_regex.findall(summary)
+        if cw_matches:
+            analysis['has_cw_corruption'] = True
+            analysis['corruption_score'] += 0.5
+        
+        # Comptage problèmes encodage
+        encoding_matches = self.encoding_corruption_regex.findall(summary)
+        analysis['encoding_issues_count'] = len(encoding_matches)
+        analysis['corruption_score'] += len(encoding_matches) / len(summary) * 10
+        
+        # Détection répétitions longues
+        repetition_matches = self.repetition_detection.findall(summary)
+        analysis['repetition_patterns'] = repetition_matches
+        if repetition_matches:
+            analysis['corruption_score'] += 0.3
+        
+        # Catégorie longueur
+        word_count = len(summary.split())
+        if word_count < self.min_words:
+            analysis['length_category'] = 'too_short'
+        elif word_count > self.max_words:
+            analysis['length_category'] = 'too_long'
+        elif word_count > self.max_words * 0.8:
+            analysis['length_category'] = 'long'
+        elif word_count < self.min_words * 1.5:
+            analysis['length_category'] = 'short'
+        
+        return analysis
+
+    def _make_filtering_decision_enhanced(self, validation_result: Dict, filter_analysis: Dict, 
+                                        corrections_applied: List[str], repetition_issues: List[str],
+                                        metadata_detected: List[str], encoding_issues: List[str]) -> Tuple[bool, List[str], bool]:
+        """Décision finale de filtrage basée sur validation + analyse préfiltre."""
+        
+        rejection_reasons = []
+        
+        # 1. Rejet définitif si corruption trop élevée
+        if filter_analysis['corruption_score'] > self.corruption_threshold:
+            rejection_reasons.append(f"Corruption excessive: {filter_analysis['corruption_score']:.2f}")
+        
+        # 2. Rejet si confidence_weighted corrompu non corrigeable
+        if (filter_analysis['has_cw_corruption'] and 
+            'regenerated_from_source' not in corrections_applied):
+            rejection_reasons.append("Corruption confidence_weighted non corrigeable")
+        
+        # 3. Rejet si longueur problématique après correction
+        if filter_analysis['length_category'] in ['too_short', 'too_long']:
+            rejection_reasons.append(f"Longueur {filter_analysis['length_category']}")
+        
+        # 4. Rejet si répétitions excessives non corrigées
+        if (validation_result.get('repetition_ratio', 0) > self.max_repetition_ratio and
+            'removed_repetitions' not in corrections_applied):
+            rejection_reasons.append("Répétitions excessives non corrigées")
+        
+        # 5. Rejet si hallucination complète détectée
+        has_hallucination = any(
+            issue['type'] == 'topic_hallucination' 
+            for issue in validation_result.get('issues', [])
+        )
+        if has_hallucination and 'regenerated_from_source' not in corrections_applied:
+            rejection_reasons.append("Hallucination complète détectée")
+        
+        # 6. Ajout problèmes détectés classiques
+        if repetition_issues:
+            rejection_reasons.extend(repetition_issues)
+        if metadata_detected:
+            rejection_reasons.append(f"Métadonnées parasites: {', '.join(metadata_detected[:3])}")
+        if encoding_issues:
+            rejection_reasons.append(f"Problèmes encodage: {len(encoding_issues)} détectés")
+        
+        # Décision finale
+        is_valid = len(rejection_reasons) == 0
+        
+        # Peut être utilisé si corrigé avec succès OU si seulement problèmes mineurs
+        can_be_used = (
+            is_valid or  # Parfaitement valide
+            (len(corrections_applied) > 0 and validation_result['severity'] != 'critical') or  # Corrigé avec succès
+            (validation_result['severity'] == 'moderate' and len(rejection_reasons) <= 1)  # Problèmes mineurs
+        )
+        
+        return is_valid, rejection_reasons, can_be_used
+
+    def _auto_calibrate_on_clean_data(self, data: List[Dict]) -> Dict[str, Any]:
+        """Calibrage intelligent sur données SAINES uniquement (NOUVELLE MÉTHODE)."""
+        
+        logger.info("Calibrage intelligent sur données saines...")
+        
+        # 1. Identification données saines
+        clean_data = []
+        for item in data:
+            summary = item.get('text', '')
+            
+            # Critères de "sanité"
+            word_count = len(summary.split())
+            
+            # Exclusion évidente corruption
+            has_corruption = (
+                self.cw_corruption_regex.search(summary) or
+                len(self.encoding_corruption_regex.findall(summary)) > 5 or
+                word_count > 500 or  # Longueur excessive évidente
+                summary.count(summary.split('.')[0] if '.' in summary else summary[:50]) > 2  # Répétitions évidentes
+            )
+            
+            if not has_corruption and 20 <= word_count <= 200:
+                clean_data.append(item)
+        
+        if len(clean_data) < 10:
+            logger.warning(f"Pas assez de données saines pour calibrage: {len(clean_data)}")
+            return {
+                'min_words': self.min_words,
+                'max_words': self.max_words, 
+                'calibration_applied': False,
+                'clean_data_count': len(clean_data)
+            }
+        
+        # 2. Calcul seuils optimaux sur données saines
+        word_counts = [len(item['text'].split()) for item in clean_data]
+        
+        # Percentiles pour seuils robustes
+        p5 = np.percentile(word_counts, 5)
+        p95 = np.percentile(word_counts, 95)
+        median = np.median(word_counts)
+        
+        # Seuils ajustés
+        calibrated_min = max(15, int(p5 * 0.8))  # 20% en dessous P5
+        calibrated_max = min(300, int(p95 * 1.2))  # 20% au dessus P95
+        
+        logger.info(f"Calibrage terminé: min={calibrated_min}, max={calibrated_max} (médiane={median:.1f}, données saines={len(clean_data)})")
+        
+        return {
+            'min_words': calibrated_min,
+            'max_words': calibrated_max,
+            'calibration_applied': True,
+            'clean_data_count': len(clean_data),
+            'total_data_count': len(data),
+            'clean_ratio': len(clean_data) / len(data),
+            'word_count_stats': {
+                'median': median,
+                'p5': p5,
+                'p95': p95,
+                'min': min(word_counts),
+                'max': max(word_counts)
+            }
+        }
     
-    def process_batch(self, summaries: List[Dict]) -> Tuple[List[Dict], List[FilterResult]]:
+    def process_batch(self, summaries: List[Dict], articles_data: Optional[List[Dict]] = None) -> Tuple[List[Dict], List[FilterResult]]:
         """
-        Traite un lot de résumés en parallèle.
+        Traite un lot de résumés avec correction automatique (VERSION ENHANCED).
         
         Args:
             summaries: Liste de dictionnaires avec clés 'text' et optionnellement 'id'
+            articles_data: Articles sources pour correction (optionnel)
             
         Returns:
             Tuple[valid_summaries, all_results]: Résumés valides et tous les résultats
         """
+        # Index articles par ID pour lookup rapide
+        articles_by_id = {}
+        if articles_data:
+            articles_by_id = {str(article['id']): article for article in articles_data}
+        
         valid_summaries = []
         all_results = []
         
         for i, summary in enumerate(summaries):
             text = summary.get('text', '')
             summary_id = summary.get('id', f'summary_{i}')
+            strategy = summary.get('strategy', 'unknown')
+            article_id = summary.get('article_id', '')
             
-            result = self.filter_summary(text, summary_id)
+            # Récupération texte source si disponible
+            source_text = ''
+            if article_id in articles_by_id:
+                source_text = articles_by_id[article_id].get('text', '')
+            
+            metadata = {
+                'strategy': strategy,
+                'article_id': article_id,
+                'source_text': source_text
+            }
+            
+            # Filtrage avec correction enhanced
+            result = self.filter_summary(text, summary_id, metadata)
             all_results.append(result)
             
-            if result.is_valid:
-                valid_summaries.append(summary)
+            # Ajout aux valides si utilisable (ENHANCED: can_be_used au lieu de is_valid)
+            if result.can_be_used:
+                corrected_data = summary.copy()
+                corrected_data['text'] = result.corrected_summary
+                corrected_data['corrections_applied'] = result.corrections_applied
+                corrected_data['filter_result'] = {
+                    'severity': result.severity,
+                    'word_count': result.word_count,
+                    'processing_time_ms': result.processing_time_ms
+                }
+                valid_summaries.append(corrected_data)
         
         # Statistiques globales
         total_count = len(summaries)
@@ -598,6 +888,51 @@ def auto_calibrate_filter(data: List[Dict], **kwargs) -> QualityFilter:
         QualityFilter: Filtre calibré automatiquement
     """
     return QualityFilter(auto_calibrate_data=data, **kwargs)
+
+
+# Nouvelles fonctions utilitaires pour enhanced filter
+def create_enhanced_filter_from_data(summaries_data: Dict, articles_data: List[Dict], 
+                                   strict_mode: bool = False) -> QualityFilter:
+    """
+    Crée un filtre enhanced pré-calibré sur les données réelles.
+    
+    Args:
+        summaries_data: Données résumés (all_summaries_production.json)
+        articles_data: Données articles sources
+        strict_mode: Mode strict ou standard
+        
+    Returns:
+        QualityFilter calibré et prêt à l'emploi
+    """
+    
+    # Conversion données pour calibrage
+    calibration_data = []
+    for article_id, article_data in summaries_data.items():
+        if 'strategies' not in article_data:
+            continue
+            
+        for strategy, strategy_data in article_data['strategies'].items():
+            calibration_data.append({
+                'text': strategy_data.get('summary', ''),
+                'strategy': strategy,
+                'article_id': article_id
+            })
+    
+    # Création filtre avec auto-calibrage enhanced
+    enhanced_filter = QualityFilter(
+        enable_auto_correction=True,
+        enable_smart_calibration=True,
+        strict_mode=strict_mode,
+        auto_calibrate_data=calibration_data
+    )
+    
+    logger.info(f"Filtre enhanced créé avec {len(calibration_data)} échantillons")
+    
+    return enhanced_filter
+
+
+# Alias pour compatibilité ascendante
+EnhancedQualityFilter = QualityFilter
 
 
 if __name__ == "__main__":

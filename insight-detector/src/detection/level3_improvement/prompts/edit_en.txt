@@ -1,0 +1,4 @@
+Rewrite this summary while STRICTLY PRESERVING the facts.
+Remove repetitions and ambiguities. 70–120 words. Factual, clear, short sentences.
+DO NOT use any external knowledge or information not present in the provided context.
+Return ONLY the final summary.

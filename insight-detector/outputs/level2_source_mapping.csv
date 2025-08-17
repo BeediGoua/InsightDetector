@@ -1,0 +1,373 @@
+level1_id,level2_id,source_id,article_id,strategy,title
+0_adaptive,0_adaptive,0c862e6732c5a41a,0,adaptive,Article synthétique ID 0
+0_confidence_weighted,0_confidence_weighted,0c862e6732c5a41a,0,confidence_weighted,Article synthétique ID 0
+1_adaptive,1_adaptive,89580b321df35a6a,1,adaptive,"Almost a third of people in Gaza not eating for days, UN food programme warns"
+1_confidence_weighted,1_confidence_weighted,89580b321df35a6a,1,confidence_weighted,"Almost a third of people in Gaza not eating for days, UN food programme warns"
+2_adaptive,2_adaptive,36e1a50865a65b52,2,adaptive,"'I witnessed war crimes' in Gaza, former worker at GHF aid site tells BBC"
+2_confidence_weighted,2_confidence_weighted,36e1a50865a65b52,2,confidence_weighted,"'I witnessed war crimes' in Gaza, former worker at GHF aid site tells BBC"
+3_adaptive,3_adaptive,0a555c36f5fbedf6,3,adaptive,Thailand warns clashes with Cambodia could 'move towards war'
+3_confidence_weighted,3_confidence_weighted,0a555c36f5fbedf6,3,confidence_weighted,Thailand warns clashes with Cambodia could 'move towards war'
+4_adaptive,4_adaptive,72687c4664f0425b,4,adaptive,School-leavers losing their lives for Russia in Putin's war with Ukraine
+4_confidence_weighted,4_confidence_weighted,72687c4664f0425b,4,confidence_weighted,School-leavers losing their lives for Russia in Putin's war with Ukraine
+5_adaptive,5_adaptive,09da9397c8247ed8,5,adaptive,Taiwan holds controversial vote targeting 'pro-China' lawmakers
+5_confidence_weighted,5_confidence_weighted,09da9397c8247ed8,5,confidence_weighted,Taiwan holds controversial vote targeting 'pro-China' lawmakers
+6_adaptive,6_adaptive,0590c9fd6d5d779e,6,adaptive,World's thirst for matcha dries up global supplies
+6_confidence_weighted,6_confidence_weighted,0590c9fd6d5d779e,6,confidence_weighted,World's thirst for matcha dries up global supplies
+7_adaptive,7_adaptive,2e5d424af642656f,7,adaptive,Pro-Palestinian convict freed by France after 41 years
+7_confidence_weighted,7_confidence_weighted,2e5d424af642656f,7,confidence_weighted,Pro-Palestinian convict freed by France after 41 years
+8_adaptive,8_adaptive,4545a3e73854234a,8,adaptive,"Southwest flight plummets, injuring flight attendants"
+8_confidence_weighted,8_confidence_weighted,4545a3e73854234a,8,confidence_weighted,"Southwest flight plummets, injuring flight attendants"
+9_adaptive,9_adaptive,c0b9d27bbaa29e21,9,adaptive,UK condemns Hong Kong cash offer for help in arresting activists
+9_confidence_weighted,9_confidence_weighted,c0b9d27bbaa29e21,9,confidence_weighted,UK condemns Hong Kong cash offer for help in arresting activists
+10_adaptive,10_adaptive,5bce4475862ed1f9,10,adaptive,"Meeting over between US official and Ghislane  Maxwell, who will 'welcome any relief', lawyer says"
+10_confidence_weighted,10_confidence_weighted,5bce4475862ed1f9,10,confidence_weighted,"Meeting over between US official and Ghislane  Maxwell, who will 'welcome any relief', lawyer says"
+11_adaptive,11_adaptive,a55934d4ef922836,11,adaptive,Watch: Trump jokes he wants Powell to lower interest rates in tense exchange
+11_confidence_weighted,11_confidence_weighted,a55934d4ef922836,11,confidence_weighted,Watch: Trump jokes he wants Powell to lower interest rates in tense exchange
+12_adaptive,12_adaptive,461e0a8c5eb56c46,12,adaptive,Woman in viral Coldplay concert clip resigns from executive role
+12_confidence_weighted,12_confidence_weighted,461e0a8c5eb56c46,12,confidence_weighted,Woman in viral Coldplay concert clip resigns from executive role
+13_adaptive,13_adaptive,fecc42217ea92412,13,adaptive,Tee time with Trump - striking balls and deals over 18 holes
+13_confidence_weighted,13_confidence_weighted,fecc42217ea92412,13,confidence_weighted,Tee time with Trump - striking balls and deals over 18 holes
+14_adaptive,14_adaptive,e87d8f1639f5afd5,14,adaptive,​​What is inside the GHF food aid box being distributed in Gaza?
+14_confidence_weighted,14_confidence_weighted,e87d8f1639f5afd5,14,confidence_weighted,​​What is inside the GHF food aid box being distributed in Gaza?
+15_adaptive,15_adaptive,a4cb3a806304a2fe,15,adaptive,"Thais and Cambodians slug it out on social media, as border tensions flare"
+15_confidence_weighted,15_confidence_weighted,a4cb3a806304a2fe,15,confidence_weighted,"Thais and Cambodians slug it out on social media, as border tensions flare"
+16_adaptive,16_adaptive,9cd674aa7b0d859c,16,adaptive,Artist explores the toxic mining legacy of Zambia's 'black mountains'
+16_confidence_weighted,16_confidence_weighted,9cd674aa7b0d859c,16,confidence_weighted,Artist explores the toxic mining legacy of Zambia's 'black mountains'
+17_adaptive,17_adaptive,ff43903241bfe43a,17,adaptive,French pledge to recognise Palestine is a gamble - so will Starmer follow suit?
+17_confidence_weighted,17_confidence_weighted,ff43903241bfe43a,17,confidence_weighted,French pledge to recognise Palestine is a gamble - so will Starmer follow suit?
+18_adaptive,18_adaptive,4dbccbbb7ebe01f5,18,adaptive,How Epstein case is tearing apart Maga's online conspiracy wing
+18_confidence_weighted,18_confidence_weighted,4dbccbbb7ebe01f5,18,confidence_weighted,How Epstein case is tearing apart Maga's online conspiracy wing
+19_adaptive,19_adaptive,7e21dcf6f2e9a9c4,19,adaptive,'I'm so tired': Mother of starving Gazan baby speaks to BBC
+19_confidence_weighted,19_confidence_weighted,7e21dcf6f2e9a9c4,19,confidence_weighted,'I'm so tired': Mother of starving Gazan baby speaks to BBC
+20_adaptive,20_adaptive,6d857e010b72ceb7,20,adaptive,'All the people are hungry': Voices from Gaza on desperate lack of food
+20_confidence_weighted,20_confidence_weighted,6d857e010b72ceb7,20,confidence_weighted,'All the people are hungry': Voices from Gaza on desperate lack of food
+21_adaptive,21_adaptive,008cc26d81dd633b,21,adaptive,Watch: Protesters pack Tel Aviv square to demand Gaza ceasefire
+21_confidence_weighted,21_confidence_weighted,008cc26d81dd633b,21,confidence_weighted,Watch: Protesters pack Tel Aviv square to demand Gaza ceasefire
+22_adaptive,22_adaptive,3e6b976943164224,22,adaptive,Watch: Man dons bear costume in Japanese Police animal attack drill
+22_confidence_weighted,22_confidence_weighted,3e6b976943164224,22,confidence_weighted,Watch: Man dons bear costume in Japanese Police animal attack drill
+23_adaptive,23_adaptive,1513e5c48872c7b7,23,adaptive,Top 10 AI Tools That Will Transform Your Content Creation in 2025
+23_confidence_weighted,23_confidence_weighted,1513e5c48872c7b7,23,confidence_weighted,Top 10 AI Tools That Will Transform Your Content Creation in 2025
+24_adaptive,24_adaptive,30b59fad542d9cd6,24,adaptive,"LimeWire AI Studio Review 2023: Details, Pricing & Features"
+24_confidence_weighted,24_confidence_weighted,30b59fad542d9cd6,24,confidence_weighted,"LimeWire AI Studio Review 2023: Details, Pricing & Features"
+25_adaptive,25_adaptive,efb6f87d9e44632e,25,adaptive,Top 10 AI Tools in 2023 That Will Make Your Life Easier
+25_confidence_weighted,25_confidence_weighted,efb6f87d9e44632e,25,confidence_weighted,Top 10 AI Tools in 2023 That Will Make Your Life Easier
+26_adaptive,26_adaptive,dcbcafb254cf39f0,26,adaptive,Top 10 AI Content Generator & Writer Tools in 2022
+26_confidence_weighted,26_confidence_weighted,dcbcafb254cf39f0,26,confidence_weighted,Top 10 AI Content Generator & Writer Tools in 2022
+27_adaptive,27_adaptive,c23802b762d33311,27,adaptive,Beginner Guide to CJ Affiliate (Commission Junction) in 2022
+27_confidence_weighted,27_confidence_weighted,c23802b762d33311,27,confidence_weighted,Beginner Guide to CJ Affiliate (Commission Junction) in 2022
+28_adaptive,28_adaptive,d92c051212ee70d3,28,adaptive,TOP 11 AI MARKETING TOOLS YOU SHOULD USE (Updated 2022)
+28_confidence_weighted,28_confidence_weighted,d92c051212ee70d3,28,confidence_weighted,TOP 11 AI MARKETING TOOLS YOU SHOULD USE (Updated 2022)
+29_adaptive,29_adaptive,7299a0c0bbc5f318,29,adaptive,Most Frequently Asked Questions About Affiliate Marketing
+29_confidence_weighted,29_confidence_weighted,7299a0c0bbc5f318,29,confidence_weighted,Most Frequently Asked Questions About Affiliate Marketing
+30_adaptive,30_adaptive,22fcd83dc4ec45b8,30,adaptive,What is Blockchain: Everything You Need to Know (2022)
+30_confidence_weighted,30_confidence_weighted,22fcd83dc4ec45b8,30,confidence_weighted,What is Blockchain: Everything You Need to Know (2022)
+31_adaptive,31_adaptive,cc214d510c169588,31,adaptive,ProWritingAid VS Grammarly: Which Grammar Checker is Better in (2022) ?
+31_confidence_weighted,31_confidence_weighted,cc214d510c169588,31,confidence_weighted,ProWritingAid VS Grammarly: Which Grammar Checker is Better in (2022) ?
+32_adaptive,32_adaptive,4691c1a4539820aa,32,adaptive,Sellfy Review 2022: How Good Is This Ecommerce Platform?
+32_confidence_weighted,32_confidence_weighted,4691c1a4539820aa,32,confidence_weighted,Sellfy Review 2022: How Good Is This Ecommerce Platform?
+33_adaptive,33_adaptive,dcf970d9be575d00,33,adaptive,Ahrefs vs SEMrush: Which SEO Tool Should You Use?
+33_confidence_weighted,33_confidence_weighted,dcf970d9be575d00,33,confidence_weighted,Ahrefs vs SEMrush: Which SEO Tool Should You Use?
+34_adaptive,34_adaptive,34f54ff5931d88aa,34,adaptive,Top 10 Best PLR(Private Label Rights)  Websites | Which One You Should Join in 2022?
+34_confidence_weighted,34_confidence_weighted,34f54ff5931d88aa,34,confidence_weighted,Top 10 Best PLR(Private Label Rights)  Websites | Which One You Should Join in 2022?
+35_adaptive,35_adaptive,cb0d45859d179bc4,35,adaptive,"Canva Review 2022: Details, Pricing & Features"
+35_confidence_weighted,35_confidence_weighted,cb0d45859d179bc4,35,confidence_weighted,"Canva Review 2022: Details, Pricing & Features"
+36_adaptive,36_adaptive,dca963b3974af02c,36,adaptive,Top 7 Best Wordpress Plugin Of All Time
+36_confidence_weighted,36_confidence_weighted,dca963b3974af02c,36,confidence_weighted,Top 7 Best Wordpress Plugin Of All Time
+37_adaptive,37_adaptive,ca9d74420c3403c6,37,adaptive,Ginger VS Grammarly: Which Grammar Checker is Better in (2022) ?
+37_confidence_weighted,37_confidence_weighted,ca9d74420c3403c6,37,confidence_weighted,Ginger VS Grammarly: Which Grammar Checker is Better in (2022) ?
+38_adaptive,38_adaptive,0e88ca86d5142566,38,adaptive,Most Frequently Asked Questions About NFTs(Non-Fungible Tokens)
+38_confidence_weighted,38_confidence_weighted,0e88ca86d5142566,38,confidence_weighted,Most Frequently Asked Questions About NFTs(Non-Fungible Tokens)
+39_adaptive,39_adaptive,5a73b9ddc6e4afd3,39,adaptive,10 Best Chrome Extensions That Are Perfect for Everyone
+39_confidence_weighted,39_confidence_weighted,5a73b9ddc6e4afd3,39,confidence_weighted,10 Best Chrome Extensions That Are Perfect for Everyone
+40_adaptive,40_adaptive,6c14f312a2c75ffb,40,adaptive,Most Frequently Asked Questions About  Email Marketing
+40_confidence_weighted,40_confidence_weighted,6c14f312a2c75ffb,40,confidence_weighted,Most Frequently Asked Questions About  Email Marketing
+41_adaptive,41_adaptive,67d9f55319ad7459,41,adaptive,7 Free Websites Every Content Creator Needs to Know
+41_confidence_weighted,41_confidence_weighted,67d9f55319ad7459,41,confidence_weighted,7 Free Websites Every Content Creator Needs to Know
+42_adaptive,42_adaptive,e1864dd354ae15e1,42,adaptive,Top 9 Free AI Tools That Make Your Life Easier
+42_confidence_weighted,42_confidence_weighted,e1864dd354ae15e1,42,confidence_weighted,Top 9 Free AI Tools That Make Your Life Easier
+43_adaptive,43_adaptive,190053938e10f6d6,43,adaptive,L’horoscope d’Abigail Assor du 27 juillet au 2 août
+43_confidence_weighted,43_confidence_weighted,190053938e10f6d6,43,confidence_weighted,L’horoscope d’Abigail Assor du 27 juillet au 2 août
+44_adaptive,44_adaptive,610004a7830078a4,44,adaptive,"En Grèce, la canicule se prolonge avec un thermomètre qui frôle les 46 °C"
+44_confidence_weighted,44_confidence_weighted,610004a7830078a4,44,confidence_weighted,"En Grèce, la canicule se prolonge avec un thermomètre qui frôle les 46 °C"
+45_adaptive,45_adaptive,256861282562ab89,45,adaptive,"Autonomie de la Corse : Bayrou « favorable » au projet constitutionnel initial, malgré l’avis du Conseil d’Etat"
+45_confidence_weighted,45_confidence_weighted,256861282562ab89,45,confidence_weighted,"Autonomie de la Corse : Bayrou « favorable » au projet constitutionnel initial, malgré l’avis du Conseil d’Etat"
+46_adaptive,46_adaptive,7d94ef8e1b1735c9,46,adaptive,"Brigitte Macron pourrait s’inspirer d’Amanda Lear et, surtout, de Lady Gaga"
+46_confidence_weighted,46_confidence_weighted,7d94ef8e1b1735c9,46,confidence_weighted,"Brigitte Macron pourrait s’inspirer d’Amanda Lear et, surtout, de Lady Gaga"
+47_adaptive,47_adaptive,88e6c8cf5c61f213,47,adaptive,"Les Etats-Unis vont détruire des contraceptifs féminins stockés en Europe, le Planning familial dénonce un acte de « coercition reproductive »"
+47_confidence_weighted,47_confidence_weighted,88e6c8cf5c61f213,47,confidence_weighted,"Les Etats-Unis vont détruire des contraceptifs féminins stockés en Europe, le Planning familial dénonce un acte de « coercition reproductive »"
+48_adaptive,48_adaptive,691e1d90ece6679d,48,adaptive,"« Ce sont des guérillas dont on a souvent l’habitude » : à Saint-Ouen aussi, un couvre-feu a été décrété pour les mineurs cet été"
+48_confidence_weighted,48_confidence_weighted,691e1d90ece6679d,48,confidence_weighted,"« Ce sont des guérillas dont on a souvent l’habitude » : à Saint-Ouen aussi, un couvre-feu a été décrété pour les mineurs cet été"
+49_adaptive,49_adaptive,bcd7413fdd20743c,49,adaptive,"Pour moquer Trump, « South Park » rit de son « minuscule pénis » (et ça fonctionne très bien)"
+49_confidence_weighted,49_confidence_weighted,bcd7413fdd20743c,49,confidence_weighted,"Pour moquer Trump, « South Park » rit de son « minuscule pénis » (et ça fonctionne très bien)"
+50_adaptive,50_adaptive,a38511d05577177c,50,adaptive,Reconnaissance de l’Etat de Palestine : quels pays pourraient suivre la France ?
+50_confidence_weighted,50_confidence_weighted,a38511d05577177c,50,confidence_weighted,Reconnaissance de l’Etat de Palestine : quels pays pourraient suivre la France ?
+51_adaptive,51_adaptive,7862b61eda0e044d,51,adaptive,"En reconnaissant la Palestine, Macron casse un plafond de verre… et « met la pression » sur ses partenaires"
+51_confidence_weighted,51_confidence_weighted,7862b61eda0e044d,51,confidence_weighted,"En reconnaissant la Palestine, Macron casse un plafond de verre… et « met la pression » sur ses partenaires"
+52_adaptive,52_adaptive,b7ed24b60ea1e109,52,adaptive,"« La Prisonnière de Bordeaux » : Hafsia Herzi, Isabelle Huppert, une amitié improbable"
+52_confidence_weighted,52_confidence_weighted,b7ed24b60ea1e109,52,confidence_weighted,"« La Prisonnière de Bordeaux » : Hafsia Herzi, Isabelle Huppert, une amitié improbable"
+53_adaptive,53_adaptive,393cb92c737d9597,53,adaptive,"« Supprimer la clause de conscience spécifique à l’IVG, c’est reconnaître que les discriminations doivent cesser »"
+53_confidence_weighted,53_confidence_weighted,393cb92c737d9597,53,confidence_weighted,"« Supprimer la clause de conscience spécifique à l’IVG, c’est reconnaître que les discriminations doivent cesser »"
+54_adaptive,54_adaptive,d0ce8501d6bea224,54,adaptive,Affrontements meurtriers à la frontière entre la Thaïlande et le Cambodge : le point sur la situation
+54_confidence_weighted,54_confidence_weighted,d0ce8501d6bea224,54,confidence_weighted,Affrontements meurtriers à la frontière entre la Thaïlande et le Cambodge : le point sur la situation
+55_adaptive,55_adaptive,6ad584baee3e5434,55,adaptive,« Mulan » : pour l’honneur de sa famille
+55_confidence_weighted,55_confidence_weighted,6ad584baee3e5434,55,confidence_weighted,« Mulan » : pour l’honneur de sa famille
+56_adaptive,56_adaptive,113da3cfde6533dd,56,adaptive,Le mandat d’arrêt français visant l’ex-président syrien Bachar al-Assad annulé par la Cour de Cassation
+56_confidence_weighted,56_confidence_weighted,113da3cfde6533dd,56,confidence_weighted,Le mandat d’arrêt français visant l’ex-président syrien Bachar al-Assad annulé par la Cour de Cassation
+57_adaptive,57_adaptive,6f59a7955c7c4b10,57,adaptive,"« A Gaza, tu ne deviens pas journaliste parce que tu le veux mais parce que tu le dois »"
+57_confidence_weighted,57_confidence_weighted,6f59a7955c7c4b10,57,confidence_weighted,"« A Gaza, tu ne deviens pas journaliste parce que tu le veux mais parce que tu le dois »"
+58_adaptive,58_adaptive,b21b9571a9fe8d73,58,adaptive,"« Leurs mots à eux », par Rachel Shalita :  le Tel-Aviv des années 1950 à hauteur d’enfant"
+58_confidence_weighted,58_confidence_weighted,b21b9571a9fe8d73,58,confidence_weighted,"« Leurs mots à eux », par Rachel Shalita :  le Tel-Aviv des années 1950 à hauteur d’enfant"
+59_adaptive,59_adaptive,f13a89625677bcc5,59,adaptive,Donald Trump contre le « Wall Street Journal » : « Le président américain va à l’encontre de ce que défend le quotidien »
+59_confidence_weighted,59_confidence_weighted,f13a89625677bcc5,59,confidence_weighted,Donald Trump contre le « Wall Street Journal » : « Le président américain va à l’encontre de ce que défend le quotidien »
+60_adaptive,60_adaptive,5647e002a835b567,60,adaptive,"« Avoir un restaurant de plage, c’est incroyable » : Kalypso, la délicieuse cabane de plage"
+60_confidence_weighted,60_confidence_weighted,5647e002a835b567,60,confidence_weighted,"« Avoir un restaurant de plage, c’est incroyable » : Kalypso, la délicieuse cabane de plage"
+61_adaptive,61_adaptive,afd0e376c006d420,61,adaptive,Reconnaissance de la Palestine : notre carte qui résume la situation dans le monde
+61_confidence_weighted,61_confidence_weighted,afd0e376c006d420,61,confidence_weighted,Reconnaissance de la Palestine : notre carte qui résume la situation dans le monde
+62_adaptive,62_adaptive,b63b8252e450f462,62,adaptive,"Affaires, insultes et bourre-pifs à tous les étages : comment ne pas admirer l’audace disruptive de Rachida Dati ?"
+62_confidence_weighted,62_confidence_weighted,b63b8252e450f462,62,confidence_weighted,"Affaires, insultes et bourre-pifs à tous les étages : comment ne pas admirer l’audace disruptive de Rachida Dati ?"
+63_adaptive,63_adaptive,6bb5fec6c8eb5e8b,63,adaptive,"« La vraie question n’est pas l’avenir de Bruno Retailleau, mais celui du gouvernement » : le mariage des LR et des macronistes à l’épreuve"
+63_confidence_weighted,63_confidence_weighted,6bb5fec6c8eb5e8b,63,confidence_weighted,"« La vraie question n’est pas l’avenir de Bruno Retailleau, mais celui du gouvernement » : le mariage des LR et des macronistes à l’épreuve"
+64_adaptive,64_adaptive,b048475115a73fd8,64,adaptive,"Reconnaissance de la Palestine par la France : la gauche salue une « victoire morale », l’extrême droite déplore « une décision précipitée »"
+64_confidence_weighted,64_confidence_weighted,b048475115a73fd8,64,confidence_weighted,"Reconnaissance de la Palestine par la France : la gauche salue une « victoire morale », l’extrême droite déplore « une décision précipitée »"
+65_adaptive,65_adaptive,382f495ebb0e6ea1,65,adaptive,« J’ai l’impression qu’ils ne se sont jamais terminés » : les Français rêvent-ils toujours des Jeux olympiques de Paris ?
+65_confidence_weighted,65_confidence_weighted,382f495ebb0e6ea1,65,confidence_weighted,« J’ai l’impression qu’ils ne se sont jamais terminés » : les Français rêvent-ils toujours des Jeux olympiques de Paris ?
+66_adaptive,66_adaptive,04b3e43e6463dd21,66,adaptive,Décision « historique » ou « imprudente » : les réactions internationales à la reconnaissance de la Palestine par la France
+66_confidence_weighted,66_confidence_weighted,04b3e43e6463dd21,66,confidence_weighted,Décision « historique » ou « imprudente » : les réactions internationales à la reconnaissance de la Palestine par la France
+67_adaptive,67_adaptive,0fef8f52921322f5,67,adaptive,"Bachar al-Assad face à la justice française : « Si la Cour de Cassation confirme le mandat d’arrêt, ce sera une première mondiale »"
+67_confidence_weighted,67_confidence_weighted,0fef8f52921322f5,67,confidence_weighted,"Bachar al-Assad face à la justice française : « Si la Cour de Cassation confirme le mandat d’arrêt, ce sera une première mondiale »"
+68_adaptive,68_adaptive,2da8feefe2ab36b9,68,adaptive,"« Personne dans la famille n’échappait aux jugements incessants de ce cousin, mais j’étais sa cible favorite »"
+68_confidence_weighted,68_confidence_weighted,2da8feefe2ab36b9,68,confidence_weighted,"« Personne dans la famille n’échappait aux jugements incessants de ce cousin, mais j’étais sa cible favorite »"
+69_adaptive,69_adaptive,a1fef770615bb2e5,69,adaptive,"« J’ai cru qu’il allait sortir la kalach » : les confidences de « Passe-Partout », le serrurier des stups marseillais"
+69_confidence_weighted,69_confidence_weighted,a1fef770615bb2e5,69,confidence_weighted,"« J’ai cru qu’il allait sortir la kalach » : les confidences de « Passe-Partout », le serrurier des stups marseillais"
+70_adaptive,70_adaptive,af6c35080467f02e,70,adaptive,"Chantal et son mari, 80 ans, se sont fait voler 120 000 euros par un faux conseiller bancaire (et leur banque ne veut rien rembourser)"
+70_confidence_weighted,70_confidence_weighted,af6c35080467f02e,70,confidence_weighted,"Chantal et son mari, 80 ans, se sont fait voler 120 000 euros par un faux conseiller bancaire (et leur banque ne veut rien rembourser)"
+71_adaptive,71_adaptive,267a43bc1cfca9d7,71,adaptive,Emmanuel Macron annonce que la France va reconnaître l’Etat de Palestine en septembre
+71_confidence_weighted,71_confidence_weighted,267a43bc1cfca9d7,71,confidence_weighted,Emmanuel Macron annonce que la France va reconnaître l’Etat de Palestine en septembre
+72_adaptive,72_adaptive,4fadd51d69e701a5,72,adaptive,Festival d’Angoulême : le directeur de la société organisatrice contestée partira en 2028
+72_confidence_weighted,72_confidence_weighted,4fadd51d69e701a5,72,confidence_weighted,Festival d’Angoulême : le directeur de la société organisatrice contestée partira en 2028
+73_adaptive,73_adaptive,cb752b34f63df7e2,73,adaptive,"Plus de décès que de naissances en France : « Ce n’est pas un accident statistique, mais un signal démographique fort »"
+73_confidence_weighted,73_confidence_weighted,cb752b34f63df7e2,73,confidence_weighted,"Plus de décès que de naissances en France : « Ce n’est pas un accident statistique, mais un signal démographique fort »"
+74_adaptive,74_adaptive,98cfb81085297808,74,adaptive,« Il n’y a pas d’âge pour se lancer » : quand « Drag Race France » réveille des vocations de reines
+74_confidence_weighted,74_confidence_weighted,98cfb81085297808,74,confidence_weighted,« Il n’y a pas d’âge pour se lancer » : quand « Drag Race France » réveille des vocations de reines
+75_adaptive,75_adaptive,68eae07b7f193824,75,adaptive,"Qu’est-ce que le « jour du dépassement », la date qui nous signale toujours plus tôt que l’humanité vit en situation de « dette écologique » ?"
+75_confidence_weighted,75_confidence_weighted,68eae07b7f193824,75,confidence_weighted,"Qu’est-ce que le « jour du dépassement », la date qui nous signale toujours plus tôt que l’humanité vit en situation de « dette écologique » ?"
+76_adaptive,76_adaptive,19ee41a13c9862aa,76,adaptive,"Plainte, accusation d’antisémitisme… ce que l’on sait du débarquement d’adolescents français juifs d’un avion en Espagne"
+76_confidence_weighted,76_confidence_weighted,19ee41a13c9862aa,76,confidence_weighted,"Plainte, accusation d’antisémitisme… ce que l’on sait du débarquement d’adolescents français juifs d’un avion en Espagne"
+77_adaptive,77_adaptive,079d1e666f0a9185,77,adaptive,« On a mis au point une thérapie très horizontale » : quand les champignons hallucinogènes combattent la dépendance à l’alcool
+77_confidence_weighted,77_confidence_weighted,079d1e666f0a9185,77,confidence_weighted,« On a mis au point une thérapie très horizontale » : quand les champignons hallucinogènes combattent la dépendance à l’alcool
+78_adaptive,78_adaptive,3d32211474049e06,78,adaptive,Pétition contre la loi Duplomb : « La santé est l’un des leviers principaux de la prise de conscience écologique »
+78_confidence_weighted,78_confidence_weighted,3d32211474049e06,78,confidence_weighted,Pétition contre la loi Duplomb : « La santé est l’un des leviers principaux de la prise de conscience écologique »
+79_adaptive,79_adaptive,78f4bb460dcce286,79,adaptive,« Il était une fois le musée du Louvre » à travers ses œuvres emblématiques
+79_confidence_weighted,79_confidence_weighted,78f4bb460dcce286,79,confidence_weighted,« Il était une fois le musée du Louvre » à travers ses œuvres emblématiques
+80_adaptive,80_adaptive,2e04f86309b1c1a9,80,adaptive,"Trump en guerre contre les IA woke : « Oui, ces outils ont des biais, mais… »"
+80_confidence_weighted,80_confidence_weighted,2e04f86309b1c1a9,80,confidence_weighted,"Trump en guerre contre les IA woke : « Oui, ces outils ont des biais, mais… »"
+81_adaptive,81_adaptive,e147dddb08ce381c,81,adaptive,Gilbert Melki en « Vendeur » est éblouissant
+81_confidence_weighted,81_confidence_weighted,e147dddb08ce381c,81,confidence_weighted,Gilbert Melki en « Vendeur » est éblouissant
+82_adaptive,82_adaptive,452bb2019ea76931,82,adaptive,Sahara occidental : pourquoi le Maroc est en train de l’emporter sur l’Algérie
+82_confidence_weighted,82_confidence_weighted,452bb2019ea76931,82,confidence_weighted,Sahara occidental : pourquoi le Maroc est en train de l’emporter sur l’Algérie
+83_adaptive,83_adaptive,406da419258b2c43,83,adaptive,On a regardé la série Netflix sur Bertrand Cantat : elle dévoile l’existence d’un dossier médical pour violences commises sur Krisztina Rady
+83_confidence_weighted,83_confidence_weighted,406da419258b2c43,83,confidence_weighted,On a regardé la série Netflix sur Bertrand Cantat : elle dévoile l’existence d’un dossier médical pour violences commises sur Krisztina Rady
+84_adaptive,84_adaptive,ecb41e3235605396,84,adaptive,"« Vachette », par Suzanne Duval, ou comment dire la réalité de la vie et du corps des femmes"
+84_confidence_weighted,84_confidence_weighted,ecb41e3235605396,84,confidence_weighted,"« Vachette », par Suzanne Duval, ou comment dire la réalité de la vie et du corps des femmes"
+85_adaptive,85_adaptive,7d61a0c658b9ecd8,85,adaptive,Affaire Bertrand Cantat : la justice rouvre l’enquête sur le suicide de son ex-femme Krisztina Rady
+85_confidence_weighted,85_confidence_weighted,7d61a0c658b9ecd8,85,confidence_weighted,Affaire Bertrand Cantat : la justice rouvre l’enquête sur le suicide de son ex-femme Krisztina Rady
+86_adaptive,86_adaptive,e73ba9ac04d370cf,86,adaptive,"Derrière la fake news sur Brigitte Macron, un journaliste français poursuivi pour « complicité de cyberharcèlement »"
+86_confidence_weighted,86_confidence_weighted,e73ba9ac04d370cf,86,confidence_weighted,"Derrière la fake news sur Brigitte Macron, un journaliste français poursuivi pour « complicité de cyberharcèlement »"
+87_adaptive,87_adaptive,84d84605845187ca,87,adaptive,Ce que l’affaire Epstein nous dit du complotisme
+87_confidence_weighted,87_confidence_weighted,84d84605845187ca,87,confidence_weighted,Ce que l’affaire Epstein nous dit du complotisme
+88_adaptive,88_adaptive,a40f253f02938458,88,adaptive,Echange de tirs entre le Cambodge et la Thaïlande : que se passe-t-il à la frontière des deux pays ?
+88_confidence_weighted,88_confidence_weighted,a40f253f02938458,88,confidence_weighted,Echange de tirs entre le Cambodge et la Thaïlande : que se passe-t-il à la frontière des deux pays ?
+89_adaptive,89_adaptive,f51f3fdf75da15eb,89,adaptive,"Ukraine, terres rares, climat… Les dossiers brûlants avant le sommet entre l’UE et la Chine"
+89_confidence_weighted,89_confidence_weighted,f51f3fdf75da15eb,89,confidence_weighted,"Ukraine, terres rares, climat… Les dossiers brûlants avant le sommet entre l’UE et la Chine"
+90_adaptive,90_adaptive,0e804803f285436a,90,adaptive,"Eau polluée par les PFAS : « A cause de l’ampleur du problème, il va nous falloir plusieurs dizaines d’années pour le résoudre »"
+90_confidence_weighted,90_confidence_weighted,0e804803f285436a,90,confidence_weighted,"Eau polluée par les PFAS : « A cause de l’ampleur du problème, il va nous falloir plusieurs dizaines d’années pour le résoudre »"
+91_adaptive,91_adaptive,2a3b035bd28680d6,91,adaptive,"Fake news sur Brigitte Macron : l’influenceuse Candace Owens, attaquée en justice par le couple présidentiel, réagit"
+91_confidence_weighted,91_confidence_weighted,2a3b035bd28680d6,91,confidence_weighted,"Fake news sur Brigitte Macron : l’influenceuse Candace Owens, attaquée en justice par le couple présidentiel, réagit"
+92_adaptive,92_adaptive,90228e266121cdac,92,adaptive,« Vous avez consulté des images pédopornographiques » : le vaste réseau à l’origine de l’arnaque qui a fait des milliers de victimes
+92_confidence_weighted,92_confidence_weighted,90228e266121cdac,92,confidence_weighted,« Vous avez consulté des images pédopornographiques » : le vaste réseau à l’origine de l’arnaque qui a fait des milliers de victimes
+93_adaptive,93_adaptive,bdba07ba99c1603d,93,adaptive,"« Le beau-frère de mon mec m’a regardée, puis il a lancé : “Ah, c’est celle-ci la nouvelle ? De toute façon, ça ne va pas durer” »"
+93_confidence_weighted,93_confidence_weighted,bdba07ba99c1603d,93,confidence_weighted,"« Le beau-frère de mon mec m’a regardée, puis il a lancé : “Ah, c’est celle-ci la nouvelle ? De toute façon, ça ne va pas durer” »"
+94_adaptive,94_adaptive,827f942284082973,94,adaptive,"Un journaliste diva et une myriade de plumes : dans les coulisses d’« Affaires sensibles », le podcast le plus écouté de Radio France"
+94_confidence_weighted,94_confidence_weighted,827f942284082973,94,confidence_weighted,"Un journaliste diva et une myriade de plumes : dans les coulisses d’« Affaires sensibles », le podcast le plus écouté de Radio France"
+95_adaptive,95_adaptive,29c2143168e14c13,95,adaptive,"Macron, Trump, Meloni et les autres… Humains, trop humains"
+95_confidence_weighted,95_confidence_weighted,29c2143168e14c13,95,confidence_weighted,"Macron, Trump, Meloni et les autres… Humains, trop humains"
+96_adaptive,96_adaptive,361caff2d40d0c74,96,adaptive,Le salaire moyen de la fonction publique hospitalière a baissé en 2023
+96_confidence_weighted,96_confidence_weighted,361caff2d40d0c74,96,confidence_weighted,Le salaire moyen de la fonction publique hospitalière a baissé en 2023
+97_adaptive,97_adaptive,bf5d2558cecf909d,97,adaptive,Gaza : plus de 100 ONG mettent en garde contre une « famine de masse »
+97_confidence_weighted,97_confidence_weighted,bf5d2558cecf909d,97,confidence_weighted,Gaza : plus de 100 ONG mettent en garde contre une « famine de masse »
+98_adaptive,98_adaptive,8ec18d19e58d9fad,98,adaptive,Affaire Bétharram : les victimes déposent de nouvelles plaintes mais déplorent un « manque de moyens » pour l’enquête
+98_confidence_weighted,98_confidence_weighted,8ec18d19e58d9fad,98,confidence_weighted,Affaire Bétharram : les victimes déposent de nouvelles plaintes mais déplorent un « manque de moyens » pour l’enquête
+99_adaptive,99_adaptive,619ac2b75ec51a6a,99,adaptive,Avons-nous vraiment beaucoup de jours fériés en France ?
+99_confidence_weighted,99_confidence_weighted,619ac2b75ec51a6a,99,confidence_weighted,Avons-nous vraiment beaucoup de jours fériés en France ?
+100_adaptive,100_adaptive,8faad6d1ca7e63e2,100,adaptive,"« Réparations » pour les pays pollueurs, obligations climatiques… Le résumé des annonces de la Cour internationale de Justice"
+100_confidence_weighted,100_confidence_weighted,8faad6d1ca7e63e2,100,confidence_weighted,"« Réparations » pour les pays pollueurs, obligations climatiques… Le résumé des annonces de la Cour internationale de Justice"
+101_adaptive,101_adaptive,184a7f323236a6fd,101,adaptive,"Tentative d’assassinat d’un politique espagnol : un trafiquant français, soupçonné d’être un tueur à gages de l’Iran, sera jugé en Espagne"
+101_confidence_weighted,101_confidence_weighted,184a7f323236a6fd,101,confidence_weighted,"Tentative d’assassinat d’un politique espagnol : un trafiquant français, soupçonné d’être un tueur à gages de l’Iran, sera jugé en Espagne"
+102_adaptive,102_adaptive,1ea2b6b6fcad0d49,102,adaptive,De la justice aux journalistes : les trois déclarations les plus trumpistes de Rachida Dati
+102_confidence_weighted,102_confidence_weighted,1ea2b6b6fcad0d49,102,confidence_weighted,De la justice aux journalistes : les trois déclarations les plus trumpistes de Rachida Dati
+103_adaptive,103_adaptive,a68c6f882eda290f,103,adaptive,"Vingt-six ministres d’Emmanuel Macron mis en examen depuis 2017, comme le dit François Ruffin ? C’est inexact (mais toujours trop)"
+103_confidence_weighted,103_confidence_weighted,a68c6f882eda290f,103,confidence_weighted,"Vingt-six ministres d’Emmanuel Macron mis en examen depuis 2017, comme le dit François Ruffin ? C’est inexact (mais toujours trop)"
+104_adaptive,104_adaptive,8a1f882da3f5ce5a,104,adaptive,"Génocides : le monde en deuil permanent, le droit en faillite"
+104_confidence_weighted,104_confidence_weighted,8a1f882da3f5ce5a,104,confidence_weighted,"Génocides : le monde en deuil permanent, le droit en faillite"
+105_adaptive,105_adaptive,7973920660d3016b,105,adaptive,"« Moi, je suis fait pour les tempêtes » : Emmanuel Carrère a suivi Emmanuel Macron dans les coulisses du G7"
+105_confidence_weighted,105_confidence_weighted,7973920660d3016b,105,confidence_weighted,"« Moi, je suis fait pour les tempêtes » : Emmanuel Carrère a suivi Emmanuel Macron dans les coulisses du G7"
+106_adaptive,106_adaptive,d244b64e457fe322,106,adaptive,« Que Marianne était jolie » : quand Michel Delpech chante une certaine idée de la France… et de la Révolution
+106_confidence_weighted,106_confidence_weighted,d244b64e457fe322,106,confidence_weighted,« Que Marianne était jolie » : quand Michel Delpech chante une certaine idée de la France… et de la Révolution
+107_adaptive,107_adaptive,86ed15eb33588d32,107,adaptive,Les coulisses du G7 racontées par Emmanuel Carrère
+107_confidence_weighted,107_confidence_weighted,86ed15eb33588d32,107,confidence_weighted,Les coulisses du G7 racontées par Emmanuel Carrère
+108_adaptive,108_adaptive,f60056647b2e6c04,108,adaptive,Pédocriminel arrêté de justesse près d’Orléans : « C’est vraiment monsieur Tout-le-Monde »
+108_confidence_weighted,108_confidence_weighted,f60056647b2e6c04,108,confidence_weighted,Pédocriminel arrêté de justesse près d’Orléans : « C’est vraiment monsieur Tout-le-Monde »
+109_adaptive,109_adaptive,1799497d236cc8f8,109,adaptive,Pourquoi mal travailler coûte plus cher que de ne pas travailler
+109_confidence_weighted,109_confidence_weighted,1799497d236cc8f8,109,confidence_weighted,Pourquoi mal travailler coûte plus cher que de ne pas travailler
+110_adaptive,110_adaptive,d4f31d71e0474ed9,110,adaptive,"« Papa, t’étais où en Algérie ? » : le silence des appelés"
+110_confidence_weighted,110_confidence_weighted,d4f31d71e0474ed9,110,confidence_weighted,"« Papa, t’étais où en Algérie ? » : le silence des appelés"
+111_adaptive,111_adaptive,b16c0e23e7e392f5,111,adaptive,"Au Canada, une saison des feux déjà catastrophique avec près de 6 millions d’hectares brûlés"
+111_confidence_weighted,111_confidence_weighted,b16c0e23e7e392f5,111,confidence_weighted,"Au Canada, une saison des feux déjà catastrophique avec près de 6 millions d’hectares brûlés"
+112_adaptive,112_adaptive,d56c177562711942,112,adaptive,« Le Panache » : l’éloquence de Joachim Arseguel
+112_confidence_weighted,112_confidence_weighted,d56c177562711942,112,confidence_weighted,« Le Panache » : l’éloquence de Joachim Arseguel
+113_adaptive,113_adaptive,2363f8c60633af2c,113,adaptive,Loi Duplomb : les leçons d’un sursaut écolo
+113_confidence_weighted,113_confidence_weighted,2363f8c60633af2c,113,confidence_weighted,Loi Duplomb : les leçons d’un sursaut écolo
+114_adaptive,114_adaptive,c04de690539938a3,114,adaptive,"« Je vous dédie mon silence », par Mario Vargas Llosa : un dernier roman comme un hommage à Balzac et Flaubert"
+114_confidence_weighted,114_confidence_weighted,c04de690539938a3,114,confidence_weighted,"« Je vous dédie mon silence », par Mario Vargas Llosa : un dernier roman comme un hommage à Balzac et Flaubert"
+115_adaptive,115_adaptive,055073e2129cf69b,115,adaptive,Ozzy Osbourne est mort et l’enfer est en deuil
+115_confidence_weighted,115_confidence_weighted,055073e2129cf69b,115,confidence_weighted,Ozzy Osbourne est mort et l’enfer est en deuil
+116_adaptive,116_adaptive,75ba98cb0fed4c2b,116,adaptive,Qui va vraiment payer le budget Bayrou ? Débat entre les économistes Anne-Sophie Alsif et Henri Sterdyniak
+116_confidence_weighted,116_confidence_weighted,75ba98cb0fed4c2b,116,confidence_weighted,Qui va vraiment payer le budget Bayrou ? Débat entre les économistes Anne-Sophie Alsif et Henri Sterdyniak
+117_adaptive,117_adaptive,220b430da44459f0,117,adaptive,J’ai testé pour vous : le « bain de forêt »
+117_confidence_weighted,117_confidence_weighted,220b430da44459f0,117,confidence_weighted,J’ai testé pour vous : le « bain de forêt »
+118_adaptive,118_adaptive,8f6ca28dd2ee370b,118,adaptive,"« Contre l’hégémonie culturelle des droites dures, menons une bataille politique et budgétaire »"
+118_confidence_weighted,118_confidence_weighted,8f6ca28dd2ee370b,118,confidence_weighted,"« Contre l’hégémonie culturelle des droites dures, menons une bataille politique et budgétaire »"
+119_adaptive,119_adaptive,b4e4db65dfa7463a,119,adaptive,"Bruno Retailleau estime que le macronisme « alimente l’impuissance », Elisabeth Borne l’accuse de vouloir « diviser »"
+119_confidence_weighted,119_confidence_weighted,b4e4db65dfa7463a,119,confidence_weighted,"Bruno Retailleau estime que le macronisme « alimente l’impuissance », Elisabeth Borne l’accuse de vouloir « diviser »"
+120_adaptive,120_adaptive,33d8bf8a5fa6bafe,120,adaptive,"« Il y a un problème avec la justice » : renvoyée en procès pour corruption, Rachida Dati charge violemment les magistrats"
+120_confidence_weighted,120_confidence_weighted,33d8bf8a5fa6bafe,120,confidence_weighted,"« Il y a un problème avec la justice » : renvoyée en procès pour corruption, Rachida Dati charge violemment les magistrats"
+121_adaptive,121_adaptive,3c19808010f2ba6f,121,adaptive,"La mise en ligne des décisions de justice inquiète, la loi Duplomb divise Renaissance… Retrouvez les indiscrétions du « Nouvel Obs »"
+121_confidence_weighted,121_confidence_weighted,3c19808010f2ba6f,121,confidence_weighted,"La mise en ligne des décisions de justice inquiète, la loi Duplomb divise Renaissance… Retrouvez les indiscrétions du « Nouvel Obs »"
+122_adaptive,122_adaptive,e4abac464be73d82,122,adaptive,"« Elle me parle de météo, de son chien, du linge qui sèche… Plus je vois ma belle-mère, plus elle m’insupporte »"
+122_confidence_weighted,122_confidence_weighted,e4abac464be73d82,122,confidence_weighted,"« Elle me parle de météo, de son chien, du linge qui sèche… Plus je vois ma belle-mère, plus elle m’insupporte »"
+123_adaptive,123_adaptive,d986d498cedd168b,123,adaptive,"Eric, routier, est tombé fou amoureux de « la femme parfaite », une camgirl roumaine… qui était en fait un « brouteur » ivoirien"
+123_confidence_weighted,123_confidence_weighted,d986d498cedd168b,123,confidence_weighted,"Eric, routier, est tombé fou amoureux de « la femme parfaite », une camgirl roumaine… qui était en fait un « brouteur » ivoirien"
+124_adaptive,124_adaptive,11b758cdb3f94344,124,adaptive,"Il y a 80 ans, au procès du maréchal Pétain, il a très peu été question du sort des juifs"
+124_confidence_weighted,124_confidence_weighted,11b758cdb3f94344,124,confidence_weighted,"Il y a 80 ans, au procès du maréchal Pétain, il a très peu été question du sort des juifs"
+125_adaptive,125_adaptive,b389db4ec28884a7,125,adaptive,Interpol lève la notice rouge visant le militant écologiste Paul Watson
+125_confidence_weighted,125_confidence_weighted,b389db4ec28884a7,125,confidence_weighted,Interpol lève la notice rouge visant le militant écologiste Paul Watson
+126_adaptive,126_adaptive,227ac58da54eafb8,126,adaptive,« Une heure et demie de moins par nuit en 50 ans » : le gouvernement publie une feuille de route pour « un sommeil de qualité »
+126_confidence_weighted,126_confidence_weighted,227ac58da54eafb8,126,confidence_weighted,« Une heure et demie de moins par nuit en 50 ans » : le gouvernement publie une feuille de route pour « un sommeil de qualité »
+127_adaptive,127_adaptive,0b488a9b19eada6b,127,adaptive,"Ozzy Osbourne, légende du heavy metal et chanteur de Black Sabbath, est mort"
+127_confidence_weighted,127_confidence_weighted,0b488a9b19eada6b,127,confidence_weighted,"Ozzy Osbourne, légende du heavy metal et chanteur de Black Sabbath, est mort"
+128_adaptive,128_adaptive,34cd2441459ad119,128,adaptive,"MaPrimeRénov’ va rouvrir le 30 septembre pour les rénovations globales, mais avec des conditions d’accès resserrées"
+128_confidence_weighted,128_confidence_weighted,34cd2441459ad119,128,confidence_weighted,"MaPrimeRénov’ va rouvrir le 30 septembre pour les rénovations globales, mais avec des conditions d’accès resserrées"
+129_adaptive,129_adaptive,7d3985e16d7fe3c3,129,adaptive,"« Pooja, Sir », « Les 4 Fantastiques », « Sorry, Baby »... Les films à voir (ou pas) cette semaine"
+129_confidence_weighted,129_confidence_weighted,7d3985e16d7fe3c3,129,confidence_weighted,"« Pooja, Sir », « Les 4 Fantastiques », « Sorry, Baby »... Les films à voir (ou pas) cette semaine"
+130_adaptive,130_adaptive,72f5963b314b2205,130,adaptive,Rachida Dati bientôt jugée pour corruption : ce que dit l’ordonnance de renvoi des juges d’instruction
+130_confidence_weighted,130_confidence_weighted,72f5963b314b2205,130,confidence_weighted,Rachida Dati bientôt jugée pour corruption : ce que dit l’ordonnance de renvoi des juges d’instruction
+131_adaptive,131_adaptive,574e875ed09a7233,131,adaptive,« My Father’s Son » : un ambitieux drame mémoriel et dystopique
+131_confidence_weighted,131_confidence_weighted,574e875ed09a7233,131,confidence_weighted,« My Father’s Son » : un ambitieux drame mémoriel et dystopique
+132_adaptive,132_adaptive,78350a8803037c44,132,adaptive,« Frantz Fanon » : ces années que le psychiatre et figure de l’anticolonialisme passa à l’hôpital de Blida
+132_confidence_weighted,132_confidence_weighted,78350a8803037c44,132,confidence_weighted,« Frantz Fanon » : ces années que le psychiatre et figure de l’anticolonialisme passa à l’hôpital de Blida
+133_adaptive,133_adaptive,2a8f3c660f23ce58,133,adaptive,« Aux jours qui viennent » : un film entre thriller conjugal et mélo familiale
+133_confidence_weighted,133_confidence_weighted,2a8f3c660f23ce58,133,confidence_weighted,« Aux jours qui viennent » : un film entre thriller conjugal et mélo familiale
+134_adaptive,134_adaptive,0f8286a243bf5959,134,adaptive,« Vittoria » : un film entre documentaire et fiction qui prouve que le cinéma italien n’est pas mort
+134_confidence_weighted,134_confidence_weighted,0f8286a243bf5959,134,confidence_weighted,« Vittoria » : un film entre documentaire et fiction qui prouve que le cinéma italien n’est pas mort
+135_adaptive,135_adaptive,99413af17e23056b,135,adaptive,« The Things You Kill » : une fable politique et symbolique  sur le déni de culpabilité
+135_confidence_weighted,135_confidence_weighted,99413af17e23056b,135,confidence_weighted,« The Things You Kill » : une fable politique et symbolique  sur le déni de culpabilité
+136_adaptive,136_adaptive,ea15ec09d109a0a2,136,adaptive,« Dangerous Animals » : quand un serial killer donne des touristes à manger aux requins
+136_confidence_weighted,136_confidence_weighted,ea15ec09d109a0a2,136,confidence_weighted,« Dangerous Animals » : quand un serial killer donne des touristes à manger aux requins
+137_adaptive,137_adaptive,e71c77eeede3f484,137,adaptive,"« Sorry, Baby » : un petit film d’une grande sensibilité sur la réadaptation d’une victime d’agression sexuelle"
+137_confidence_weighted,137_confidence_weighted,e71c77eeede3f484,137,confidence_weighted,"« Sorry, Baby » : un petit film d’une grande sensibilité sur la réadaptation d’une victime d’agression sexuelle"
+138_adaptive,138_adaptive,242a3ca05ca41b2b,138,adaptive,"Des PFAS détectés dans les protections féminines réutilisables, révèle une étude"
+138_confidence_weighted,138_confidence_weighted,242a3ca05ca41b2b,138,confidence_weighted,"Des PFAS détectés dans les protections féminines réutilisables, révèle une étude"
+139_adaptive,139_adaptive,8c2e90f73778fe01,139,adaptive,"« Pooja, Sir » :  un polar féministe sous tension au cœur de la société népalaise"
+139_confidence_weighted,139_confidence_weighted,8c2e90f73778fe01,139,confidence_weighted,"« Pooja, Sir » :  un polar féministe sous tension au cœur de la société népalaise"
+140_adaptive,140_adaptive,7d064f4fcc38c633,140,adaptive,Le reboot des « 4 Fantastiques » partait bien mais il retombe comme un soufflé (malgré Pedro Pascal)
+140_confidence_weighted,140_confidence_weighted,7d064f4fcc38c633,140,confidence_weighted,Le reboot des « 4 Fantastiques » partait bien mais il retombe comme un soufflé (malgré Pedro Pascal)
+141_adaptive,141_adaptive,4421f40861287733,141,adaptive,« Je pars parce que je veux vivre » : de plus en plus d’Israéliens quittent leur pays depuis le 7-Octobre
+141_confidence_weighted,141_confidence_weighted,4421f40861287733,141,confidence_weighted,« Je pars parce que je veux vivre » : de plus en plus d’Israéliens quittent leur pays depuis le 7-Octobre
+142_adaptive,142_adaptive,dce264d64f8e55f6,142,adaptive,Festival d’Avignon : nos 5 coups de cœur du Off à voir absolument
+142_confidence_weighted,142_confidence_weighted,dce264d64f8e55f6,142,confidence_weighted,Festival d’Avignon : nos 5 coups de cœur du Off à voir absolument
+143_adaptive,143_adaptive,05780a2789456792,143,adaptive,"Affaire Dati : Paris mérite un maire, pas un prévenu"
+143_confidence_weighted,143_confidence_weighted,05780a2789456792,143,confidence_weighted,"Affaire Dati : Paris mérite un maire, pas un prévenu"
+144_adaptive,144_adaptive,e6f76679684a9086,144,adaptive,« MaXXXine » : machine à fantasmes
+144_confidence_weighted,144_confidence_weighted,e6f76679684a9086,144,confidence_weighted,« MaXXXine » : machine à fantasmes
+145_adaptive,145_adaptive,0d87b82f8cae8d91,145,adaptive,« Le budget Bayrou ne répond à aucun des défis majeurs auxquels la France fait face »
+145_confidence_weighted,145_confidence_weighted,0d87b82f8cae8d91,145,confidence_weighted,« Le budget Bayrou ne répond à aucun des défis majeurs auxquels la France fait face »
+146_adaptive,146_adaptive,a5ba7160697af071,146,adaptive,« En tongs au pied de l’Himalaya » : Audrey Lamy en mère courage
+146_confidence_weighted,146_confidence_weighted,a5ba7160697af071,146,confidence_weighted,« En tongs au pied de l’Himalaya » : Audrey Lamy en mère courage
+147_adaptive,147_adaptive,e6564e4511d975f9,147,adaptive,Rachida Dati et Carlos Ghosn renvoyés en procès pour corruption et trafic d’influence
+147_confidence_weighted,147_confidence_weighted,e6564e4511d975f9,147,confidence_weighted,Rachida Dati et Carlos Ghosn renvoyés en procès pour corruption et trafic d’influence
+148_adaptive,148_adaptive,ccaeb36c17b66e74,148,adaptive,« Ce que ton regard promet » : la rencontre entre un lièvre et une écrivaine qui a émerveillé Angelina Jolie
+148_confidence_weighted,148_confidence_weighted,ccaeb36c17b66e74,148,confidence_weighted,« Ce que ton regard promet » : la rencontre entre un lièvre et une écrivaine qui a émerveillé Angelina Jolie
+149_adaptive,149_adaptive,4c1586531d2f89cb,149,adaptive,"Socrate à la pizzeria : « Tu ne peux ni affirmer que la burratina est crémeuse, ni qu’elle ne l’est pas… »"
+149_confidence_weighted,149_confidence_weighted,4c1586531d2f89cb,149,confidence_weighted,"Socrate à la pizzeria : « Tu ne peux ni affirmer que la burratina est crémeuse, ni qu’elle ne l’est pas… »"
+150_adaptive,150_adaptive,e800abc9da273934,150,adaptive,"La loi Duplomb, en réautorisant l’acétamipride, fait peser trois risques majeurs sur la biodiversité, l’eau et la santé humaine : les voici"
+150_confidence_weighted,150_confidence_weighted,e800abc9da273934,150,confidence_weighted,"La loi Duplomb, en réautorisant l’acétamipride, fait peser trois risques majeurs sur la biodiversité, l’eau et la santé humaine : les voici"
+151_adaptive,151_adaptive,54fc5d6419a488d6,151,adaptive,"« La pétition ravive les débats entre nous » : face au succès de la mobilisation contre la loi Duplomb, la majorité se divise"
+151_confidence_weighted,151_confidence_weighted,54fc5d6419a488d6,151,confidence_weighted,"« La pétition ravive les débats entre nous » : face au succès de la mobilisation contre la loi Duplomb, la majorité se divise"
+152_adaptive,152_adaptive,ed4171a50b778bf1,152,adaptive,"La France demande l’accès à Gaza pour la presse, « pour montrer ce qu’il s’y passe »"
+152_confidence_weighted,152_confidence_weighted,ed4171a50b778bf1,152,confidence_weighted,"La France demande l’accès à Gaza pour la presse, « pour montrer ce qu’il s’y passe »"
+153_adaptive,153_adaptive,766dd98f47fa732a,153,adaptive,"Pétition contre la loi Duplomb : face à une mobilisation citoyenne inédite, le camp présidentiel marche sur des œufs"
+153_confidence_weighted,153_confidence_weighted,766dd98f47fa732a,153,confidence_weighted,"Pétition contre la loi Duplomb : face à une mobilisation citoyenne inédite, le camp présidentiel marche sur des œufs"
+154_adaptive,154_adaptive,d5ba6bfeda33143f,154,adaptive,"« Il enchaîne les verres d’alcool, lui parle mal… Oui, son mari est malade, mais ça n’excuse pas tout »"
+154_confidence_weighted,154_confidence_weighted,d5ba6bfeda33143f,154,confidence_weighted,"« Il enchaîne les verres d’alcool, lui parle mal… Oui, son mari est malade, mais ça n’excuse pas tout »"
+155_adaptive,155_adaptive,61d596e29bd4b14a,155,adaptive,"Musicien et cycliste, Pascal Gabriel a mis le mont Ventoux en musique"
+155_confidence_weighted,155_confidence_weighted,61d596e29bd4b14a,155,confidence_weighted,"Musicien et cycliste, Pascal Gabriel a mis le mont Ventoux en musique"
+156_adaptive,156_adaptive,49ae6d076953d5bd,156,adaptive,"De Pulitzer à Musk, la démocratie a toujours été sous influence de la désinformation"
+156_confidence_weighted,156_confidence_weighted,49ae6d076953d5bd,156,confidence_weighted,"De Pulitzer à Musk, la démocratie a toujours été sous influence de la désinformation"
+157_adaptive,157_adaptive,3cde8ae9de372e72,157,adaptive,"« Mon amour, j’ai un souci ! Il me faut de l’argent ! » : comment Véronique, 59 ans, a été victime d’arnaque aux sentiments"
+157_confidence_weighted,157_confidence_weighted,3cde8ae9de372e72,157,confidence_weighted,"« Mon amour, j’ai un souci ! Il me faut de l’argent ! » : comment Véronique, 59 ans, a été victime d’arnaque aux sentiments"
+158_adaptive,158_adaptive,7f6d6e5c350c2d54,158,adaptive,"Trump et l’affaire Epstein, ou l’histoire de l’arroseur arrosé"
+158_confidence_weighted,158_confidence_weighted,7f6d6e5c350c2d54,158,confidence_weighted,"Trump et l’affaire Epstein, ou l’histoire de l’arroseur arrosé"
+159_adaptive,159_adaptive,0f0a3e78186db74e,159,adaptive,Guerre en Ukraine : Kiev et Moscou se retrouveront mercredi en Turquie pour des pourparlers
+159_confidence_weighted,159_confidence_weighted,0f0a3e78186db74e,159,confidence_weighted,Guerre en Ukraine : Kiev et Moscou se retrouveront mercredi en Turquie pour des pourparlers
+160_adaptive,160_adaptive,6568364a4f7fbda8,160,adaptive,« Aucun de nous n’a le souvenir d’avoir vu un collaborateur mourir de faim » : la SDJ de l’AFP alerte sur la santé des journalistes à Gaza
+160_confidence_weighted,160_confidence_weighted,6568364a4f7fbda8,160,confidence_weighted,« Aucun de nous n’a le souvenir d’avoir vu un collaborateur mourir de faim » : la SDJ de l’AFP alerte sur la santé des journalistes à Gaza
+161_adaptive,161_adaptive,619f4cf2b1395245,161,adaptive,"Guerre à Gaza : Israël étend ses opérations, 25 pays appellent à mettre fin « immédiatement » au conflit"
+161_confidence_weighted,161_confidence_weighted,619f4cf2b1395245,161,confidence_weighted,"Guerre à Gaza : Israël étend ses opérations, 25 pays appellent à mettre fin « immédiatement » au conflit"
+162_adaptive,162_adaptive,8bbcd409c87ef232,162,adaptive,Pétition contre la loi Duplomb : les 4 raisons d’un succès inédit
+162_confidence_weighted,162_confidence_weighted,8bbcd409c87ef232,162,confidence_weighted,Pétition contre la loi Duplomb : les 4 raisons d’un succès inédit
+163_adaptive,163_adaptive,5b8b3f9f85aad069,163,adaptive,Libération de Georges Abdallah : le parquet général forme un pourvoi en cassation
+163_confidence_weighted,163_confidence_weighted,5b8b3f9f85aad069,163,confidence_weighted,Libération de Georges Abdallah : le parquet général forme un pourvoi en cassation
+164_adaptive,164_adaptive,8b21515c9f3d868d,164,adaptive,"« Renard et Lapine sauvent la forêt » : un cartoon écolo, politique et inventif"
+164_confidence_weighted,164_confidence_weighted,8b21515c9f3d868d,164,confidence_weighted,"« Renard et Lapine sauvent la forêt » : un cartoon écolo, politique et inventif"
+165_adaptive,165_adaptive,6b57123fecfade63,165,adaptive,"Nous, malades du rein, prions François Bayrou de bien vouloir cesser de nous faire les poches"
+165_confidence_weighted,165_confidence_weighted,6b57123fecfade63,165,confidence_weighted,"Nous, malades du rein, prions François Bayrou de bien vouloir cesser de nous faire les poches"
+166_adaptive,166_adaptive,9b3f1b1ab89f027c,166,adaptive,"Le Bloc-notes de Jérôme Garcin : les Schneider, père et fille"
+166_confidence_weighted,166_confidence_weighted,9b3f1b1ab89f027c,166,confidence_weighted,"Le Bloc-notes de Jérôme Garcin : les Schneider, père et fille"
+167_adaptive,167_adaptive,99d16a57294f1b0e,167,adaptive,« Des trains pas comme les autres - De Chicago aux Rocheuses » : la vie du rail
+167_confidence_weighted,167_confidence_weighted,99d16a57294f1b0e,167,confidence_weighted,« Des trains pas comme les autres - De Chicago aux Rocheuses » : la vie du rail
+168_adaptive,168_adaptive,64f219af63d28f29,168,adaptive,"Près d’1,5 million de signatures contre la loi Duplomb : face au naufrage des politiques, le rebond citoyen"
+168_confidence_weighted,168_confidence_weighted,64f219af63d28f29,168,confidence_weighted,"Près d’1,5 million de signatures contre la loi Duplomb : face au naufrage des politiques, le rebond citoyen"
+169_adaptive,169_adaptive,7435cd45bd0306c9,169,adaptive,"« La ballade des sans-espoirs » : beau, poétique, poignant"
+169_confidence_weighted,169_confidence_weighted,7435cd45bd0306c9,169,confidence_weighted,"« La ballade des sans-espoirs » : beau, poétique, poignant"
+170_adaptive,170_adaptive,5b5290265a041690,170,adaptive,"Nouvelle audition, déclarations… le point sur les derniers développements dans l’affaire Jubillar"
+170_confidence_weighted,170_confidence_weighted,5b5290265a041690,170,confidence_weighted,"Nouvelle audition, déclarations… le point sur les derniers développements dans l’affaire Jubillar"
+171_adaptive,171_adaptive,f86a025051ba7281,171,adaptive,"Emmanuel Macron, Conseil constitutionnel et RIP : les recours contre la loi Duplomb au-delà du débat à l’Assemblée"
+171_confidence_weighted,171_confidence_weighted,f86a025051ba7281,171,confidence_weighted,"Emmanuel Macron, Conseil constitutionnel et RIP : les recours contre la loi Duplomb au-delà du débat à l’Assemblée"
+172_adaptive,172_adaptive,d4216a7e1a1dfdea,172,adaptive,"« En Europe, ceux qui cherchent à surfer sur la vague trumpiste seront sanctionnés dans les urnes »"
+172_confidence_weighted,172_confidence_weighted,d4216a7e1a1dfdea,172,confidence_weighted,"« En Europe, ceux qui cherchent à surfer sur la vague trumpiste seront sanctionnés dans les urnes »"
+173_adaptive,173_adaptive,21d1e319f5063f79,173,adaptive,Pétition contre la loi Duplomb : on a épluché les 386 autres textes soumis à signatures actuellement en ligne sur le site de l’Assemblée nationale
+173_confidence_weighted,173_confidence_weighted,21d1e319f5063f79,173,confidence_weighted,Pétition contre la loi Duplomb : on a épluché les 386 autres textes soumis à signatures actuellement en ligne sur le site de l’Assemblée nationale
+174_adaptive,174_adaptive,07730c9602dd0a82,174,adaptive,"« La Ronde de nuit », par Bora Chung : karma, fais-moi peur"
+174_confidence_weighted,174_confidence_weighted,07730c9602dd0a82,174,confidence_weighted,"« La Ronde de nuit », par Bora Chung : karma, fais-moi peur"
+175_adaptive,175_adaptive,6026998fa9091211,175,adaptive,"Appendice, dents de sagesse… Pourquoi certaines parties de notre corps sont-elles inutiles ?"
+175_confidence_weighted,175_confidence_weighted,6026998fa9091211,175,confidence_weighted,"Appendice, dents de sagesse… Pourquoi certaines parties de notre corps sont-elles inutiles ?"
+176_adaptive,176_adaptive,2961a15e188b5dfe,176,adaptive,"Le congost de Mont-Rebei, une randonnée pour défier son vertige"
+176_confidence_weighted,176_confidence_weighted,2961a15e188b5dfe,176,confidence_weighted,"Le congost de Mont-Rebei, une randonnée pour défier son vertige"
+177_adaptive,177_adaptive,c5279b46ca86926c,177,adaptive,« On culpabilise le patient » : France Assos Santé dénonce le plan d’économies prévu par François Bayrou
+177_confidence_weighted,177_confidence_weighted,c5279b46ca86926c,177,confidence_weighted,« On culpabilise le patient » : France Assos Santé dénonce le plan d’économies prévu par François Bayrou
+178_adaptive,178_adaptive,75e207f8433c9905,178,adaptive,"Kurdwin Ayub, réalisatrice de « Moon » : « Il y a toujours une cage autour des femmes »"
+178_confidence_weighted,178_confidence_weighted,75e207f8433c9905,178,confidence_weighted,"Kurdwin Ayub, réalisatrice de « Moon » : « Il y a toujours une cage autour des femmes »"
+179_adaptive,179_adaptive,cf0a5b5e72cbc7dc,179,adaptive,"Un mort, six blessés, levée des vigilances… Retour sur les orages et les inondations qui ont frappé une partie de la France"
+179_confidence_weighted,179_confidence_weighted,cf0a5b5e72cbc7dc,179,confidence_weighted,"Un mort, six blessés, levée des vigilances… Retour sur les orages et les inondations qui ont frappé une partie de la France"
+180_adaptive,180_adaptive,42a653482c761faa,180,adaptive,"93 morts dans des tirs israéliens, nouvelle offensive en vue… Le point sur la situation à Gaza"
+180_confidence_weighted,180_confidence_weighted,42a653482c761faa,180,confidence_weighted,"93 morts dans des tirs israéliens, nouvelle offensive en vue… Le point sur la situation à Gaza"
+181_adaptive,181_adaptive,d75592606f1a6df5,181,adaptive,"« Quand mon beau-père m’a lancé “Tu fais n’importe quoi, comme d’habitude”, ça a été un détonateur »"
+181_confidence_weighted,181_confidence_weighted,d75592606f1a6df5,181,confidence_weighted,"« Quand mon beau-père m’a lancé “Tu fais n’importe quoi, comme d’habitude”, ça a été un détonateur »"
+182_adaptive,182_adaptive,2d93580017c5f706,182,adaptive,"Roselyne, 54 ans, pensait être en couple avec David Hallyday : elle a versé 60 000 euros à des brouteurs"
+182_confidence_weighted,182_confidence_weighted,2d93580017c5f706,182,confidence_weighted,"Roselyne, 54 ans, pensait être en couple avec David Hallyday : elle a versé 60 000 euros à des brouteurs"
+183_adaptive,183_adaptive,696099548cf1f22b,183,adaptive,La nouvelle croisade des anti-avortement en Italie
+183_confidence_weighted,183_confidence_weighted,696099548cf1f22b,183,confidence_weighted,La nouvelle croisade des anti-avortement en Italie
+184_adaptive,184_adaptive,d7dc94edc71fd9b0,184,adaptive,Comment Gabriel Attal veut se verdir face à l’offensive anti-écolo de Retailleau ou Le Pen
+184_confidence_weighted,184_confidence_weighted,d7dc94edc71fd9b0,184,confidence_weighted,Comment Gabriel Attal veut se verdir face à l’offensive anti-écolo de Retailleau ou Le Pen
+185_adaptive,185_adaptive,614db6878cf3974d,185,adaptive,"Un million de signatures pour la pétition contre la loi Duplomb, cessez-le-feu en Syrie, Bayrou et son budget… Les cinq infos à retenir du week-end"
+185_confidence_weighted,185_confidence_weighted,614db6878cf3974d,185,confidence_weighted,"Un million de signatures pour la pétition contre la loi Duplomb, cessez-le-feu en Syrie, Bayrou et son budget… Les cinq infos à retenir du week-end"
